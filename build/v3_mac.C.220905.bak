@@ -1,0 +1,574 @@
+/*
+  Date : 22-08-31
+  Comment
+ */
+
+
+void SetTLegend(TLegend *leg, TGraph* gra);
+void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan);
+
+#define number_of_event_display 1500
+#define draw_true 0
+#define pickup 0
+#define yprojection 1
+
+void v3_mac(TString fname="mydata_e")
+{
+  gStyle->SetPalette(kCool);
+  gStyle->SetOptStat(1);
+  gStyle->SetOptTitle(1);
+  gStyle->SetLineScalePS(1); // to make narrow line for marker
+  gStyle->SetTitleSize(0.05,"xyz");
+  
+  TFile *tf = new TFile(fname+".root","update");
+  TString canName = "fig_"+fname+".pdf";
+  TTree *tree1 = static_cast<TTree *>(tf->Get("treeEvtAct2"));
+  TTree *tree2 = (TTree*)tf->Get("treeStpAct");
+  TTree *tree3 = (TTree*)tf->Get("tree_yread");
+
+  int id;
+  int nevt=0;
+  const float fiber_thickness = 1;
+  const int unit = 4; // x.y.sx30 = 32
+  const double layer_gap =10;
+  const int  number_of_actuallayers = unit* 20;// 80 layers in total along Z axis.
+  const double length_along_Z = number_of_actuallayers*layer_gap;//[mm]
+  const int nlayers_dummy = 1200; 
+  const int nfibers_dummy = 1200;
+  float chw[nlayers_dummy][nfibers_dummy];//energy deposit in each fibers.
+  TVector3 *v3=NULL;
+  tree1->SetBranchAddress("nevt", &nevt);
+  tree1->SetBranchAddress("chw", chw);
+  tree3->SetBranchAddress("v3",&v3);
+  tree3->SetBranchAddress("id",&id);
+     
+  int nReadOut = tree3->GetEntries();
+  std::vector<TVector3> arrXZv3;
+  std::vector<TVector3> arrUZv3;
+  std::vector<TVector3> arrYZv3;
+  std::vector<TVector3> arrVZv3;
+
+  TVector3 zaxis(0,0,1);
+  for (int i = 0; i < nReadOut; ++i) {
+    tree3->GetEntry(i);
+    //if ( !v3 ) continue;      
+    //arrXZv3[id] = *v3;
+    //v3->Print();
+    arrXZv3.push_back(*v3); //v3->Print();
+    // rotation around z 
+    // mother volume center is 0, and it is rotated around z
+    v3->Rotate(TMath::Pi()/4., zaxis); //v3->Print();
+    arrUZv3.push_back(*v3);
+    v3->Rotate(TMath::Pi()/4., zaxis); //v3->Print();
+    arrYZv3.push_back(*v3);
+    v3->Rotate(TMath::Pi()/4., zaxis); //v3->Print();
+    arrVZv3.push_back(*v3);
+  }
+
+  int colN = TColor::GetNumberOfColors();
+  cerr << "color max = " << colN << endl;
+  // 0.3 is MIP position
+  float maxdEdx1  = 0.50;
+  const double henkan = 40.0/0.138*0.707106781; //E to p.e.
+  double maxphoton = maxdEdx1*henkan;
+  
+  //
+  // just dummy to get palette
+  //
+  TH2F *colpale = new TH2F("colpale","colpale",100,-1,1,100,-1,1);
+  colpale->SetBinContent(0,0,maxdEdx1);
+  colpale->GetZaxis()->SetRangeUser(0,maxphoton);
+  colpale->GetZaxis()->SetTitle("p.e.");
+  colpale->GetZaxis()->SetTitleOffset(0.55);
+  colpale->GetZaxis()->SetLabelSize(0.030);
+  colpale->GetZaxis()->SetLabelOffset(0.005);
+  TCanvas *c_colpale = new TCanvas();
+  colpale->Draw("colz");
+  gPad->Update();
+  TPaletteAxis *palette = (TPaletteAxis*)colpale->GetListOfFunctions()->FindObject("palette");
+  
+   
+  TGraph *grXZ = new TGraph(); //readout point 
+  TGraph *grYZ = new TGraph(); //readout point
+  TGraph *grUZ = new TGraph(); //readout point
+  TGraph *grVZ = new TGraph(); //readout point 
+   
+  grXZ->SetMarkerColor(kGray+1);
+  grYZ->SetMarkerColor(kGray+1);
+  grUZ->SetMarkerColor(kGray+1);
+  grVZ->SetMarkerColor(kGray+1);
+  grXZ->GetXaxis()->SetLimits(-20, fiber_thickness *  length_along_Z + 20); // ok @21/09/14
+  grYZ->GetXaxis()->SetLimits(-20, fiber_thickness *  length_along_Z + 20); // ok @21/09/14
+  grUZ->GetXaxis()->SetLimits(-20, fiber_thickness *  length_along_Z + 20); // ok @21/09/14
+  grVZ->GetXaxis()->SetLimits(-20, fiber_thickness *  length_along_Z + 20); // ok @21/09/14
+  
+  
+  grYZ->SetMarkerSize(8);// 21/12/20 
+  
+  TCanvas *c1 = new TCanvas("c1","c1",1000,600);
+  c1->Divide(2,2);
+  c1->cd(1); grXZ->SetTitle(";z axis [mm]; x axis [mm]");
+  c1->cd(2); grUZ->SetTitle(";z axis [mm]; u axis [mm]");
+  c1->cd(3); grYZ->SetTitle(";z axis [mm]; y axis [mm]");
+  c1->cd(4); grVZ->SetTitle(";z axis [mm]; v axis [mm]");
+  c1->Print(canName+"[", "pdf");
+
+  TCanvas *c0 = new TCanvas("c0","c0",1000,600);
+  double offset = -0.5;
+  
+  TLegend *leg = new TLegend(0.50,0.50,0.70,0.70);
+  SetTLegend(leg, grXZ);
+   
+   cout << arrXZv3.size() << endl;
+
+
+  // draw lines of fibers
+  for (int l = 0; l <  number_of_actuallayers; l++) {
+    // int pitch = 10*l;
+
+    for (int i = 0; i < arrXZv3.size(); i++) {
+      int z_mother_position = layer_gap * l;
+	    
+      if ( l%unit==0 ){// XZ layer
+	grXZ->SetPoint(grXZ->GetN(), arrXZv3[i].Z() + z_mother_position, 
+		       arrXZv3[i].X() );
+	//	cout << "(X_fiber,Z_fiber) = ("<<arrXZv3[i].X() << "," << arrXZv3[i].Z() + z_mother_position<<")" << endl;
+	
+      }
+      if ( l%unit==1 ) {// UZ layer
+	int sign = cos(arrUZv3[i].Phi())/abs(cos(arrUZv3[i].Phi()));
+	grUZ->SetPoint(grUZ->GetN(), arrUZv3[i].Z() + z_mother_position, 
+		       arrUZv3[i].Mag()*sign );
+	//	cout << "(U_fiber,Z_fiber) = ("<<arrUZv3[i].Mag()*sign << "," << arrUZv3[i].Z() + z_mother_position<<")" << endl;
+      }
+      if ( l%unit==2 ) {// YZ layer
+	grYZ->SetPoint(grYZ->GetN(), arrYZv3[i].Z() + z_mother_position, 
+		       arrYZv3[i].Y() );
+	//	cout << "(Y_fiber,Z_fiber) = ("<<arrYZv3[i].Y() << "," << arrYZv3[i].Z() + z_mother_position<<")" << endl;
+      }
+      if ( l%unit==3 ) {// VZ layer
+	int signV = -1*cos(arrUZv3[i].Phi())/abs(cos(arrUZv3[i].Phi()));
+	grVZ->SetPoint(grVZ->GetN(), arrVZv3[i].Z() + z_mother_position, arrVZv3[i].Mag()*signV);
+	//	cout << "(V_fiber,Z_fiber) = ("<<arrVZv3[i].Mag()*signV << "," << arrVZv3[i].Z() + z_mother_position<<")" << endl;
+      }
+       
+    }
+  }
+  
+
+  TRandom3 *rnd = new TRandom3();
+  int ndisplay =0;
+  double pe_max = maxphoton*3;
+  TH2D *h_2D_dEdz_photon = new TH2D("h_2D_dEdz_photon","h_2D_dEdz_photon"
+				  , number_of_actuallayers, offset, number_of_actuallayers+offset
+				  ,pe_max, 1, pe_max + offset);
+  h_2D_dEdz_photon->SetTitle(";number of layers; Photon [p.e.]");
+
+  
+  //
+  // event loop
+  //
+
+  for (int i=0; i<10000; i++) {
+    
+    if(ndisplay>=number_of_event_display){
+      break;
+    }
+  
+    // TH1D *dEdz_photon = new TH1D("dEdz_photon","dEdz_photon"+fname
+    // 				 ,number_of_actuallayers,offset,number_of_actuallayers+offset);
+    // dEdz_photon->SetTitle(";number of layers; Photon [p.e.]");
+    //    TCanvas *c_fitting_x = new TCanvas("c_fitting_x","c_fitting_x",1000,600);
+    
+    tree1 ->GetEntry(i);// chw get entry here!
+    cout<<"i ="<< i <<endl;
+    
+    double totedep=0;
+    int nhit=0;    
+    
+    for (int l = 0; l <  number_of_actuallayers; l++){ 
+      for (int ID= 0;ID < nfibers_dummy; ID++){ 
+	totedep += chw[l][ID];
+	if ( chw[l][ID]>1E-10 ){
+	  nhit++;//regard dedx >1E-10 [MeV] as 1 hit.
+	}
+      }
+    }
+		
+    //if nhit < 10 , skip the event.(e.g. gamma)
+    if(nhit < 10.) {
+      continue;
+    }
+    
+#if pickup
+    if(i<2) continue;
+#endif
+    
+    cout << "totedep " << totedep << " nhit= " << nhit << endl;
+    ndisplay++;
+    cout<<"# of display ="<< ndisplay<<endl;
+    
+    
+    c1->cd(1); grXZ->Draw("ap"); palette->Draw(); // ok @21/09/14
+    c1->cd(2); grUZ->Draw("ap"); palette->Draw(); // ok @21/09/14
+    c1->cd(3); grYZ->Draw("ap"); palette->Draw(); // ok @21/09/14
+    c1->cd(4); grVZ->Draw("ap"); palette->Draw(); // ok @21/09/14 
+
+    int first_hit_layer = -1;
+    // TH1D *hist_fitX = new TH1D("hist_fitX","hist_fitX"+fname,length_along_Z,offset,length_along_Z+offset);
+   
+    
+    //for (int l = 0; l < 30; l++) {
+    for (int l = 0; l < number_of_actuallayers; l++) {
+      // cout << "l=" <<l <<endl;
+      // const int nfibers_dummy = 699; in WLSEventAction.hh
+      // if exceeding it, you get strange value ?      
+
+      double sum_photon_lth_layer = 0;
+
+      for (int ID= 0; ID < nfibers_dummy; ID++) { 
+	
+	int z_mother_position = fiber_thickness *layer_gap* l;
+	//cout << "(Z_mother,X)= ("<< z_mother_position <<"," << arrXZv3[ID].X() <<")"<< endl;
+
+	double marker_size = 1;//0.4
+	double photon0 = chw[l][ID]*henkan; //# of photon which corresponds to dedx at the ID th fiber in the l th layer.
+	double photon = rnd->Poisson(photon0);
+	float colorStep1= maxdEdx1/colN*henkan; // @21/12/24 maxdEdx1/colN	   
+	int min_photon = 2;
+
+	sum_photon_lth_layer += photon;
+	
+	if( l%unit==0 ) { //X layer
+	  double Z_signal = arrXZv3[ID].Z() + z_mother_position;
+	  double X_signal = arrXZv3[ID].X();
+	  
+	  TMarker* mk = new TMarker(Z_signal, X_signal, 21);
+	  
+	  mk->SetMarkerColor( TColor::GetColorPalette(   (int) ( photon / colorStep1 )   ) );
+	  mk->SetMarkerSize(marker_size);
+	  mk->SetMarkerStyle(24); // 21/12/20
+		    
+	  c1->cd(1) /* XZ */;
+	  if (photon >= min_photon){
+	    mk->Draw();
+	    //	    hist_fitX->Fill(Z_signal, X_signal);
+	    //cout << "(Z_signal,X_signal)= ("<< Z_signal <<"," << X_signal <<")"<< endl;
+	  }
+	  
+	}
+	if( l%unit==1 ) { //U layer
+	  int sign = cos(arrUZv3[ID].Phi())/abs(cos(arrUZv3[ID].Phi()));
+	  TMarker* mk = new TMarker( arrUZv3[ID].Z() + z_mother_position, arrUZv3[ID].Mag()*sign, 21);
+
+	  
+	  mk->SetMarkerColor( TColor::GetColorPalette(   (int) ( photon / colorStep1 )   ) );
+	  mk->SetMarkerSize(marker_size);
+	  mk->SetMarkerStyle(24); // 21/12/20
+	  
+	  c1->cd(2) /* UZ */;
+	  if (photon >= min_photon){
+	    mk->Draw();
+	    // cout << "(Z_signal,U_signal)= ("<< arrUZv3[ID].Z() + z_mother_position <<"," << arrUZv3[ID].Mag()*sign <<")"<< endl; //
+	  } 
+	}
+	
+	if( l%unit==2 ) { //
+	  
+	  TMarker* mk = new TMarker( arrYZv3[ID].Z() + z_mother_position, arrYZv3[ID].Y(), 21);
+
+	  mk->SetMarkerColor( TColor::GetColorPalette(   (int) ( photon / colorStep1 )   ) );
+	  mk->SetMarkerSize(marker_size);
+	  mk->SetMarkerStyle(24); // 21/12/20
+		    
+	  c1->cd(3) /* YZ */;
+	  if (photon >= min_photon){
+	    mk->Draw();
+	    //cout << "(Z_signal,Y_signal)= ("<< arrXZv3[ID].Z() + z_mother_position <<"," << arrXZv3[ID].X() <<")"<< endl;
+	    //DrawTrueStepping(c1, tree2, i);
+	  } 
+	}
+	if( l%unit==3 ) { // VZ layer
+	  int signV = -1*cos(arrVZv3[ID].Phi())/abs(cos(arrVZv3[ID].Phi()));
+	  TMarker* mk = new TMarker( arrVZv3[ID].Z() + z_mother_position, arrVZv3[ID].Mag()*signV, 21);
+	  // "(Z_signal,V_signal) = ("<< arrVZv3[ID].Z() + z_mother_position << ","<< arrVZv3[ID].Mag()*signV << ")" << endl;
+	  
+	  mk->SetMarkerColor( TColor::GetColorPalette(   (int) ( photon / colorStep1 )   ) );
+	  mk->SetMarkerSize(marker_size);
+	  mk->SetMarkerStyle(24); // 21/12/20
+	
+	  c1->cd(4) /* VZ */;
+	  if (photon >= min_photon){
+	    mk->Draw();
+	  } 
+	}
+	
+      } // end of loop for fibers in layer
+      
+      if(sum_photon_lth_layer < 1){
+        first_hit_layer ++;
+      }
+
+      //Filling TH1 histgrams of dEdz
+      //      dEdz_photon->Fill(l-first_hit_layer,sum_photon_lth_layer);
+      h_2D_dEdz_photon->Fill(l-first_hit_layer, sum_photon_lth_layer);
+      
+    }// end of loop for layers
+     
+    
+#if draw_true
+    DrawTrueStepping(c1, tree2, i, henkan);
+#endif
+
+#if 1
+    //Drawing event display
+    c1->cd(3);//leg->Draw();
+    c1->cd(4);//leg->Draw();   
+    c1->Print(canName, "pdf");
+    c1->Update();
+#endif
+    
+#if 0
+    //Drawing histgrams of dEdz
+    c0->cd();
+    dEdz_photon->Draw("HIST");
+    c0->Update();
+    c0->Print(canName, "pdf");
+
+    dEdz_photon->Reset();
+    delete dEdz_photon;
+#endif
+    
+    c0->cd();
+    h_2D_dEdz_photon->Draw("COLZ");
+    c0->Update();
+    c0->Print(canName, "pdf");
+   
+  } //end of event
+  
+# if yprojection
+  // Drawing Y projection
+  int first = h_2D_dEdz_photon->GetXaxis()->FindBin(1.);
+  int end  = h_2D_dEdz_photon->GetXaxis()->FindBin(4.);
+  TH1D *h_projection = h_2D_dEdz_photon->ProjectionY("Yprojection", 1, pe_max);
+  h_projection->SetTitle(";Photon [p.e.]; Counts");   
+  TCanvas *c_projection = new TCanvas("c_projection","c_projection",1000,600);
+  h_projection->Draw();
+  c_projection->Print(canName, "pdf");
+  TFile *fout = new TFile("yprojection.root","update");
+  TObject *hist = static_cast<TH1D*>(tf->Get("Yprojection"))->Clone("Yprojection_"+fname);
+  hist->Write();
+#endif
+  
+  //end of drawing event display
+  c1->cd();
+  c1->Print(canName+"]", "pdf");
+  
+}
+
+
+#define MU 13
+#define ELEC 11
+#define GAMMA 22
+#define PROTON 2212
+#define NEUTRON 2112
+#define POSIT -11
+
+#define MUCOL kGray+1
+#define ELECCOL kBlue+2
+#define POSITCOL kRed+2
+#define GAMMACOL kGreen+2
+#define PROTONCOL kYellow+1
+#define NEUTRONCOL kPink+1
+#define PIPLUSCOL kMagenta
+#define PIMINUSCOL kBlue-10
+#define PI0COL kSpring-2
+
+
+void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
+{
+      const int volLimX = 10000;//detwidth;
+      const int volLimY = 10000;//detwidth; 
+      
+      stringstream term0, termMU, termELEC, termGAMMA, termPOSIT;
+      stringstream termP;
+      stringstream termN;
+      stringstream termPIPLUS, termPIMINUS, termPI0;
+
+#if 0 //draw all step 
+      term0 << " detid!=0 && evt==" << i << ends;
+      termMU << "code=="<< MU << "&&evt==" << i << "&&edep>="<< 2./henkan << ends;
+      termELEC << "code=="<< ELEC <<"&&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      termGAMMA << " detid!=0 && code=="<< GAMMA <<"&&evt==" << i << ends;
+      termPOSIT << "code=="<<  POSIT <<"&&evt==" << i << "&&edep>=" << 2./henkan << ends; 
+
+      termP << "code==" << PROTON << "&&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      termN << " detid!=0 && code==2112 &&evt==" << i << ends;
+
+      termPIPLUS << "code==+211 &&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      termPIMINUS << "code==-211 &&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      termPI0 << "detid!=0 && code==111 &&evt==" << i << ends;
+#endif
+     
+      
+#if 1 //draw steps with hit
+
+      term0 << " detid!=0 && evt==" << i << ends;
+      termMU << " detid!=0 && code==+"<< MU << "&&evt==" << i << "&&edep>="<< 2./henkan << ends;
+      termELEC << " detid!=0 && code=="<< ELEC <<"&&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      termGAMMA << " detid!=0 && code=="<< GAMMA <<"&&evt==" << i << ends;
+      termPOSIT << " detid!=0 && code=="<<  POSIT <<"&&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      
+      termP << " detid!=0 && code==2212 &&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      termN << " detid!=0 && code==2112 &&evt==" << i << ends;
+
+      termPIPLUS << " detid!=0 && code==+211 &&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      termPIMINUS << " detid!=0 && code==-211 &&evt==" << i << "&&edep>=" << 2./henkan << ends;
+      termPI0 << " detid!=0 && code==111 &&evt==" << i << ends;
+#endif
+
+      
+      stringstream termA, termB, termC, termD;
+      termA << "  x:z " << ends;
+      termB << "  y:z " << ends;
+      termC << "  (y+x)/sqrt(2):z " << ends; //u:z
+      termD << "  (y-x)/sqrt(2):z " << ends;//v:z
+      
+
+      tree2->SetMarkerStyle(21);
+      tree2->SetMarkerSize(0.6);
+      tree2->SetLineWidth(1);
+
+      c1->cd(1);//X-Z eventdisplay
+
+#if 0 // choose drawing neutral particle or not. 
+      tree2->SetMarkerColor(1);           tree2->Draw(termA.str().data(),term0.str().data(),"same");
+      tree2->SetMarkerColor(GAMMACOL);    tree2->Draw(termA.str().data(), termGAMMA.str().data(),"same"); //gamma
+      tree2->SetMarkerColor(NEUTRONCOL);     tree2->Draw(termA.str().data(), termN.str().data(),"same");//neutron
+      tree2->SetMarkerColor(PI0COL);     tree2->Draw(termA.str().data(), termPI0.str().data(),"same"); //pi0
+#endif
+      tree2->SetMarkerColor(MUCOL);     tree2->Draw(termA.str().data(), termMU.str().data(),"same");
+      tree2->SetMarkerColor(ELECCOL);     tree2->Draw(termA.str().data(), termELEC.str().data(),"same");//electron
+      tree2->SetMarkerColor(POSITCOL);      tree2->Draw(termA.str().data(), termPOSIT.str().data(),"same");
+      tree2->SetMarkerColor(PROTONCOL);   tree2->Draw(termA.str().data(), termP.str().data(),"same");
+
+      //      cout << "( termA.str().data(),termP.str().data() ) = ( " << termA.str().data()<<"," << termP.str().data() <<")"<<endl;
+      
+      tree2->SetMarkerColor(PIPLUSCOL);     tree2->Draw(termA.str().data(), termPIPLUS.str().data(),"same");
+      tree2->SetMarkerColor(PIMINUSCOL);     tree2->Draw(termA.str().data(), termPIMINUS.str().data(),"same");
+
+      c1->cd(3);//Y-Z eventdisplay
+#if 0
+      tree2->SetMarkerColor(1); tree2->Draw(termB.str().data(),term0.str().data(),"same");
+      tree2->SetMarkerColor(GAMMACOL);    tree2->Draw(termB.str().data(), termGAMMA.str().data(),"same"); //gamma
+      tree2->SetMarkerColor(NEUTRONCOL);     tree2->Draw(termB.str().data(), termN.str().data(),"same");//neutron
+      tree2->SetMarkerColor(PI0COL);     tree2->Draw(termB.str().data(), termPI0.str().data(),"same");//pi0
+#endif
+      tree2->SetMarkerColor(MUCOL);     tree2->Draw(termB.str().data(), termMU.str().data(),"same");
+      tree2->SetMarkerColor(ELECCOL);     tree2->Draw(termB.str().data(), termELEC.str().data(),"same");//electron
+      tree2->SetMarkerColor(POSITCOL);      tree2->Draw(termB.str().data(), termPOSIT.str().data(),"same");
+      tree2->SetMarkerColor(PROTONCOL);   tree2->Draw(termB.str().data(), termP.str().data(),"same");
+      tree2->SetMarkerColor(PIPLUSCOL);     tree2->Draw(termB.str().data(), termPIPLUS.str().data(),"same");//pi+
+      tree2->SetMarkerColor(PIMINUSCOL);     tree2->Draw(termB.str().data(), termPIMINUS.str().data(),"same");//pi-
+
+      c1->cd(2);//U-Z eventdisplay
+#if 0  // choose drawing neutral particle or not. 
+      tree2->SetMarkerColor(1); tree2->Draw(termC.str().data(),term0.str().data(),"same");
+      tree2->SetMarkerColor(GAMMACOL);    tree2->Draw(termC.str().data(), termGAMMA.str().data(),"same"); //gamma
+      tree2->SetMarkerColor(NEUTRONCOL);     tree2->Draw(termC.str().data(), termN.str().data(),"same");//neutron
+      tree2->SetMarkerColor(PI0COL);     tree2->Draw(termC.str().data(), termPI0.str().data(),"same");//pi0
+#endif
+      tree2->SetMarkerColor(MUCOL);     tree2->Draw(termC.str().data(), termMU.str().data(),"same");
+      tree2->SetMarkerColor(ELECCOL);     tree2->Draw(termC.str().data(), termELEC.str().data(),"same");//electron
+      tree2->SetMarkerColor(POSITCOL);      tree2->Draw(termC.str().data(), termPOSIT.str().data(),"same");
+      tree2->SetMarkerColor(PROTONCOL);   tree2->Draw(termC.str().data(), termP.str().data(),"same");
+      tree2->SetMarkerColor(PIPLUSCOL);     tree2->Draw(termC.str().data(), termPIPLUS.str().data(),"same");//pi+
+      tree2->SetMarkerColor(PIMINUSCOL);     tree2->Draw(termC.str().data(), termPIMINUS.str().data(),"same");//pi-
+
+      c1->cd(4);//V-Z eventdisplay
+#if 0  // choose drawing neutral particle or not. 
+      tree2->SetMarkerColor(1); tree2->Draw(termD.str().data(),term0.str().data(),"same");
+      tree2->SetMarkerColor(GAMMACOL);    tree2->Draw(termD.str().data(), termGAMMA.str().data(),"same"); //gamma
+      tree2->SetMarkerColor(NEUTRONCOL);     tree2->Draw(termD.str().data(), termN.str().data(),"same");//neutron
+      tree2->SetMarkerColor(PI0COL);     tree2->Draw(termD.str().data(), termPI0.str().data(),"same");//pi0
+#endif
+      tree2->SetMarkerColor(MUCOL);     tree2->Draw(termD.str().data(), termMU.str().data(),"same");
+      tree2->SetMarkerColor(ELECCOL);     tree2->Draw(termD.str().data(), termELEC.str().data(),"same");//electron
+      tree2->SetMarkerColor(POSITCOL);      tree2->Draw(termD.str().data(), termPOSIT.str().data(),"same");
+      tree2->SetMarkerColor(PROTONCOL);   tree2->Draw(termD.str().data(), termP.str().data(),"same");
+      tree2->SetMarkerColor(PIPLUSCOL);     tree2->Draw(termD.str().data(), termPIPLUS.str().data(),"same");//pi+
+      tree2->SetMarkerColor(PIMINUSCOL);     tree2->Draw(termD.str().data(), termPIMINUS.str().data(),"same");//pi-
+
+}
+
+
+void SetTLegend(TLegend *leg, TGraph *grXZ)
+{
+  /*
+  TColor *col1 = gROOT->GetColor(POSITCOL);
+   TColor *col2 = gROOT->GetColor(ELECCOL);
+   TColor *col3 = gROOT->GetColor(GAMMACOL);
+   TColor *col4 = gROOT->GetColor(MUCOL);
+   TColor *col5 = gROOT->GetColor(MUCOL);
+   col1->SetAlpha(0.4);
+   col2->SetAlpha(0.4);
+   col3->SetAlpha(0.4);
+   col4->SetAlpha(0.4);
+   col5->SetAlpha(0.4);
+  */
+  
+   float makerSize = 0.4;
+   TGraph *dum1 = new TGraph();
+      dum1->SetMarkerColor(MUCOL);
+      dum1->SetMarkerStyle(21);
+      dum1->SetMarkerSize(makerSize*2);
+      dum1->SetLineWidth(5);
+   TGraph *dum2 = new TGraph();
+      dum2->SetMarkerColor(POSITCOL);
+      dum2->SetMarkerStyle(21);
+      dum2->SetMarkerSize(makerSize*2);
+      dum2->SetLineWidth(5);
+   TGraph *dum3 = new TGraph();
+      dum3->SetMarkerColor(ELECCOL);
+      dum3->SetMarkerStyle(21);
+      dum3->SetMarkerSize(makerSize*2);
+      dum3->SetLineWidth(5);
+   TGraph *dum4 = new TGraph();
+      dum4->SetMarkerColor(GAMMACOL);
+      dum4->SetMarkerStyle(21);
+      dum4->SetMarkerSize(makerSize*2);
+   TGraph *dum5 = new TGraph();
+      dum5->SetMarkerColor(PROTONCOL);
+      dum5->SetMarkerStyle(21);
+      dum5->SetMarkerSize(makerSize*2);
+   TGraph *dum6 = new TGraph();
+      dum6->SetMarkerColor(NEUTRONCOL);
+      dum6->SetMarkerStyle(21);
+      dum6->SetMarkerSize(makerSize*2);
+   TGraph *dum7 = new TGraph();
+      dum7->SetMarkerColor(PIPLUSCOL);
+      dum7->SetMarkerStyle(21);
+      dum7->SetMarkerSize(makerSize*2);      
+   TGraph *dum8 = new TGraph();
+      dum8->SetMarkerColor(PIMINUSCOL);
+      dum8->SetMarkerStyle(21);
+      dum8->SetMarkerSize(makerSize*2);    
+   TGraph *dum9 = new TGraph();
+      dum9->SetMarkerColor(PI0COL);
+      dum9->SetMarkerStyle(21);
+      dum9->SetMarkerSize(makerSize*2);  
+      
+   leg->SetFillColor(10);
+   leg->SetTextSize(0.03);
+   leg->SetHeader("G4 Step points");
+   leg->AddEntry(dum1,"#mu","p");
+   leg->AddEntry(dum3,"e^{#minus}","p"); 
+   leg->AddEntry(dum5,"proton","p");
+   leg->AddEntry(dum2,"e^{+}","p");
+   leg->AddEntry(dum4,"#gamma","p");
+   leg->AddEntry(dum6,"neutron","p");
+   leg->AddEntry(dum7,"#pi^{+}","p");
+   leg->AddEntry(dum8,"#pi^{#minus}","p");
+   leg->AddEntry(dum9,"#pi^{0}","p");
+   leg->AddEntry(grXZ,"readout point","p");
+}

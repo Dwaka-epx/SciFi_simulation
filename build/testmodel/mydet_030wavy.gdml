@@ -1,0 +1,2908 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+    <matrix coldim="2" name="ABSLENGTH0x2b73c80" values="2e-06 20000 2.03e-06 20000 2.06e-06 20000 2.09e-06 20000 2.12e-06 20000 2.15e-06 20000 2.18e-06 200"/>
+    <matrix coldim="2" name="FASTCOMPONENT0x2b74350" values="2e-06 0 2.03e-06 0 2.06e-06 0 2.09e-06 0 2.12e-06 0 2.15e-06 0 2.18e-06 0 2.21e-06 0 2.24e-06 0 2.2"/>
+    <matrix coldim="2" name="RINDEX0x2b736c0" values="2e-06 1.5 2.03e-06 1.5 2.06e-06 1.5 2.09e-06 1.5 2.12e-06 1.5 2.15e-06 1.5 2.18e-06 1.5 2.21e-06 1."/>
+    <constant name="EFFICIENCY" value="1"/>
+    <constant name="FASTTIMECONSTANT" value="1"/>
+    <constant name="RESOLUTIONSCALE" value="1"/>
+    <constant name="SCINTILLATIONYIELD" value="0"/>
+  </define>
+
+  <materials>
+    <isotope N="12" Z="6" name="C120x2b66f60">
+      <atom unit="g/mole" value="12"/>
+    </isotope>
+    <isotope N="13" Z="6" name="C130x2b67260">
+      <atom unit="g/mole" value="13.0034"/>
+    </isotope>
+    <element name="C0x2b66fa0">
+      <fraction n="0.9893" ref="C120x2b66f60"/>
+      <fraction n="0.0107" ref="C130x2b67260"/>
+    </element>
+    <isotope N="1" Z="1" name="H10x2b591d0">
+      <atom unit="g/mole" value="1.00782503081372"/>
+    </isotope>
+    <isotope N="2" Z="1" name="H20x2b59120">
+      <atom unit="g/mole" value="2.01410199966617"/>
+    </isotope>
+    <element name="H0x2b59470">
+      <fraction n="0.999885" ref="H10x2b591d0"/>
+      <fraction n="0.000115" ref="H20x2b59120"/>
+    </element>
+    <material name="Polystyrene0x2b6c380" state="solid">
+      <property name="ABSLENGTH" ref="ABSLENGTH0x2b73c80"/>
+      <property name="FASTCOMPONENT" ref="FASTCOMPONENT0x2b74350"/>
+      <property name="RINDEX" ref="RINDEX0x2b736c0"/>
+      <property name="EFFICIENCY" ref="EFFICIENCY"/>
+      <property name="FASTTIMECONSTANT" ref="FASTTIMECONSTANT"/>
+      <property name="RESOLUTIONSCALE" ref="RESOLUTIONSCALE"/>
+      <property name="SCINTILLATIONYIELD" ref="SCINTILLATIONYIELD"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="65.9436601819466"/>
+      <D unit="g/cm3" value="1.05"/>
+      <fraction n="0.922577329294378" ref="C0x2b66fa0"/>
+      <fraction n="0.0774226707056217" ref="H0x2b59470"/>
+    </material>
+    <isotope N="46" Z="22" name="Ti460x2b6ea30">
+      <atom unit="g/mole" value="45.9526"/>
+    </isotope>
+    <isotope N="47" Z="22" name="Ti470x2b6e950">
+      <atom unit="g/mole" value="46.9518"/>
+    </isotope>
+    <isotope N="48" Z="22" name="Ti480x2b6e320">
+      <atom unit="g/mole" value="47.9479"/>
+    </isotope>
+    <isotope N="49" Z="22" name="Ti490x2b6edd0">
+      <atom unit="g/mole" value="48.9479"/>
+    </isotope>
+    <isotope N="50" Z="22" name="Ti500x2b6ee40">
+      <atom unit="g/mole" value="49.9448"/>
+    </isotope>
+    <element name="Ti0x2b6eba0">
+      <fraction n="0.0825" ref="Ti460x2b6ea30"/>
+      <fraction n="0.0744" ref="Ti470x2b6e950"/>
+      <fraction n="0.7372" ref="Ti480x2b6e320"/>
+      <fraction n="0.0541" ref="Ti490x2b6edd0"/>
+      <fraction n="0.0518" ref="Ti500x2b6ee40"/>
+    </element>
+    <isotope N="16" Z="8" name="O160x2b67680">
+      <atom unit="g/mole" value="15.9949"/>
+    </isotope>
+    <isotope N="17" Z="8" name="O170x2b676f0">
+      <atom unit="g/mole" value="16.9991"/>
+    </isotope>
+    <isotope N="18" Z="8" name="O180x2b67780">
+      <atom unit="g/mole" value="17.9992"/>
+    </isotope>
+    <element name="O0x2b67420">
+      <fraction n="0.99757" ref="O160x2b67680"/>
+      <fraction n="0.00038" ref="O170x2b676f0"/>
+      <fraction n="0.00205" ref="O180x2b67780"/>
+    </element>
+    <material name="Coating0x2b6f6f0" state="solid">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="74.3114650262266"/>
+      <D unit="g/cm3" value="1.52"/>
+      <fraction n="0.0899012435361639" ref="Ti0x2b6eba0"/>
+      <fraction n="0.0600987564638361" ref="O0x2b67420"/>
+      <fraction n="0.784190729900222" ref="C0x2b66fa0"/>
+      <fraction n="0.0658092700997785" ref="H0x2b59470"/>
+    </material>
+    <isotope N="1" Z="1" name="H10x2b67e00">
+      <atom unit="g/mole" value="1.00782503081372"/>
+    </isotope>
+    <isotope N="2" Z="1" name="H20x2b680f0">
+      <atom unit="g/mole" value="2.01410199966617"/>
+    </isotope>
+    <element name="Hydrogen0x2b67d00">
+      <fraction n="0.999885" ref="H10x2b67e00"/>
+      <fraction n="0.000115" ref="H20x2b680f0"/>
+    </element>
+    <isotope N="16" Z="8" name="O160x2b68f10">
+      <atom unit="g/mole" value="15.9949"/>
+    </isotope>
+    <isotope N="17" Z="8" name="O170x2b677f0">
+      <atom unit="g/mole" value="16.9991"/>
+    </isotope>
+    <isotope N="18" Z="8" name="O180x2b69090">
+      <atom unit="g/mole" value="17.9992"/>
+    </isotope>
+    <element name="Oxygen0x2b68a80">
+      <fraction n="0.99757" ref="O160x2b68f10"/>
+      <fraction n="0.00038" ref="O170x2b677f0"/>
+      <fraction n="0.00205" ref="O180x2b69090"/>
+    </element>
+    <material name="Water0x2b69d00" state="solid">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="78"/>
+      <D unit="g/cm3" value="1"/>
+      <fraction n="0.112097669256382" ref="Hydrogen0x2b67d00"/>
+      <fraction n="0.887902330743618" ref="Oxygen0x2b68a80"/>
+    </material>
+  </materials>
+
+  <solids>
+    <box lunit="mm" name="Sct10x2b83ad0" x="1.94999999925494" y="1" z="1.94999999925494"/>
+    <box lunit="mm" name="Joint10x2b7f780" x="2" y="1" z="2"/>
+    <para alpha="45" aunit="deg" lunit="mm" name="Sct20x2b83b60" phi="0" theta="0" x="1.94999999925494" y="24" z="1.94999999925494"/>
+    <para alpha="45" aunit="deg" lunit="mm" name="Joint20x2b7f7e0" phi="0" theta="0" x="2" y="24" z="2"/>
+    <box lunit="mm" name="FiberLayerMother0x2b80070" x="2000" y="2000" z="2"/>
+    <box lunit="mm" name="World0x2b73450" x="6000" y="6000" z="6000"/>
+  </solids>
+
+  <structure>
+    <volume name="Sct10x2b83d90">
+      <materialref ref="Polystyrene0x2b6c380"/>
+      <solidref ref="Sct10x2b83ad0"/>
+    </volume>
+    <volume name="Joint10x2b83c30">
+      <materialref ref="Coating0x2b6f6f0"/>
+      <solidref ref="Joint10x2b7f780"/>
+      <physvol name="Sct10x2b7e9e0">
+        <volumeref ref="Sct10x2b83d90"/>
+      </physvol>
+    </volume>
+    <volume name="Sct20x2b83e40">
+      <materialref ref="Polystyrene0x2b6c380"/>
+      <solidref ref="Sct20x2b83b60"/>
+    </volume>
+    <volume name="Joint20x2b83ce0">
+      <materialref ref="Coating0x2b6f6f0"/>
+      <solidref ref="Joint20x2b7f7e0"/>
+      <physvol name="Sct20x2b7ea50">
+        <volumeref ref="Sct20x2b83e40"/>
+      </physvol>
+    </volume>
+    <volume name="FiberLayerMother0x2b80110">
+      <materialref ref="Water0x2b69d00"/>
+      <solidref ref="FiberLayerMother0x2b80070"/>
+      <physvol name="Joint10x2b803c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b803c0_pos" unit="mm" x="-155" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b83ef0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b83ef0_pos" unit="mm" x="-131" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b83f60">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b83f60_pos" unit="mm" x="-131" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b84000">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b84000_pos" unit="mm" x="-155" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b84070">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b84070_pos" unit="mm" x="-143" y="13" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b840b0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b840b0_pos" unit="mm" x="-143" y="39" z="0"/>
+        <rotation name="Joint20x2b840b0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88140">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88140_pos" unit="mm" x="-155" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b881b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b881b0_pos" unit="mm" x="-131" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88220">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88220_pos" unit="mm" x="-131" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88320">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88320_pos" unit="mm" x="-155" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88390">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88390_pos" unit="mm" x="-143" y="-13" z="0"/>
+        <rotation name="Joint20x2b88390_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88400">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88400_pos" unit="mm" x="-143" y="-39" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88440">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88440_pos" unit="mm" x="-155" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b884b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b884b0_pos" unit="mm" x="-131" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88520">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88520_pos" unit="mm" x="-131" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88590">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88590_pos" unit="mm" x="-155" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88600">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88600_pos" unit="mm" x="-143" y="65" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88290">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88290_pos" unit="mm" x="-143" y="91" z="0"/>
+        <rotation name="Joint20x2b88290_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88780">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88780_pos" unit="mm" x="-155" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b887f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b887f0_pos" unit="mm" x="-131" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88860">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88860_pos" unit="mm" x="-131" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b888d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b888d0_pos" unit="mm" x="-155" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88940">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88940_pos" unit="mm" x="-143" y="-65" z="0"/>
+        <rotation name="Joint20x2b88940_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b889b0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b889b0_pos" unit="mm" x="-143" y="-91" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88a20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88a20_pos" unit="mm" x="-155" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88a90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88a90_pos" unit="mm" x="-131" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88b00">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88b00_pos" unit="mm" x="-131" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88b70">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88b70_pos" unit="mm" x="-155" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88be0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88be0_pos" unit="mm" x="-143" y="117" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88c50">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88c50_pos" unit="mm" x="-143" y="143" z="0"/>
+        <rotation name="Joint20x2b88c50_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88cc0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88cc0_pos" unit="mm" x="-155" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88d30">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88d30_pos" unit="mm" x="-131" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88da0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88da0_pos" unit="mm" x="-131" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88670">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88670_pos" unit="mm" x="-155" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b886e0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b886e0_pos" unit="mm" x="-143" y="-117" z="0"/>
+        <rotation name="Joint20x2b886e0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88ff0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88ff0_pos" unit="mm" x="-143" y="-143" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89060">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89060_pos" unit="mm" x="-103" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b890d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b890d0_pos" unit="mm" x="-79" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89140">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89140_pos" unit="mm" x="-79" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b891b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b891b0_pos" unit="mm" x="-103" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89220">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89220_pos" unit="mm" x="-91" y="13" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89290">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89290_pos" unit="mm" x="-91" y="39" z="0"/>
+        <rotation name="Joint20x2b89290_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89330">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89330_pos" unit="mm" x="-103" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b893a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b893a0_pos" unit="mm" x="-79" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89410">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89410_pos" unit="mm" x="-79" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89480">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89480_pos" unit="mm" x="-103" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b894f0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b894f0_pos" unit="mm" x="-91" y="-13" z="0"/>
+        <rotation name="Joint20x2b894f0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89560">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89560_pos" unit="mm" x="-91" y="-39" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b895d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b895d0_pos" unit="mm" x="-103" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89640">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89640_pos" unit="mm" x="-79" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b896b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b896b0_pos" unit="mm" x="-79" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89720">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89720_pos" unit="mm" x="-103" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89790">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89790_pos" unit="mm" x="-91" y="65" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89800">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89800_pos" unit="mm" x="-91" y="91" z="0"/>
+        <rotation name="Joint20x2b89800_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89870">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89870_pos" unit="mm" x="-103" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b898e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b898e0_pos" unit="mm" x="-79" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89950">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89950_pos" unit="mm" x="-79" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b899c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b899c0_pos" unit="mm" x="-103" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89a30">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89a30_pos" unit="mm" x="-91" y="-65" z="0"/>
+        <rotation name="Joint20x2b89a30_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89aa0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89aa0_pos" unit="mm" x="-91" y="-91" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89b10">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89b10_pos" unit="mm" x="-103" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89b80">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89b80_pos" unit="mm" x="-79" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89bf0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89bf0_pos" unit="mm" x="-79" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89c60">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89c60_pos" unit="mm" x="-103" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89cd0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89cd0_pos" unit="mm" x="-91" y="117" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88e10">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88e10_pos" unit="mm" x="-91" y="143" z="0"/>
+        <rotation name="Joint20x2b88e10_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88e80">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88e80_pos" unit="mm" x="-103" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88ef0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88ef0_pos" unit="mm" x="-79" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b88f60">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b88f60_pos" unit="mm" x="-79" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a120">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a120_pos" unit="mm" x="-103" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a190">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a190_pos" unit="mm" x="-91" y="-117" z="0"/>
+        <rotation name="Joint20x2b8a190_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a200">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a200_pos" unit="mm" x="-91" y="-143" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a270">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a270_pos" unit="mm" x="-51" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a2e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a2e0_pos" unit="mm" x="-27" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a350">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a350_pos" unit="mm" x="-27" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a3c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a3c0_pos" unit="mm" x="-51" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a430">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a430_pos" unit="mm" x="-39" y="13" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a4a0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a4a0_pos" unit="mm" x="-39" y="39" z="0"/>
+        <rotation name="Joint20x2b8a4a0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a5c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a5c0_pos" unit="mm" x="-51" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a630">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a630_pos" unit="mm" x="-27" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a6a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a6a0_pos" unit="mm" x="-27" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a710">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a710_pos" unit="mm" x="-51" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a780">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a780_pos" unit="mm" x="-39" y="-13" z="0"/>
+        <rotation name="Joint20x2b8a780_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a7f0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a7f0_pos" unit="mm" x="-39" y="-39" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a830">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a830_pos" unit="mm" x="-51" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a870">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a870_pos" unit="mm" x="-27" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a8e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a8e0_pos" unit="mm" x="-27" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a950">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a950_pos" unit="mm" x="-51" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a9c0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a9c0_pos" unit="mm" x="-39" y="65" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8aa30">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8aa30_pos" unit="mm" x="-39" y="91" z="0"/>
+        <rotation name="Joint20x2b8aa30_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8aaa0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8aaa0_pos" unit="mm" x="-51" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ab10">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ab10_pos" unit="mm" x="-27" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ab80">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ab80_pos" unit="mm" x="-27" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8abf0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8abf0_pos" unit="mm" x="-51" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8ac60">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8ac60_pos" unit="mm" x="-39" y="-65" z="0"/>
+        <rotation name="Joint20x2b8ac60_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8acd0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8acd0_pos" unit="mm" x="-39" y="-91" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ad40">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ad40_pos" unit="mm" x="-51" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8adb0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8adb0_pos" unit="mm" x="-27" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ae20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ae20_pos" unit="mm" x="-27" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ae90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ae90_pos" unit="mm" x="-51" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8af00">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8af00_pos" unit="mm" x="-39" y="117" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8af70">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8af70_pos" unit="mm" x="-39" y="143" z="0"/>
+        <rotation name="Joint20x2b8af70_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8afe0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8afe0_pos" unit="mm" x="-51" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b050">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b050_pos" unit="mm" x="-27" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b0c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b0c0_pos" unit="mm" x="-27" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b130">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b130_pos" unit="mm" x="-51" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8b1a0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8b1a0_pos" unit="mm" x="-39" y="-117" z="0"/>
+        <rotation name="Joint20x2b8b1a0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8b210">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8b210_pos" unit="mm" x="-39" y="-143" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b280">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b280_pos" unit="mm" x="1" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b2f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b2f0_pos" unit="mm" x="25" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b360">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b360_pos" unit="mm" x="25" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b3d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b3d0_pos" unit="mm" x="1" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8b440">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8b440_pos" unit="mm" x="13" y="13" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8b4b0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8b4b0_pos" unit="mm" x="13" y="39" z="0"/>
+        <rotation name="Joint20x2b8b4b0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b520">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b520_pos" unit="mm" x="1" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b590">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b590_pos" unit="mm" x="25" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b600">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b600_pos" unit="mm" x="25" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b670">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b670_pos" unit="mm" x="1" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8b6e0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8b6e0_pos" unit="mm" x="13" y="-13" z="0"/>
+        <rotation name="Joint20x2b8b6e0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8b750">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8b750_pos" unit="mm" x="13" y="-39" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b7c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b7c0_pos" unit="mm" x="1" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b830">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b830_pos" unit="mm" x="25" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b8a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b8a0_pos" unit="mm" x="25" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8b910">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8b910_pos" unit="mm" x="1" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8b980">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8b980_pos" unit="mm" x="13" y="65" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8b9f0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8b9f0_pos" unit="mm" x="13" y="91" z="0"/>
+        <rotation name="Joint20x2b8b9f0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ba60">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ba60_pos" unit="mm" x="1" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bad0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bad0_pos" unit="mm" x="25" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bb40">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bb40_pos" unit="mm" x="25" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89d40">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89d40_pos" unit="mm" x="1" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89db0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89db0_pos" unit="mm" x="13" y="-65" z="0"/>
+        <rotation name="Joint20x2b89db0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b89e20">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b89e20_pos" unit="mm" x="13" y="-91" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89e90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89e90_pos" unit="mm" x="1" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89f00">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89f00_pos" unit="mm" x="25" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89f70">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89f70_pos" unit="mm" x="25" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b89fe0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b89fe0_pos" unit="mm" x="1" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a050">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a050_pos" unit="mm" x="13" y="117" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8a0c0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8a0c0_pos" unit="mm" x="13" y="143" z="0"/>
+        <rotation name="Joint20x2b8a0c0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c3c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c3c0_pos" unit="mm" x="1" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c430">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c430_pos" unit="mm" x="25" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c4a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c4a0_pos" unit="mm" x="25" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c510">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c510_pos" unit="mm" x="1" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8c580">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8c580_pos" unit="mm" x="13" y="-117" z="0"/>
+        <rotation name="Joint20x2b8c580_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8c5f0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8c5f0_pos" unit="mm" x="13" y="-143" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c660">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c660_pos" unit="mm" x="53" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c6d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c6d0_pos" unit="mm" x="77" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c740">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c740_pos" unit="mm" x="77" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c7b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c7b0_pos" unit="mm" x="53" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8c820">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8c820_pos" unit="mm" x="65" y="13" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8c890">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8c890_pos" unit="mm" x="65" y="39" z="0"/>
+        <rotation name="Joint20x2b8c890_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8a510">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8a510_pos" unit="mm" x="53" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ca50">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ca50_pos" unit="mm" x="77" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8cac0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8cac0_pos" unit="mm" x="77" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8cb30">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8cb30_pos" unit="mm" x="53" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8cba0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8cba0_pos" unit="mm" x="65" y="-13" z="0"/>
+        <rotation name="Joint20x2b8cba0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8cc10">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8cc10_pos" unit="mm" x="65" y="-39" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8cc80">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8cc80_pos" unit="mm" x="53" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ccf0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ccf0_pos" unit="mm" x="77" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8cd60">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8cd60_pos" unit="mm" x="77" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8cdd0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8cdd0_pos" unit="mm" x="53" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8ce40">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8ce40_pos" unit="mm" x="65" y="65" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8ceb0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8ceb0_pos" unit="mm" x="65" y="91" z="0"/>
+        <rotation name="Joint20x2b8ceb0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8cf20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8cf20_pos" unit="mm" x="53" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8cf90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8cf90_pos" unit="mm" x="77" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d000">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d000_pos" unit="mm" x="77" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d070">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d070_pos" unit="mm" x="53" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8d0e0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8d0e0_pos" unit="mm" x="65" y="-65" z="0"/>
+        <rotation name="Joint20x2b8d0e0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8d150">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8d150_pos" unit="mm" x="65" y="-91" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d1c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d1c0_pos" unit="mm" x="53" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d230">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d230_pos" unit="mm" x="77" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d2a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d2a0_pos" unit="mm" x="77" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d310">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d310_pos" unit="mm" x="53" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8d380">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8d380_pos" unit="mm" x="65" y="117" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8d3f0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8d3f0_pos" unit="mm" x="65" y="143" z="0"/>
+        <rotation name="Joint20x2b8d3f0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d460">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d460_pos" unit="mm" x="53" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d4d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d4d0_pos" unit="mm" x="77" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d540">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d540_pos" unit="mm" x="77" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d5b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d5b0_pos" unit="mm" x="53" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8d620">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8d620_pos" unit="mm" x="65" y="-117" z="0"/>
+        <rotation name="Joint20x2b8d620_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8d690">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8d690_pos" unit="mm" x="65" y="-143" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d700">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d700_pos" unit="mm" x="105" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d770">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d770_pos" unit="mm" x="129" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d7e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d7e0_pos" unit="mm" x="129" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d850">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d850_pos" unit="mm" x="105" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8d8c0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8d8c0_pos" unit="mm" x="117" y="13" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8d930">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8d930_pos" unit="mm" x="117" y="39" z="0"/>
+        <rotation name="Joint20x2b8d930_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8d9a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8d9a0_pos" unit="mm" x="105" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8da10">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8da10_pos" unit="mm" x="129" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8da80">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8da80_pos" unit="mm" x="129" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8daf0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8daf0_pos" unit="mm" x="105" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8db60">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8db60_pos" unit="mm" x="117" y="-13" z="0"/>
+        <rotation name="Joint20x2b8db60_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8dbd0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8dbd0_pos" unit="mm" x="117" y="-39" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8dc40">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8dc40_pos" unit="mm" x="105" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8dcb0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8dcb0_pos" unit="mm" x="129" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8dd20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8dd20_pos" unit="mm" x="129" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8dd90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8dd90_pos" unit="mm" x="105" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8de00">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8de00_pos" unit="mm" x="117" y="65" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8de70">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8de70_pos" unit="mm" x="117" y="91" z="0"/>
+        <rotation name="Joint20x2b8de70_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8dee0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8dee0_pos" unit="mm" x="105" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8df50">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8df50_pos" unit="mm" x="129" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87430">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87430_pos" unit="mm" x="129" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b874a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b874a0_pos" unit="mm" x="105" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b87510">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b87510_pos" unit="mm" x="117" y="-65" z="0"/>
+        <rotation name="Joint20x2b87510_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b87580">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b87580_pos" unit="mm" x="117" y="-91" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b875f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b875f0_pos" unit="mm" x="105" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87660">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87660_pos" unit="mm" x="129" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b876d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b876d0_pos" unit="mm" x="129" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87740">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87740_pos" unit="mm" x="105" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b877b0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b877b0_pos" unit="mm" x="117" y="117" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b87820">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b87820_pos" unit="mm" x="117" y="143" z="0"/>
+        <rotation name="Joint20x2b87820_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87890">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87890_pos" unit="mm" x="105" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87900">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87900_pos" unit="mm" x="129" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87970">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87970_pos" unit="mm" x="129" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b879e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b879e0_pos" unit="mm" x="105" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b87a50">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b87a50_pos" unit="mm" x="117" y="-117" z="0"/>
+        <rotation name="Joint20x2b87a50_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b87ac0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b87ac0_pos" unit="mm" x="117" y="-143" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87b30">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87b30_pos" unit="mm" x="-105" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87ba0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87ba0_pos" unit="mm" x="-129" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87c10">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87c10_pos" unit="mm" x="-129" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87c80">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87c80_pos" unit="mm" x="-105" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b87cf0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b87cf0_pos" unit="mm" x="-117" y="13" z="0"/>
+        <rotation name="Joint20x2b87cf0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b87d60">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b87d60_pos" unit="mm" x="-117" y="39" z="0"/>
+        <rotation name="Joint20x2b87d60_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87dd0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87dd0_pos" unit="mm" x="-105" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87e40">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87e40_pos" unit="mm" x="-129" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87eb0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87eb0_pos" unit="mm" x="-129" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b87f20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b87f20_pos" unit="mm" x="-105" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b87f90">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b87f90_pos" unit="mm" x="-117" y="-13" z="0"/>
+        <rotation name="Joint20x2b87f90_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b88000">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b88000_pos" unit="mm" x="-117" y="-39" z="0"/>
+        <rotation name="Joint20x2b88000_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8f8a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8f8a0_pos" unit="mm" x="-105" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8f910">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8f910_pos" unit="mm" x="-129" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8f980">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8f980_pos" unit="mm" x="-129" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8f9f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8f9f0_pos" unit="mm" x="-105" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8fa60">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8fa60_pos" unit="mm" x="-117" y="65" z="0"/>
+        <rotation name="Joint20x2b8fa60_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8fad0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8fad0_pos" unit="mm" x="-117" y="91" z="0"/>
+        <rotation name="Joint20x2b8fad0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8fb40">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8fb40_pos" unit="mm" x="-105" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8fbb0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8fbb0_pos" unit="mm" x="-129" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8fc20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8fc20_pos" unit="mm" x="-129" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8fc90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8fc90_pos" unit="mm" x="-105" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8fd00">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8fd00_pos" unit="mm" x="-117" y="-65" z="0"/>
+        <rotation name="Joint20x2b8fd00_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8fd70">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8fd70_pos" unit="mm" x="-117" y="-91" z="0"/>
+        <rotation name="Joint20x2b8fd70_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8fde0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8fde0_pos" unit="mm" x="-105" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8fe50">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8fe50_pos" unit="mm" x="-129" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8fec0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8fec0_pos" unit="mm" x="-129" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8ff30">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8ff30_pos" unit="mm" x="-105" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8ffa0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8ffa0_pos" unit="mm" x="-117" y="117" z="0"/>
+        <rotation name="Joint20x2b8ffa0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b90010">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b90010_pos" unit="mm" x="-117" y="143" z="0"/>
+        <rotation name="Joint20x2b90010_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b90080">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b90080_pos" unit="mm" x="-105" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b900f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b900f0_pos" unit="mm" x="-129" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b90160">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b90160_pos" unit="mm" x="-129" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b901d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b901d0_pos" unit="mm" x="-105" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b90240">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b90240_pos" unit="mm" x="-117" y="-117" z="0"/>
+        <rotation name="Joint20x2b90240_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b902b0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b902b0_pos" unit="mm" x="-117" y="-143" z="0"/>
+        <rotation name="Joint20x2b902b0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b90320">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b90320_pos" unit="mm" x="-53" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b90390">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b90390_pos" unit="mm" x="-77" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b90400">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b90400_pos" unit="mm" x="-77" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b90470">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b90470_pos" unit="mm" x="-53" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b904e0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b904e0_pos" unit="mm" x="-65" y="13" z="0"/>
+        <rotation name="Joint20x2b904e0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8bbb0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8bbb0_pos" unit="mm" x="-65" y="39" z="0"/>
+        <rotation name="Joint20x2b8bbb0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bc20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bc20_pos" unit="mm" x="-53" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bc90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bc90_pos" unit="mm" x="-77" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bd00">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bd00_pos" unit="mm" x="-77" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bd70">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bd70_pos" unit="mm" x="-53" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8bde0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8bde0_pos" unit="mm" x="-65" y="-13" z="0"/>
+        <rotation name="Joint20x2b8bde0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8be50">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8be50_pos" unit="mm" x="-65" y="-39" z="0"/>
+        <rotation name="Joint20x2b8be50_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bec0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bec0_pos" unit="mm" x="-53" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bf30">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bf30_pos" unit="mm" x="-77" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8bfa0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8bfa0_pos" unit="mm" x="-77" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c010">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c010_pos" unit="mm" x="-53" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8c080">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8c080_pos" unit="mm" x="-65" y="65" z="0"/>
+        <rotation name="Joint20x2b8c080_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8c0f0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8c0f0_pos" unit="mm" x="-65" y="91" z="0"/>
+        <rotation name="Joint20x2b8c0f0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c160">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c160_pos" unit="mm" x="-53" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c1d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c1d0_pos" unit="mm" x="-77" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c240">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c240_pos" unit="mm" x="-77" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c2b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c2b0_pos" unit="mm" x="-53" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b8c320">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b8c320_pos" unit="mm" x="-65" y="-65" z="0"/>
+        <rotation name="Joint20x2b8c320_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b91530">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b91530_pos" unit="mm" x="-65" y="-91" z="0"/>
+        <rotation name="Joint20x2b91530_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b915a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b915a0_pos" unit="mm" x="-53" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91610">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91610_pos" unit="mm" x="-77" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91680">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91680_pos" unit="mm" x="-77" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b916f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b916f0_pos" unit="mm" x="-53" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b91760">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b91760_pos" unit="mm" x="-65" y="117" z="0"/>
+        <rotation name="Joint20x2b91760_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b917d0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b917d0_pos" unit="mm" x="-65" y="143" z="0"/>
+        <rotation name="Joint20x2b917d0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91840">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91840_pos" unit="mm" x="-53" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b918b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b918b0_pos" unit="mm" x="-77" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91920">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91920_pos" unit="mm" x="-77" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91990">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91990_pos" unit="mm" x="-53" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b91a00">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b91a00_pos" unit="mm" x="-65" y="-117" z="0"/>
+        <rotation name="Joint20x2b91a00_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b91a70">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b91a70_pos" unit="mm" x="-65" y="-143" z="0"/>
+        <rotation name="Joint20x2b91a70_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91ae0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91ae0_pos" unit="mm" x="-1" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91b50">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91b50_pos" unit="mm" x="-25" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91bc0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91bc0_pos" unit="mm" x="-25" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b91c30">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b91c30_pos" unit="mm" x="-1" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b91ca0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b91ca0_pos" unit="mm" x="-13" y="13" z="0"/>
+        <rotation name="Joint20x2b91ca0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b91d10">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b91d10_pos" unit="mm" x="-13" y="39" z="0"/>
+        <rotation name="Joint20x2b91d10_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c900">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c900_pos" unit="mm" x="-1" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c970">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c970_pos" unit="mm" x="-25" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b8c9e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b8c9e0_pos" unit="mm" x="-25" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b92030">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b92030_pos" unit="mm" x="-1" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b920a0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b920a0_pos" unit="mm" x="-13" y="-13" z="0"/>
+        <rotation name="Joint20x2b920a0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b92110">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b92110_pos" unit="mm" x="-13" y="-39" z="0"/>
+        <rotation name="Joint20x2b92110_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b92180">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b92180_pos" unit="mm" x="-1" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b921f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b921f0_pos" unit="mm" x="-25" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b92260">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b92260_pos" unit="mm" x="-25" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b922d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b922d0_pos" unit="mm" x="-1" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b92340">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b92340_pos" unit="mm" x="-13" y="65" z="0"/>
+        <rotation name="Joint20x2b92340_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b923b0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b923b0_pos" unit="mm" x="-13" y="91" z="0"/>
+        <rotation name="Joint20x2b923b0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b92420">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b92420_pos" unit="mm" x="-1" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b92490">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b92490_pos" unit="mm" x="-25" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b92500">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b92500_pos" unit="mm" x="-25" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b92570">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b92570_pos" unit="mm" x="-1" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b925e0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b925e0_pos" unit="mm" x="-13" y="-65" z="0"/>
+        <rotation name="Joint20x2b925e0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b92650">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b92650_pos" unit="mm" x="-13" y="-91" z="0"/>
+        <rotation name="Joint20x2b92650_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7b560">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7b560_pos" unit="mm" x="-1" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7b5d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7b5d0_pos" unit="mm" x="-25" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7b640">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7b640_pos" unit="mm" x="-25" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7b6b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7b6b0_pos" unit="mm" x="-1" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7b720">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7b720_pos" unit="mm" x="-13" y="117" z="0"/>
+        <rotation name="Joint20x2b7b720_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7b790">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7b790_pos" unit="mm" x="-13" y="143" z="0"/>
+        <rotation name="Joint20x2b7b790_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7b800">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7b800_pos" unit="mm" x="-1" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7b870">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7b870_pos" unit="mm" x="-25" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7b8e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7b8e0_pos" unit="mm" x="-25" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7b950">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7b950_pos" unit="mm" x="-1" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7b9c0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7b9c0_pos" unit="mm" x="-13" y="-117" z="0"/>
+        <rotation name="Joint20x2b7b9c0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7ba30">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7ba30_pos" unit="mm" x="-13" y="-143" z="0"/>
+        <rotation name="Joint20x2b7ba30_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7baa0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7baa0_pos" unit="mm" x="51" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7bb10">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7bb10_pos" unit="mm" x="27" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7bb80">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7bb80_pos" unit="mm" x="27" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7bbf0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7bbf0_pos" unit="mm" x="51" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7bc60">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7bc60_pos" unit="mm" x="39" y="13" z="0"/>
+        <rotation name="Joint20x2b7bc60_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7bcd0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7bcd0_pos" unit="mm" x="39" y="39" z="0"/>
+        <rotation name="Joint20x2b7bcd0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7bd40">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7bd40_pos" unit="mm" x="51" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7bdb0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7bdb0_pos" unit="mm" x="27" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7be20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7be20_pos" unit="mm" x="27" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7be90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7be90_pos" unit="mm" x="51" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7bf00">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7bf00_pos" unit="mm" x="39" y="-13" z="0"/>
+        <rotation name="Joint20x2b7bf00_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7bf70">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7bf70_pos" unit="mm" x="39" y="-39" z="0"/>
+        <rotation name="Joint20x2b7bf70_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7bfe0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7bfe0_pos" unit="mm" x="51" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c050">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c050_pos" unit="mm" x="27" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c0c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c0c0_pos" unit="mm" x="27" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c130">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c130_pos" unit="mm" x="51" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7c1a0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7c1a0_pos" unit="mm" x="39" y="65" z="0"/>
+        <rotation name="Joint20x2b7c1a0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7c210">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7c210_pos" unit="mm" x="39" y="91" z="0"/>
+        <rotation name="Joint20x2b7c210_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c280">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c280_pos" unit="mm" x="51" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c2f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c2f0_pos" unit="mm" x="27" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c360">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c360_pos" unit="mm" x="27" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c3d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c3d0_pos" unit="mm" x="51" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7c440">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7c440_pos" unit="mm" x="39" y="-65" z="0"/>
+        <rotation name="Joint20x2b7c440_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7c4b0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7c4b0_pos" unit="mm" x="39" y="-91" z="0"/>
+        <rotation name="Joint20x2b7c4b0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c520">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c520_pos" unit="mm" x="51" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c590">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c590_pos" unit="mm" x="27" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c600">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c600_pos" unit="mm" x="27" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c670">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c670_pos" unit="mm" x="51" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7c6e0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7c6e0_pos" unit="mm" x="39" y="117" z="0"/>
+        <rotation name="Joint20x2b7c6e0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7c750">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7c750_pos" unit="mm" x="39" y="143" z="0"/>
+        <rotation name="Joint20x2b7c750_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c7c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c7c0_pos" unit="mm" x="51" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c830">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c830_pos" unit="mm" x="27" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c8a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c8a0_pos" unit="mm" x="27" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7c910">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7c910_pos" unit="mm" x="51" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7c980">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7c980_pos" unit="mm" x="39" y="-117" z="0"/>
+        <rotation name="Joint20x2b7c980_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7c9f0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7c9f0_pos" unit="mm" x="39" y="-143" z="0"/>
+        <rotation name="Joint20x2b7c9f0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7ca60">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7ca60_pos" unit="mm" x="103" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7cad0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7cad0_pos" unit="mm" x="79" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7cb40">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7cb40_pos" unit="mm" x="79" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7cbb0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7cbb0_pos" unit="mm" x="103" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7cc20">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7cc20_pos" unit="mm" x="91" y="13" z="0"/>
+        <rotation name="Joint20x2b7cc20_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7cc90">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7cc90_pos" unit="mm" x="91" y="39" z="0"/>
+        <rotation name="Joint20x2b7cc90_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7cd00">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7cd00_pos" unit="mm" x="103" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7cd70">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7cd70_pos" unit="mm" x="79" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7cde0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7cde0_pos" unit="mm" x="79" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7ce50">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7ce50_pos" unit="mm" x="103" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7cec0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7cec0_pos" unit="mm" x="91" y="-13" z="0"/>
+        <rotation name="Joint20x2b7cec0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7cf30">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7cf30_pos" unit="mm" x="91" y="-39" z="0"/>
+        <rotation name="Joint20x2b7cf30_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7cfa0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7cfa0_pos" unit="mm" x="103" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d010">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d010_pos" unit="mm" x="79" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d080">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d080_pos" unit="mm" x="79" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d0f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d0f0_pos" unit="mm" x="103" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7d160">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7d160_pos" unit="mm" x="91" y="65" z="0"/>
+        <rotation name="Joint20x2b7d160_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7d1d0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7d1d0_pos" unit="mm" x="91" y="91" z="0"/>
+        <rotation name="Joint20x2b7d1d0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d240">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d240_pos" unit="mm" x="103" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d2b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d2b0_pos" unit="mm" x="79" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d320">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d320_pos" unit="mm" x="79" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d390">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d390_pos" unit="mm" x="103" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7d400">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7d400_pos" unit="mm" x="91" y="-65" z="0"/>
+        <rotation name="Joint20x2b7d400_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7d470">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7d470_pos" unit="mm" x="91" y="-91" z="0"/>
+        <rotation name="Joint20x2b7d470_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d4e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d4e0_pos" unit="mm" x="103" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d550">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d550_pos" unit="mm" x="79" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d5c0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d5c0_pos" unit="mm" x="79" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d630">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d630_pos" unit="mm" x="103" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7d6a0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7d6a0_pos" unit="mm" x="91" y="117" z="0"/>
+        <rotation name="Joint20x2b7d6a0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7d710">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7d710_pos" unit="mm" x="91" y="143" z="0"/>
+        <rotation name="Joint20x2b7d710_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d780">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d780_pos" unit="mm" x="103" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d7f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d7f0_pos" unit="mm" x="79" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d860">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d860_pos" unit="mm" x="79" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7d8d0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7d8d0_pos" unit="mm" x="103" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7d940">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7d940_pos" unit="mm" x="91" y="-117" z="0"/>
+        <rotation name="Joint20x2b7d940_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7d9b0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7d9b0_pos" unit="mm" x="91" y="-143" z="0"/>
+        <rotation name="Joint20x2b7d9b0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7da20">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7da20_pos" unit="mm" x="155" y="0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7da90">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7da90_pos" unit="mm" x="131" y="25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7db00">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7db00_pos" unit="mm" x="131" y="26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7db70">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7db70_pos" unit="mm" x="155" y="51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7dbe0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7dbe0_pos" unit="mm" x="143" y="13" z="0"/>
+        <rotation name="Joint20x2b7dbe0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7dc50">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7dc50_pos" unit="mm" x="143" y="39" z="0"/>
+        <rotation name="Joint20x2b7dc50_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7dcc0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7dcc0_pos" unit="mm" x="155" y="-0.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7dd30">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7dd30_pos" unit="mm" x="131" y="-25.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7dda0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7dda0_pos" unit="mm" x="131" y="-26.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7de10">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7de10_pos" unit="mm" x="155" y="-51.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7de80">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7de80_pos" unit="mm" x="143" y="-13" z="0"/>
+        <rotation name="Joint20x2b7de80_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7def0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7def0_pos" unit="mm" x="143" y="-39" z="0"/>
+        <rotation name="Joint20x2b7def0_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7df60">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7df60_pos" unit="mm" x="155" y="52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7dfd0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7dfd0_pos" unit="mm" x="131" y="77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e040">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e040_pos" unit="mm" x="131" y="78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e0b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e0b0_pos" unit="mm" x="155" y="103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7e120">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7e120_pos" unit="mm" x="143" y="65" z="0"/>
+        <rotation name="Joint20x2b7e120_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7e190">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7e190_pos" unit="mm" x="143" y="91" z="0"/>
+        <rotation name="Joint20x2b7e190_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e200">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e200_pos" unit="mm" x="155" y="-52.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e270">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e270_pos" unit="mm" x="131" y="-77.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e2e0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e2e0_pos" unit="mm" x="131" y="-78.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e350">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e350_pos" unit="mm" x="155" y="-103.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7e3c0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7e3c0_pos" unit="mm" x="143" y="-65" z="0"/>
+        <rotation name="Joint20x2b7e3c0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7e430">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7e430_pos" unit="mm" x="143" y="-91" z="0"/>
+        <rotation name="Joint20x2b7e430_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e4a0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e4a0_pos" unit="mm" x="155" y="104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e510">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e510_pos" unit="mm" x="131" y="129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e580">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e580_pos" unit="mm" x="131" y="130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e5f0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e5f0_pos" unit="mm" x="155" y="155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7e660">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7e660_pos" unit="mm" x="143" y="117" z="0"/>
+        <rotation name="Joint20x2b7e660_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7e6d0">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7e6d0_pos" unit="mm" x="143" y="143" z="0"/>
+        <rotation name="Joint20x2b7e6d0_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e740">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e740_pos" unit="mm" x="155" y="-104.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e7b0">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e7b0_pos" unit="mm" x="131" y="-129.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e820">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e820_pos" unit="mm" x="131" y="-130.5" z="0"/>
+      </physvol>
+      <physvol name="Joint10x2b7e890">
+        <volumeref ref="Joint10x2b83c30"/>
+        <position name="Joint10x2b7e890_pos" unit="mm" x="155" y="-155.5" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7e900">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7e900_pos" unit="mm" x="143" y="-117" z="0"/>
+        <rotation name="Joint20x2b7e900_rot" unit="deg" x="-1.40334185970698e-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="Joint20x2b7e970">
+        <volumeref ref="Joint20x2b83ce0"/>
+        <position name="Joint20x2b7e970_pos" unit="mm" x="143" y="-143" z="0"/>
+        <rotation name="Joint20x2b7e970_rot" unit="deg" x="180" y="0" z="0"/>
+      </physvol>
+    </volume>
+    <volume name="World0x2b6f0f0">
+      <materialref ref="Water0x2b69d00"/>
+      <solidref ref="World0x2b73450"/>
+      <physvol name="FiberLayerMother.00x2b80440">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+      </physvol>
+      <physvol name="FiberLayerMother.10x2b804c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.10x2b804c0_pos" unit="mm" x="0" y="0" z="2"/>
+        <rotation name="FiberLayerMother.10x2b804c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.20x2b80560">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.20x2b80560_pos" unit="mm" x="0" y="0" z="4"/>
+      </physvol>
+      <physvol name="FiberLayerMother.30x2b80610">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.30x2b80610_pos" unit="mm" x="0" y="0" z="6"/>
+        <rotation name="FiberLayerMother.30x2b80610_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.40x2b80690">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.40x2b80690_pos" unit="mm" x="0" y="0" z="8"/>
+      </physvol>
+      <physvol name="FiberLayerMother.50x2b80760">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.50x2b80760_pos" unit="mm" x="0" y="0" z="10"/>
+        <rotation name="FiberLayerMother.50x2b80760_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.60x2b807e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.60x2b807e0_pos" unit="mm" x="0" y="0" z="12"/>
+      </physvol>
+      <physvol name="FiberLayerMother.70x2b80860">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.70x2b80860_pos" unit="mm" x="0" y="0" z="14"/>
+        <rotation name="FiberLayerMother.70x2b80860_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.80x2b808e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.80x2b808e0_pos" unit="mm" x="0" y="0" z="16"/>
+      </physvol>
+      <physvol name="FiberLayerMother.90x2b809f0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.90x2b809f0_pos" unit="mm" x="0" y="0" z="18"/>
+        <rotation name="FiberLayerMother.90x2b809f0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.100x2b80a70">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.100x2b80a70_pos" unit="mm" x="0" y="0" z="20"/>
+      </physvol>
+      <physvol name="FiberLayerMother.110x2b80af0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.110x2b80af0_pos" unit="mm" x="0" y="0" z="22"/>
+        <rotation name="FiberLayerMother.110x2b80af0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.120x2b80b70">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.120x2b80b70_pos" unit="mm" x="0" y="0" z="24"/>
+      </physvol>
+      <physvol name="FiberLayerMother.130x2b80bf0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.130x2b80bf0_pos" unit="mm" x="0" y="0" z="26"/>
+        <rotation name="FiberLayerMother.130x2b80bf0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.140x2b80c70">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.140x2b80c70_pos" unit="mm" x="0" y="0" z="28"/>
+      </physvol>
+      <physvol name="FiberLayerMother.150x2b80cf0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.150x2b80cf0_pos" unit="mm" x="0" y="0" z="30"/>
+        <rotation name="FiberLayerMother.150x2b80cf0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.160x2b80d70">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.160x2b80d70_pos" unit="mm" x="0" y="0" z="32"/>
+      </physvol>
+      <physvol name="FiberLayerMother.170x2b80960">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.170x2b80960_pos" unit="mm" x="0" y="0" z="34"/>
+        <rotation name="FiberLayerMother.170x2b80960_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.180x2b80f00">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.180x2b80f00_pos" unit="mm" x="0" y="0" z="36"/>
+      </physvol>
+      <physvol name="FiberLayerMother.190x2b80f80">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.190x2b80f80_pos" unit="mm" x="0" y="0" z="38"/>
+        <rotation name="FiberLayerMother.190x2b80f80_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.200x2b81000">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.200x2b81000_pos" unit="mm" x="0" y="0" z="40"/>
+      </physvol>
+      <physvol name="FiberLayerMother.210x2b81080">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.210x2b81080_pos" unit="mm" x="0" y="0" z="42"/>
+        <rotation name="FiberLayerMother.210x2b81080_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.220x2b81100">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.220x2b81100_pos" unit="mm" x="0" y="0" z="44"/>
+      </physvol>
+      <physvol name="FiberLayerMother.230x2b81180">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.230x2b81180_pos" unit="mm" x="0" y="0" z="46"/>
+        <rotation name="FiberLayerMother.230x2b81180_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.240x2b81200">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.240x2b81200_pos" unit="mm" x="0" y="0" z="48"/>
+      </physvol>
+      <physvol name="FiberLayerMother.250x2b81280">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.250x2b81280_pos" unit="mm" x="0" y="0" z="50"/>
+        <rotation name="FiberLayerMother.250x2b81280_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.260x2b81300">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.260x2b81300_pos" unit="mm" x="0" y="0" z="52"/>
+      </physvol>
+      <physvol name="FiberLayerMother.270x2b81380">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.270x2b81380_pos" unit="mm" x="0" y="0" z="54"/>
+        <rotation name="FiberLayerMother.270x2b81380_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.280x2b81400">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.280x2b81400_pos" unit="mm" x="0" y="0" z="56"/>
+      </physvol>
+      <physvol name="FiberLayerMother.290x2b81480">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.290x2b81480_pos" unit="mm" x="0" y="0" z="58"/>
+        <rotation name="FiberLayerMother.290x2b81480_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.300x2b81500">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.300x2b81500_pos" unit="mm" x="0" y="0" z="60"/>
+      </physvol>
+      <physvol name="FiberLayerMother.310x2b81580">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.310x2b81580_pos" unit="mm" x="0" y="0" z="62"/>
+        <rotation name="FiberLayerMother.310x2b81580_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.320x2b81600">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.320x2b81600_pos" unit="mm" x="0" y="0" z="64"/>
+      </physvol>
+      <physvol name="FiberLayerMother.330x2b80df0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.330x2b80df0_pos" unit="mm" x="0" y="0" z="66"/>
+        <rotation name="FiberLayerMother.330x2b80df0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.340x2b80e70">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.340x2b80e70_pos" unit="mm" x="0" y="0" z="68"/>
+      </physvol>
+      <physvol name="FiberLayerMother.350x2b81890">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.350x2b81890_pos" unit="mm" x="0" y="0" z="70"/>
+        <rotation name="FiberLayerMother.350x2b81890_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.360x2b81910">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.360x2b81910_pos" unit="mm" x="0" y="0" z="72"/>
+      </physvol>
+      <physvol name="FiberLayerMother.370x2b81990">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.370x2b81990_pos" unit="mm" x="0" y="0" z="74"/>
+        <rotation name="FiberLayerMother.370x2b81990_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.380x2b81a10">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.380x2b81a10_pos" unit="mm" x="0" y="0" z="76"/>
+      </physvol>
+      <physvol name="FiberLayerMother.390x2b81a90">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.390x2b81a90_pos" unit="mm" x="0" y="0" z="78"/>
+        <rotation name="FiberLayerMother.390x2b81a90_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.400x2b81b10">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.400x2b81b10_pos" unit="mm" x="0" y="0" z="80"/>
+      </physvol>
+      <physvol name="FiberLayerMother.410x2b81b90">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.410x2b81b90_pos" unit="mm" x="0" y="0" z="82"/>
+        <rotation name="FiberLayerMother.410x2b81b90_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.420x2b81c10">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.420x2b81c10_pos" unit="mm" x="0" y="0" z="84"/>
+      </physvol>
+      <physvol name="FiberLayerMother.430x2b81c90">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.430x2b81c90_pos" unit="mm" x="0" y="0" z="86"/>
+        <rotation name="FiberLayerMother.430x2b81c90_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.440x2b81d10">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.440x2b81d10_pos" unit="mm" x="0" y="0" z="88"/>
+      </physvol>
+      <physvol name="FiberLayerMother.450x2b81d90">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.450x2b81d90_pos" unit="mm" x="0" y="0" z="90"/>
+        <rotation name="FiberLayerMother.450x2b81d90_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.460x2b81e10">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.460x2b81e10_pos" unit="mm" x="0" y="0" z="92"/>
+      </physvol>
+      <physvol name="FiberLayerMother.470x2b81e90">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.470x2b81e90_pos" unit="mm" x="0" y="0" z="94"/>
+        <rotation name="FiberLayerMother.470x2b81e90_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.480x2b81f10">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.480x2b81f10_pos" unit="mm" x="0" y="0" z="96"/>
+      </physvol>
+      <physvol name="FiberLayerMother.490x2b81f90">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.490x2b81f90_pos" unit="mm" x="0" y="0" z="98"/>
+        <rotation name="FiberLayerMother.490x2b81f90_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.500x2b82010">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.500x2b82010_pos" unit="mm" x="0" y="0" z="100"/>
+      </physvol>
+      <physvol name="FiberLayerMother.510x2b82090">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.510x2b82090_pos" unit="mm" x="0" y="0" z="102"/>
+        <rotation name="FiberLayerMother.510x2b82090_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.520x2b82110">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.520x2b82110_pos" unit="mm" x="0" y="0" z="104"/>
+      </physvol>
+      <physvol name="FiberLayerMother.530x2b82190">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.530x2b82190_pos" unit="mm" x="0" y="0" z="106"/>
+        <rotation name="FiberLayerMother.530x2b82190_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.540x2b82210">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.540x2b82210_pos" unit="mm" x="0" y="0" z="108"/>
+      </physvol>
+      <physvol name="FiberLayerMother.550x2b82290">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.550x2b82290_pos" unit="mm" x="0" y="0" z="110"/>
+        <rotation name="FiberLayerMother.550x2b82290_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.560x2b82310">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.560x2b82310_pos" unit="mm" x="0" y="0" z="112"/>
+      </physvol>
+      <physvol name="FiberLayerMother.570x2b82390">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.570x2b82390_pos" unit="mm" x="0" y="0" z="114"/>
+        <rotation name="FiberLayerMother.570x2b82390_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.580x2b82410">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.580x2b82410_pos" unit="mm" x="0" y="0" z="116"/>
+      </physvol>
+      <physvol name="FiberLayerMother.590x2b82490">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.590x2b82490_pos" unit="mm" x="0" y="0" z="118"/>
+        <rotation name="FiberLayerMother.590x2b82490_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.600x2b82510">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.600x2b82510_pos" unit="mm" x="0" y="0" z="120"/>
+      </physvol>
+      <physvol name="FiberLayerMother.610x2b82590">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.610x2b82590_pos" unit="mm" x="0" y="0" z="122"/>
+        <rotation name="FiberLayerMother.610x2b82590_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.620x2b82610">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.620x2b82610_pos" unit="mm" x="0" y="0" z="124"/>
+      </physvol>
+      <physvol name="FiberLayerMother.630x2b82690">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.630x2b82690_pos" unit="mm" x="0" y="0" z="126"/>
+        <rotation name="FiberLayerMother.630x2b82690_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.640x2b82710">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.640x2b82710_pos" unit="mm" x="0" y="0" z="128"/>
+      </physvol>
+      <physvol name="FiberLayerMother.650x2b81640">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.650x2b81640_pos" unit="mm" x="0" y="0" z="130"/>
+        <rotation name="FiberLayerMother.650x2b81640_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.660x2b816c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.660x2b816c0_pos" unit="mm" x="0" y="0" z="132"/>
+      </physvol>
+      <physvol name="FiberLayerMother.670x2b81740">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.670x2b81740_pos" unit="mm" x="0" y="0" z="134"/>
+        <rotation name="FiberLayerMother.670x2b81740_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.680x2b817c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.680x2b817c0_pos" unit="mm" x="0" y="0" z="136"/>
+      </physvol>
+      <physvol name="FiberLayerMother.690x2b82b60">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.690x2b82b60_pos" unit="mm" x="0" y="0" z="138"/>
+        <rotation name="FiberLayerMother.690x2b82b60_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.700x2b82be0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.700x2b82be0_pos" unit="mm" x="0" y="0" z="140"/>
+      </physvol>
+      <physvol name="FiberLayerMother.710x2b82c60">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.710x2b82c60_pos" unit="mm" x="0" y="0" z="142"/>
+        <rotation name="FiberLayerMother.710x2b82c60_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.720x2b82ce0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.720x2b82ce0_pos" unit="mm" x="0" y="0" z="144"/>
+      </physvol>
+      <physvol name="FiberLayerMother.730x2b82d60">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.730x2b82d60_pos" unit="mm" x="0" y="0" z="146"/>
+        <rotation name="FiberLayerMother.730x2b82d60_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.740x2b82de0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.740x2b82de0_pos" unit="mm" x="0" y="0" z="148"/>
+      </physvol>
+      <physvol name="FiberLayerMother.750x2b82e60">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.750x2b82e60_pos" unit="mm" x="0" y="0" z="150"/>
+        <rotation name="FiberLayerMother.750x2b82e60_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.760x2b82ee0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.760x2b82ee0_pos" unit="mm" x="0" y="0" z="152"/>
+      </physvol>
+      <physvol name="FiberLayerMother.770x2b82f60">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.770x2b82f60_pos" unit="mm" x="0" y="0" z="154"/>
+        <rotation name="FiberLayerMother.770x2b82f60_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.780x2b82fe0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.780x2b82fe0_pos" unit="mm" x="0" y="0" z="156"/>
+      </physvol>
+      <physvol name="FiberLayerMother.790x2b83060">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.790x2b83060_pos" unit="mm" x="0" y="0" z="158"/>
+        <rotation name="FiberLayerMother.790x2b83060_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.800x2b830e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.800x2b830e0_pos" unit="mm" x="0" y="0" z="160"/>
+      </physvol>
+      <physvol name="FiberLayerMother.810x2b83160">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.810x2b83160_pos" unit="mm" x="0" y="0" z="162"/>
+        <rotation name="FiberLayerMother.810x2b83160_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.820x2b831e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.820x2b831e0_pos" unit="mm" x="0" y="0" z="164"/>
+      </physvol>
+      <physvol name="FiberLayerMother.830x2b83260">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.830x2b83260_pos" unit="mm" x="0" y="0" z="166"/>
+        <rotation name="FiberLayerMother.830x2b83260_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.840x2b832e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.840x2b832e0_pos" unit="mm" x="0" y="0" z="168"/>
+      </physvol>
+      <physvol name="FiberLayerMother.850x2b83360">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.850x2b83360_pos" unit="mm" x="0" y="0" z="170"/>
+        <rotation name="FiberLayerMother.850x2b83360_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.860x2b833e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.860x2b833e0_pos" unit="mm" x="0" y="0" z="172"/>
+      </physvol>
+      <physvol name="FiberLayerMother.870x2b83460">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.870x2b83460_pos" unit="mm" x="0" y="0" z="174"/>
+        <rotation name="FiberLayerMother.870x2b83460_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.880x2b834e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.880x2b834e0_pos" unit="mm" x="0" y="0" z="176"/>
+      </physvol>
+      <physvol name="FiberLayerMother.890x2b83560">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.890x2b83560_pos" unit="mm" x="0" y="0" z="178"/>
+        <rotation name="FiberLayerMother.890x2b83560_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.900x2b835e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.900x2b835e0_pos" unit="mm" x="0" y="0" z="180"/>
+      </physvol>
+      <physvol name="FiberLayerMother.910x2b83660">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.910x2b83660_pos" unit="mm" x="0" y="0" z="182"/>
+        <rotation name="FiberLayerMother.910x2b83660_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.920x2b836e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.920x2b836e0_pos" unit="mm" x="0" y="0" z="184"/>
+      </physvol>
+      <physvol name="FiberLayerMother.930x2b83760">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.930x2b83760_pos" unit="mm" x="0" y="0" z="186"/>
+        <rotation name="FiberLayerMother.930x2b83760_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.940x2b837e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.940x2b837e0_pos" unit="mm" x="0" y="0" z="188"/>
+      </physvol>
+      <physvol name="FiberLayerMother.950x2b83860">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.950x2b83860_pos" unit="mm" x="0" y="0" z="190"/>
+        <rotation name="FiberLayerMother.950x2b83860_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.960x2b838e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.960x2b838e0_pos" unit="mm" x="0" y="0" z="192"/>
+      </physvol>
+      <physvol name="FiberLayerMother.970x2b83960">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.970x2b83960_pos" unit="mm" x="0" y="0" z="194"/>
+        <rotation name="FiberLayerMother.970x2b83960_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.980x2b839e0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.980x2b839e0_pos" unit="mm" x="0" y="0" z="196"/>
+      </physvol>
+      <physvol name="FiberLayerMother.990x2b83a60">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.990x2b83a60_pos" unit="mm" x="0" y="0" z="198"/>
+        <rotation name="FiberLayerMother.990x2b83a60_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1000x2b7f580">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1000x2b7f580_pos" unit="mm" x="0" y="0" z="200"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1010x2b7f600">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1010x2b7f600_pos" unit="mm" x="0" y="0" z="202"/>
+        <rotation name="FiberLayerMother.1010x2b7f600_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1020x2b801d0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1020x2b801d0_pos" unit="mm" x="0" y="0" z="204"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1030x2b80250">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1030x2b80250_pos" unit="mm" x="0" y="0" z="206"/>
+        <rotation name="FiberLayerMother.1030x2b80250_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1040x2b802d0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1040x2b802d0_pos" unit="mm" x="0" y="0" z="208"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1050x2b80350">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1050x2b80350_pos" unit="mm" x="0" y="0" z="210"/>
+        <rotation name="FiberLayerMother.1050x2b80350_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1060x2b84130">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1060x2b84130_pos" unit="mm" x="0" y="0" z="212"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1070x2b841b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1070x2b841b0_pos" unit="mm" x="0" y="0" z="214"/>
+        <rotation name="FiberLayerMother.1070x2b841b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1080x2b84230">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1080x2b84230_pos" unit="mm" x="0" y="0" z="216"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1090x2b842b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1090x2b842b0_pos" unit="mm" x="0" y="0" z="218"/>
+        <rotation name="FiberLayerMother.1090x2b842b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1100x2b84330">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1100x2b84330_pos" unit="mm" x="0" y="0" z="220"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1110x2b843b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1110x2b843b0_pos" unit="mm" x="0" y="0" z="222"/>
+        <rotation name="FiberLayerMother.1110x2b843b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1120x2b84430">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1120x2b84430_pos" unit="mm" x="0" y="0" z="224"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1130x2b844b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1130x2b844b0_pos" unit="mm" x="0" y="0" z="226"/>
+        <rotation name="FiberLayerMother.1130x2b844b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1140x2b84530">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1140x2b84530_pos" unit="mm" x="0" y="0" z="228"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1150x2b845b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1150x2b845b0_pos" unit="mm" x="0" y="0" z="230"/>
+        <rotation name="FiberLayerMother.1150x2b845b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1160x2b84630">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1160x2b84630_pos" unit="mm" x="0" y="0" z="232"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1170x2b846b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1170x2b846b0_pos" unit="mm" x="0" y="0" z="234"/>
+        <rotation name="FiberLayerMother.1170x2b846b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1180x2b84730">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1180x2b84730_pos" unit="mm" x="0" y="0" z="236"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1190x2b847b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1190x2b847b0_pos" unit="mm" x="0" y="0" z="238"/>
+        <rotation name="FiberLayerMother.1190x2b847b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1200x2b84830">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1200x2b84830_pos" unit="mm" x="0" y="0" z="240"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1210x2b848b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1210x2b848b0_pos" unit="mm" x="0" y="0" z="242"/>
+        <rotation name="FiberLayerMother.1210x2b848b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1220x2b84930">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1220x2b84930_pos" unit="mm" x="0" y="0" z="244"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1230x2b849b0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1230x2b849b0_pos" unit="mm" x="0" y="0" z="246"/>
+        <rotation name="FiberLayerMother.1230x2b849b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1240x2b84a30">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1240x2b84a30_pos" unit="mm" x="0" y="0" z="248"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1250x2b84ab0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1250x2b84ab0_pos" unit="mm" x="0" y="0" z="250"/>
+        <rotation name="FiberLayerMother.1250x2b84ab0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1260x2b84b30">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1260x2b84b30_pos" unit="mm" x="0" y="0" z="252"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1270x2b84bb0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1270x2b84bb0_pos" unit="mm" x="0" y="0" z="254"/>
+        <rotation name="FiberLayerMother.1270x2b84bb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1280x2b84c30">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1280x2b84c30_pos" unit="mm" x="0" y="0" z="256"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1290x2b82790">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1290x2b82790_pos" unit="mm" x="0" y="0" z="258"/>
+        <rotation name="FiberLayerMother.1290x2b82790_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1300x2b82810">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1300x2b82810_pos" unit="mm" x="0" y="0" z="260"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1310x2b82890">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1310x2b82890_pos" unit="mm" x="0" y="0" z="262"/>
+        <rotation name="FiberLayerMother.1310x2b82890_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1320x2b82910">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1320x2b82910_pos" unit="mm" x="0" y="0" z="264"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1330x2b82990">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1330x2b82990_pos" unit="mm" x="0" y="0" z="266"/>
+        <rotation name="FiberLayerMother.1330x2b82990_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1340x2b82a10">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1340x2b82a10_pos" unit="mm" x="0" y="0" z="268"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1350x2b82a90">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1350x2b82a90_pos" unit="mm" x="0" y="0" z="270"/>
+        <rotation name="FiberLayerMother.1350x2b82a90_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1360x2b82b10">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1360x2b82b10_pos" unit="mm" x="0" y="0" z="272"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1370x2b854c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1370x2b854c0_pos" unit="mm" x="0" y="0" z="274"/>
+        <rotation name="FiberLayerMother.1370x2b854c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1380x2b85540">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1380x2b85540_pos" unit="mm" x="0" y="0" z="276"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1390x2b855c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1390x2b855c0_pos" unit="mm" x="0" y="0" z="278"/>
+        <rotation name="FiberLayerMother.1390x2b855c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1400x2b85640">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1400x2b85640_pos" unit="mm" x="0" y="0" z="280"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1410x2b856c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1410x2b856c0_pos" unit="mm" x="0" y="0" z="282"/>
+        <rotation name="FiberLayerMother.1410x2b856c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1420x2b85740">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1420x2b85740_pos" unit="mm" x="0" y="0" z="284"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1430x2b857c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1430x2b857c0_pos" unit="mm" x="0" y="0" z="286"/>
+        <rotation name="FiberLayerMother.1430x2b857c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1440x2b85840">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1440x2b85840_pos" unit="mm" x="0" y="0" z="288"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1450x2b858c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1450x2b858c0_pos" unit="mm" x="0" y="0" z="290"/>
+        <rotation name="FiberLayerMother.1450x2b858c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1460x2b85940">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1460x2b85940_pos" unit="mm" x="0" y="0" z="292"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1470x2b859c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1470x2b859c0_pos" unit="mm" x="0" y="0" z="294"/>
+        <rotation name="FiberLayerMother.1470x2b859c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1480x2b85a40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1480x2b85a40_pos" unit="mm" x="0" y="0" z="296"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1490x2b85ac0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1490x2b85ac0_pos" unit="mm" x="0" y="0" z="298"/>
+        <rotation name="FiberLayerMother.1490x2b85ac0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1500x2b85b40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1500x2b85b40_pos" unit="mm" x="0" y="0" z="300"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1510x2b85bc0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1510x2b85bc0_pos" unit="mm" x="0" y="0" z="302"/>
+        <rotation name="FiberLayerMother.1510x2b85bc0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1520x2b85c40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1520x2b85c40_pos" unit="mm" x="0" y="0" z="304"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1530x2b85cc0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1530x2b85cc0_pos" unit="mm" x="0" y="0" z="306"/>
+        <rotation name="FiberLayerMother.1530x2b85cc0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1540x2b85d40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1540x2b85d40_pos" unit="mm" x="0" y="0" z="308"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1550x2b85dc0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1550x2b85dc0_pos" unit="mm" x="0" y="0" z="310"/>
+        <rotation name="FiberLayerMother.1550x2b85dc0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1560x2b85e40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1560x2b85e40_pos" unit="mm" x="0" y="0" z="312"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1570x2b85ec0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1570x2b85ec0_pos" unit="mm" x="0" y="0" z="314"/>
+        <rotation name="FiberLayerMother.1570x2b85ec0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1580x2b85f40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1580x2b85f40_pos" unit="mm" x="0" y="0" z="316"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1590x2b85fc0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1590x2b85fc0_pos" unit="mm" x="0" y="0" z="318"/>
+        <rotation name="FiberLayerMother.1590x2b85fc0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1600x2b86040">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1600x2b86040_pos" unit="mm" x="0" y="0" z="320"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1610x2b860c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1610x2b860c0_pos" unit="mm" x="0" y="0" z="322"/>
+        <rotation name="FiberLayerMother.1610x2b860c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1620x2b86140">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1620x2b86140_pos" unit="mm" x="0" y="0" z="324"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1630x2b861c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1630x2b861c0_pos" unit="mm" x="0" y="0" z="326"/>
+        <rotation name="FiberLayerMother.1630x2b861c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1640x2b86240">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1640x2b86240_pos" unit="mm" x="0" y="0" z="328"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1650x2b862c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1650x2b862c0_pos" unit="mm" x="0" y="0" z="330"/>
+        <rotation name="FiberLayerMother.1650x2b862c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1660x2b86340">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1660x2b86340_pos" unit="mm" x="0" y="0" z="332"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1670x2b863c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1670x2b863c0_pos" unit="mm" x="0" y="0" z="334"/>
+        <rotation name="FiberLayerMother.1670x2b863c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1680x2b86440">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1680x2b86440_pos" unit="mm" x="0" y="0" z="336"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1690x2b864c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1690x2b864c0_pos" unit="mm" x="0" y="0" z="338"/>
+        <rotation name="FiberLayerMother.1690x2b864c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1700x2b86540">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1700x2b86540_pos" unit="mm" x="0" y="0" z="340"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1710x2b865c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1710x2b865c0_pos" unit="mm" x="0" y="0" z="342"/>
+        <rotation name="FiberLayerMother.1710x2b865c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1720x2b86640">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1720x2b86640_pos" unit="mm" x="0" y="0" z="344"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1730x2b866c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1730x2b866c0_pos" unit="mm" x="0" y="0" z="346"/>
+        <rotation name="FiberLayerMother.1730x2b866c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1740x2b86740">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1740x2b86740_pos" unit="mm" x="0" y="0" z="348"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1750x2b867c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1750x2b867c0_pos" unit="mm" x="0" y="0" z="350"/>
+        <rotation name="FiberLayerMother.1750x2b867c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1760x2b86840">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1760x2b86840_pos" unit="mm" x="0" y="0" z="352"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1770x2b868c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1770x2b868c0_pos" unit="mm" x="0" y="0" z="354"/>
+        <rotation name="FiberLayerMother.1770x2b868c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1780x2b86940">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1780x2b86940_pos" unit="mm" x="0" y="0" z="356"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1790x2b869c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1790x2b869c0_pos" unit="mm" x="0" y="0" z="358"/>
+        <rotation name="FiberLayerMother.1790x2b869c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1800x2b86a40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1800x2b86a40_pos" unit="mm" x="0" y="0" z="360"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1810x2b86ac0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1810x2b86ac0_pos" unit="mm" x="0" y="0" z="362"/>
+        <rotation name="FiberLayerMother.1810x2b86ac0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1820x2b86b40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1820x2b86b40_pos" unit="mm" x="0" y="0" z="364"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1830x2b86bc0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1830x2b86bc0_pos" unit="mm" x="0" y="0" z="366"/>
+        <rotation name="FiberLayerMother.1830x2b86bc0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1840x2b86c40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1840x2b86c40_pos" unit="mm" x="0" y="0" z="368"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1850x2b86cc0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1850x2b86cc0_pos" unit="mm" x="0" y="0" z="370"/>
+        <rotation name="FiberLayerMother.1850x2b86cc0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1860x2b86d40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1860x2b86d40_pos" unit="mm" x="0" y="0" z="372"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1870x2b86dc0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1870x2b86dc0_pos" unit="mm" x="0" y="0" z="374"/>
+        <rotation name="FiberLayerMother.1870x2b86dc0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1880x2b86e40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1880x2b86e40_pos" unit="mm" x="0" y="0" z="376"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1890x2b86ec0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1890x2b86ec0_pos" unit="mm" x="0" y="0" z="378"/>
+        <rotation name="FiberLayerMother.1890x2b86ec0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1900x2b86f40">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1900x2b86f40_pos" unit="mm" x="0" y="0" z="380"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1910x2b86fc0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1910x2b86fc0_pos" unit="mm" x="0" y="0" z="382"/>
+        <rotation name="FiberLayerMother.1910x2b86fc0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1920x2b87040">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1920x2b87040_pos" unit="mm" x="0" y="0" z="384"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1930x2b870c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1930x2b870c0_pos" unit="mm" x="0" y="0" z="386"/>
+        <rotation name="FiberLayerMother.1930x2b870c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1940x2b87140">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1940x2b87140_pos" unit="mm" x="0" y="0" z="388"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1950x2b871c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1950x2b871c0_pos" unit="mm" x="0" y="0" z="390"/>
+        <rotation name="FiberLayerMother.1950x2b871c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1960x2b87240">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1960x2b87240_pos" unit="mm" x="0" y="0" z="392"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1970x2b872c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1970x2b872c0_pos" unit="mm" x="0" y="0" z="394"/>
+        <rotation name="FiberLayerMother.1970x2b872c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1980x2b87340">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1980x2b87340_pos" unit="mm" x="0" y="0" z="396"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1990x2b873c0">
+        <volumeref ref="FiberLayerMother0x2b80110"/>
+        <position name="FiberLayerMother.1990x2b873c0_pos" unit="mm" x="0" y="0" z="398"/>
+        <rotation name="FiberLayerMother.1990x2b873c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+    </volume>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="World0x2b6f0f0"/>
+  </setup>
+
+</gdml>

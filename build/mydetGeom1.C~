@@ -1,0 +1,191 @@
+/*
+
+
+*/
+void takeTraject(TTree *tree, int evt, int pdg, int col, TEveStraightLineSet* lineSet);
+void takePoints (TTree *tree, int evt, int pdg, int col, TEvePointSet*        pintSet);
+
+void mydetGeom1()
+{
+    //--- Definition of a simple geometry
+    //   gSystem->Load("libGeom");
+    //new TGeoManager("myGeo", "my geometry");
+    TGeoManager *gGeoManager = new TGeoManager("myGeo", "my geometry");
+
+    //TGeoManager::Import("mydet_straight.gdml");
+    //TGeoManager::Import("mydet_straight_short.gdml");
+    gGeoManager->Import("mydet.gdml");
+	// 1: FiberDetMother
+	// 2: FiberLayerMother
+	int setvis_level = 2; 
+
+    #if 0
+    //
+    // draw the ROOT box via GL viewer
+    //
+    //gGeoManager->DefaultColors();
+    //gGeoManager->CloseGeometry();
+    gGeoManager->SetVisLevel(setvis_level); 
+    gGeoManager->GetTopVolume()->Draw("ogl");
+    #endif
+    //return;
+
+    //gGeoManager->GetVolume("FiberDetMother")  ->SetTransparency(1);
+    gGeoManager->GetVolume("FiberLayerMother")->SetTransparency(98);
+    gGeoManager->GetVolume("FiberLayerSparceMother")->SetTransparency(98);
+    gGeoManager->GetVolume("FiberLayerSparceMother")->SetLineColor(kRed+1);
+
+	#if 0 
+    gGeoManager->GetVolume("FbrCoat")->Print();
+    gGeoManager->GetVolume("FbrCoat")->SetTransparency(92);
+    gGeoManager->GetVolume("FbrScin")->Print();
+    gGeoManager->GetVolume("FbrScin")->SetLineColor(kRed-10);
+    //gGeoManager->GetVolume("FbrScin")->SetTransparency(98);
+	#endif
+	#if 0 
+    gGeoManager->GetVolume("Sct1")->Print();
+    gGeoManager->GetVolume("Sct1")->SetLineColor(kRed-10);
+    gGeoManager->GetVolume("Sct2")->SetLineColor(kRed-10);
+    //gGeoManager->GetVolume("Sct1")->SetTransparency(85);
+    //gGeoManager->GetVolume("Sct2")->SetTransparency(85);
+    gGeoManager->GetVolume("Joint1")->Print();
+    gGeoManager->GetVolume("Joint1")->SetLineColor(kBlue-9);
+    gGeoManager->GetVolume("Joint2")->SetLineColor(kBlue-9);
+	#endif
+    //gGeoManager->DefaultColors();
+    //gGeoManager->CloseGeometry();
+
+	//
+	// TEveManager viewer
+	//
+    TEveManager::Create();
+	TGeoNode* node = gGeoManager->GetTopNode();
+	TEveGeoTopNode* en = new TEveGeoTopNode(gGeoManager, node);
+    en->SetVisLevel(1);//setvis_level);
+	gEve->AddGlobalElement(en);
+
+	#if 0 
+	//
+	// draw track
+	//
+    TFile *tf = new TFile("mydata.root");
+    //TFile *tf = new TFile("mydata_wavy_el.root");
+    TTree *tree = (TTree*)tf->Get("treeStpAct"); // trajectry data
+
+	#if 0
+    TEveStraightLineSet* line_el = new TEveStraightLineSet("electron");
+    TEveStraightLineSet* line_po = new TEveStraightLineSet("positron");
+    TEveStraightLineSet* line_gm = new TEveStraightLineSet("gamma");
+    TEveStraightLineSet* line_mu = new TEveStraightLineSet("muon");
+	takeTraject(tree, 0/*evt*/, +13, kGray+1, line_mu);
+	takeTraject(tree, 0/*evt*/, +11,       4, line_el);
+	takeTraject(tree, 0/*evt*/, -11,       2, line_po);
+	takeTraject(tree, 0/*evt*/, +22, kGreen+2,line_gm);
+    gEve->AddElement(line_el);
+    gEve->AddElement(line_po);
+    gEve->AddElement(line_gm);
+    gEve->AddElement(line_mu);
+	#endif
+
+    auto pint_el = new TEvePointSet("electron step");
+    auto pint_po = new TEvePointSet("positron step");
+    auto pint_gm = new TEvePointSet("gamma step");
+    auto pint_mu = new TEvePointSet("muon step");
+    takePoints(tree, 0/*evt*/, +13, kGray+1, pint_mu);
+    takePoints(tree, 0/*evt*/, +11,       4, pint_el);
+    takePoints(tree, 0/*evt*/, -11,       2, pint_po);
+    takePoints(tree, 0/*evt*/, +22,kGreen+2, pint_gm);
+    gEve->AddElement(pint_el);
+    gEve->AddElement(pint_po);
+    gEve->AddElement(pint_gm);
+    gEve->AddElement(pint_mu);
+	#endif
+
+
+
+	#if 0 // just test
+    float a=10; float d=5; float x=0; float y=0; float z=0;
+    TEveBox* b = new TEveBox("Box", "Test Title");
+    b->SetMainColor(kCyan);
+    b->SetMainTransparency(60);
+    b->SetVertex(0, x - a, y - a, z - a);
+    b->SetVertex(1, x - a, y + a, z - a);
+    b->SetVertex(2, x + a, y + a, z - a);
+    b->SetVertex(3, x + a, y - a, z - a);
+    b->SetVertex(4, x - a, y - a, z + a);
+    b->SetVertex(5, x - a, y + a, z + a);
+    b->SetVertex(6, x + a, y + a, z + a);
+    b->SetVertex(7, x + a, y - a, z + a);
+    gEve->AddElement(b);
+	#endif
+
+    double refPoint[3] = {0.,0.,0.};
+    // Int_t axesType = 0(Off), 1(EDGE), 2(ORIGIN), Bool_t axesDepthTest, Bool_t referenceOn, const Double_t referencePos[3]
+    gEve->GetDefaultViewer()->GetGLViewer()->SetGuideState(2, kFALSE, kFALSE, refPoint);
+    gEve->Redraw3D(kTRUE);
+    //gEve->FullRedraw3D(kTRUE);	
+    //gEve->FullRedraw3D(kFALSE, kTRUE);	
+    //gEve->Redraw3D(kFALSE, kTRUE);
+    //gEve->Redraw3D(kTRUE, kFALSE);
+
+#if 0 
+	TString outname;
+	outname = "genfitGDMLGeom.root";
+    TFile *outfile = TFile::Open(outname,"RECREATE");
+    gGeoManager->Write();
+    outfile->Close();
+#endif
+}
+
+void takeTraject(TTree *tree, int evt, int pdg, int col, TEveStraightLineSet* lineSet)
+{
+	stringstream cut;
+	//cut << "code==" << pdg << "&&evt==" << evt << ends;
+	cut << "edep>0.01 && code==" << pdg << "&&evt==" << evt << ends;
+    //TCanvas *c = new TCanvas();
+    //tree->Draw("x:y:z", "detid!=0 && code==+11 &&evt==0", "");
+    //tree->Draw("x:y:z", "detid!=0 && code==+11 &&evt==0", "goff");
+    tree->Draw("x:y:z", cut.str().data(), "goff");
+    int     size = tree->GetSelectedRows();
+    double *val0 = tree->GetV1(); //
+    double *val1 = tree->GetV2(); // 
+    double *val2 = tree->GetV3(); // 
+    cerr << "size = " << size << endl;
+ 
+    //TEveStraightLineSet* lineSet = new TEveStraightLineSet;
+    // SetLine (int idx, Float_t x1, Float_t y1, Float_t z1, Float_t x2, Float_t y2, Float_t z2)
+    //lineSet->AddLine (-10,-10,-10, 1,1,1);
+    //lineSet->AddMarker(-10,-10,-10);
+    for (int i=0; i<size; i++) {
+        lineSet->AddMarker(val0[i]/10.,val1[i]/10.,val2[i]/10.);
+    }
+    lineSet->SetLineColor(4);
+    lineSet->SetLineWidth(3);
+    lineSet->SetMarkerColor(col);
+    lineSet->SetMarkerSize(1.4);
+}
+
+void takePoints (TTree *tree, int evt, int pdg, int col, TEvePointSet*        pintSet)
+{
+    stringstream cut;
+    //cut << "code==" << pdg << "&&evt==" << evt << ends;
+    cut << "edep>0.01 && code==" << pdg << "&&evt==" << evt << ends;
+    //TCanvas *c = new TCanvas();
+    //tree->Draw("x:y:z", "detid!=0 && code==+11 &&evt==0", "");
+    //tree->Draw("x:y:z", "detid!=0 && code==+11 &&evt==0", "goff");
+    tree->Draw("x:y:z", cut.str().data(), "goff");
+    int     size = tree->GetSelectedRows();
+    double *val0 = tree->GetV1(); //
+    double *val1 = tree->GetV2(); // 
+    double *val2 = tree->GetV3(); // 
+    cerr << "size = " << size << endl;
+
+    pintSet->SetOwnIds(kTRUE);
+    for (int i=0; i<size; i++) {
+      pintSet->SetNextPoint(val0[i]/10.,val1[i]/10.,val2[i]/10.);
+      pintSet->SetPointId(new TNamed(Form("Point %d", i), ""));
+    }
+    pintSet->SetMarkerColor(col);
+    pintSet->SetMarkerSize(2);
+    pintSet->SetMarkerStyle(4);
+}

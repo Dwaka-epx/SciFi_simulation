@@ -1,0 +1,63 @@
+#
+/run/initialize
+
+#/random/setSeeds 100
+#/random/setSeeds ###SEED###
+
+# it seems "ene" here means kinetic energy 
+#   kineticE = sqrt(pp*pp + mass*mass) – mass; 
+#   gun->SetParticleEnergy(kineticE);
+# so, momentum is given as 
+#   p = sqrt( pow(pEner+pMass,2) - pow(pMass,2) ) 
+
+# proton: 938.27 MeV
+#  E = sqrt( pow( 100,2) + pow(938.27,2) ) - 938.27 =    5.33
+#  E = sqrt( pow( 300,2) + pow(938.27,2) ) - 938.27 =   46.79
+#  E = sqrt( pow( 500,2) + pow(938.27,2) ) - 938.27 =  124.91 
+#  E = sqrt( pow( 700,2) + pow(938.27,2) ) - 938.27 =  232.35
+#  E = sqrt( pow(1000,2) + pow(938.27,2) ) - 938.27 =  432.99
+
+##### general
+#/gps/particle mu- 
+/gps/particle e- 
+#/gps/particle gamma
+/gps/ene/mono 500 MeV
+#/gps/particle proton
+#/gps/ene/mono 125 MeV
+
+#/gps/direction 0 +1 0
+/gps/direction 0 0 +1
+
+##### position
+/gps/pos/type Beam
+/gps/pos/shape Circle
+#/gps/pos/centre 0. 0. 0. mm
+/gps/pos/centre 1. 1. -10. mm
+#/gps/pos/centre 251. 1. -10. mm
+#/gps/pos/centre 142 -200 +350 mm
+/gps/pos/radius 2. mm
+/gps/pos/sigma_r 2. mm
+
+# the incident surface is in the y-z plane
+#/gps/pos/rot1 0 1 0
+#/gps/pos/rot2 0 0 1
+
+# emission from a z-x plane 
+#/gps/pos/rot1 0 0 1
+#/gps/pos/rot2 1 0 0 
+
+
+##### angle
+/gps/ang/rot1 0 1 0 # +z
+/gps/ang/rot2 1 0 0 # +z
+#/gps/ang/rot1 0 0 1 # -y 
+#/gps/ang/rot2 1 0 0 # -y
+/gps/ang/type beam1d
+/gps/ang/sigma_r 10 deg 
+
+#/gps/ang/type beam2d 
+#/gps/ang/sigma_x 0.1 deg 
+#/gps/ang/sigma_y 0.1 deg
+
+
+/run/beamOn 10

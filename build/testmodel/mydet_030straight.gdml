@@ -1,0 +1,1658 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+    <matrix coldim="2" name="ABSLENGTH0x1c5ec70" values="2e-06 20000 2.03e-06 20000 2.06e-06 20000 2.09e-06 20000 2.12e-06 20000 2.15e-06 20000 2.18e-06 200"/>
+    <matrix coldim="2" name="FASTCOMPONENT0x1c5f340" values="2e-06 0 2.03e-06 0 2.06e-06 0 2.09e-06 0 2.12e-06 0 2.15e-06 0 2.18e-06 0 2.21e-06 0 2.24e-06 0 2.2"/>
+    <matrix coldim="2" name="RINDEX0x1c5e6b0" values="2e-06 1.5 2.03e-06 1.5 2.06e-06 1.5 2.09e-06 1.5 2.12e-06 1.5 2.15e-06 1.5 2.18e-06 1.5 2.21e-06 1."/>
+    <constant name="EFFICIENCY" value="1"/>
+    <constant name="FASTTIMECONSTANT" value="1"/>
+    <constant name="RESOLUTIONSCALE" value="1"/>
+    <constant name="SCINTILLATIONYIELD" value="0"/>
+  </define>
+
+  <materials>
+    <isotope N="12" Z="6" name="C120x1c51f50">
+      <atom unit="g/mole" value="12"/>
+    </isotope>
+    <isotope N="13" Z="6" name="C130x1c52250">
+      <atom unit="g/mole" value="13.0034"/>
+    </isotope>
+    <element name="C0x1c51f90">
+      <fraction n="0.9893" ref="C120x1c51f50"/>
+      <fraction n="0.0107" ref="C130x1c52250"/>
+    </element>
+    <isotope N="1" Z="1" name="H10x1c441d0">
+      <atom unit="g/mole" value="1.00782503081372"/>
+    </isotope>
+    <isotope N="2" Z="1" name="H20x1c44120">
+      <atom unit="g/mole" value="2.01410199966617"/>
+    </isotope>
+    <element name="H0x1c44470">
+      <fraction n="0.999885" ref="H10x1c441d0"/>
+      <fraction n="0.000115" ref="H20x1c44120"/>
+    </element>
+    <material name="Polystyrene0x1c57370" state="solid">
+      <property name="ABSLENGTH" ref="ABSLENGTH0x1c5ec70"/>
+      <property name="FASTCOMPONENT" ref="FASTCOMPONENT0x1c5f340"/>
+      <property name="RINDEX" ref="RINDEX0x1c5e6b0"/>
+      <property name="EFFICIENCY" ref="EFFICIENCY"/>
+      <property name="FASTTIMECONSTANT" ref="FASTTIMECONSTANT"/>
+      <property name="RESOLUTIONSCALE" ref="RESOLUTIONSCALE"/>
+      <property name="SCINTILLATIONYIELD" ref="SCINTILLATIONYIELD"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="65.9436601819466"/>
+      <D unit="g/cm3" value="1.05"/>
+      <fraction n="0.922577329294378" ref="C0x1c51f90"/>
+      <fraction n="0.0774226707056217" ref="H0x1c44470"/>
+    </material>
+    <isotope N="46" Z="22" name="Ti460x1c59a20">
+      <atom unit="g/mole" value="45.9526"/>
+    </isotope>
+    <isotope N="47" Z="22" name="Ti470x1c59940">
+      <atom unit="g/mole" value="46.9518"/>
+    </isotope>
+    <isotope N="48" Z="22" name="Ti480x1c59310">
+      <atom unit="g/mole" value="47.9479"/>
+    </isotope>
+    <isotope N="49" Z="22" name="Ti490x1c59dc0">
+      <atom unit="g/mole" value="48.9479"/>
+    </isotope>
+    <isotope N="50" Z="22" name="Ti500x1c59e30">
+      <atom unit="g/mole" value="49.9448"/>
+    </isotope>
+    <element name="Ti0x1c59b90">
+      <fraction n="0.0825" ref="Ti460x1c59a20"/>
+      <fraction n="0.0744" ref="Ti470x1c59940"/>
+      <fraction n="0.7372" ref="Ti480x1c59310"/>
+      <fraction n="0.0541" ref="Ti490x1c59dc0"/>
+      <fraction n="0.0518" ref="Ti500x1c59e30"/>
+    </element>
+    <isotope N="16" Z="8" name="O160x1c52670">
+      <atom unit="g/mole" value="15.9949"/>
+    </isotope>
+    <isotope N="17" Z="8" name="O170x1c526e0">
+      <atom unit="g/mole" value="16.9991"/>
+    </isotope>
+    <isotope N="18" Z="8" name="O180x1c52770">
+      <atom unit="g/mole" value="17.9992"/>
+    </isotope>
+    <element name="O0x1c52410">
+      <fraction n="0.99757" ref="O160x1c52670"/>
+      <fraction n="0.00038" ref="O170x1c526e0"/>
+      <fraction n="0.00205" ref="O180x1c52770"/>
+    </element>
+    <material name="Coating0x1c5a6e0" state="solid">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="74.3114650262266"/>
+      <D unit="g/cm3" value="1.52"/>
+      <fraction n="0.0899012435361639" ref="Ti0x1c59b90"/>
+      <fraction n="0.0600987564638361" ref="O0x1c52410"/>
+      <fraction n="0.784190729900222" ref="C0x1c51f90"/>
+      <fraction n="0.0658092700997785" ref="H0x1c44470"/>
+    </material>
+    <isotope N="1" Z="1" name="H10x1c52df0">
+      <atom unit="g/mole" value="1.00782503081372"/>
+    </isotope>
+    <isotope N="2" Z="1" name="H20x1c530e0">
+      <atom unit="g/mole" value="2.01410199966617"/>
+    </isotope>
+    <element name="Hydrogen0x1c52cf0">
+      <fraction n="0.999885" ref="H10x1c52df0"/>
+      <fraction n="0.000115" ref="H20x1c530e0"/>
+    </element>
+    <isotope N="16" Z="8" name="O160x1c53f00">
+      <atom unit="g/mole" value="15.9949"/>
+    </isotope>
+    <isotope N="17" Z="8" name="O170x1c527e0">
+      <atom unit="g/mole" value="16.9991"/>
+    </isotope>
+    <isotope N="18" Z="8" name="O180x1c54080">
+      <atom unit="g/mole" value="17.9992"/>
+    </isotope>
+    <element name="Oxygen0x1c53a70">
+      <fraction n="0.99757" ref="O160x1c53f00"/>
+      <fraction n="0.00038" ref="O170x1c527e0"/>
+      <fraction n="0.00205" ref="O180x1c54080"/>
+    </element>
+    <material name="Water0x1c54cf0" state="solid">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="78"/>
+      <D unit="g/cm3" value="1"/>
+      <fraction n="0.112097669256382" ref="Hydrogen0x1c52cf0"/>
+      <fraction n="0.887902330743618" ref="Oxygen0x1c53a70"/>
+    </material>
+  </materials>
+
+  <solids>
+    <box lunit="mm" name="FbrScin0x1c6a690" x="1.94999999925494" y="300" z="1.94999999925494"/>
+    <box lunit="mm" name="FbrCoat0x1c6a630" x="2" y="300" z="2"/>
+    <box lunit="mm" name="FiberLayerMother0x1c6b060" x="2000" y="2000" z="2"/>
+    <box lunit="mm" name="World0x1c5e440" x="6000" y="6000" z="6000"/>
+  </solids>
+
+  <structure>
+    <volume name="FbrScin0x1c6ea90">
+      <materialref ref="Polystyrene0x1c57370"/>
+      <solidref ref="FbrScin0x1c6a690"/>
+    </volume>
+    <volume name="FbrCoat0x1c6a750">
+      <materialref ref="Coating0x1c5a6e0"/>
+      <solidref ref="FbrCoat0x1c6a630"/>
+      <physvol name="FbrScin0x1c75fb0">
+        <volumeref ref="FbrScin0x1c6ea90"/>
+      </physvol>
+    </volume>
+    <volume name="FiberLayerMother0x1c6b100">
+      <materialref ref="Water0x1c54cf0"/>
+      <solidref ref="FiberLayerMother0x1c6b060"/>
+      <physvol name="FbrCoat0x1c6b3b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6b3b0_pos" unit="mm" x="-150" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6eb70">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6eb70_pos" unit="mm" x="-148" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6ebd0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6ebd0_pos" unit="mm" x="-146" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6ed20">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6ed20_pos" unit="mm" x="-144" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6ed90">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6ed90_pos" unit="mm" x="-142" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6ec70">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6ec70_pos" unit="mm" x="-140" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6ef70">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6ef70_pos" unit="mm" x="-138" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6efe0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6efe0_pos" unit="mm" x="-136" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6f050">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6f050_pos" unit="mm" x="-134" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6f090">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6f090_pos" unit="mm" x="-132" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6ee50">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6ee50_pos" unit="mm" x="-130" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6eec0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6eec0_pos" unit="mm" x="-128" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6ef30">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6ef30_pos" unit="mm" x="-126" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c733d0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c733d0_pos" unit="mm" x="-124" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73440">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73440_pos" unit="mm" x="-122" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c734b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c734b0_pos" unit="mm" x="-120" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73520">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73520_pos" unit="mm" x="-118" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c6a800">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c6a800_pos" unit="mm" x="-116" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73140">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73140_pos" unit="mm" x="-114" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c731b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c731b0_pos" unit="mm" x="-112" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73220">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73220_pos" unit="mm" x="-110" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73290">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73290_pos" unit="mm" x="-108" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73300">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73300_pos" unit="mm" x="-106" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73b80">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73b80_pos" unit="mm" x="-104" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73bc0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73bc0_pos" unit="mm" x="-102" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73c30">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73c30_pos" unit="mm" x="-100" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73ca0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73ca0_pos" unit="mm" x="-98" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73d10">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73d10_pos" unit="mm" x="-96" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73d80">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73d80_pos" unit="mm" x="-94" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73df0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73df0_pos" unit="mm" x="-92" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73e60">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73e60_pos" unit="mm" x="-90" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73ed0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73ed0_pos" unit="mm" x="-88" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73f40">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73f40_pos" unit="mm" x="-86" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c730b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c730b0_pos" unit="mm" x="-84" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c736a0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c736a0_pos" unit="mm" x="-82" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73710">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73710_pos" unit="mm" x="-80" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73780">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73780_pos" unit="mm" x="-78" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c737f0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c737f0_pos" unit="mm" x="-76" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73860">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73860_pos" unit="mm" x="-74" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c738d0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c738d0_pos" unit="mm" x="-72" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73940">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73940_pos" unit="mm" x="-70" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c739b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c739b0_pos" unit="mm" x="-68" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73a20">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73a20_pos" unit="mm" x="-66" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73a90">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73a90_pos" unit="mm" x="-64" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73b00">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73b00_pos" unit="mm" x="-62" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74ba0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74ba0_pos" unit="mm" x="-60" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74c10">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74c10_pos" unit="mm" x="-58" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74c80">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74c80_pos" unit="mm" x="-56" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74cf0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74cf0_pos" unit="mm" x="-54" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74d60">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74d60_pos" unit="mm" x="-52" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74dd0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74dd0_pos" unit="mm" x="-50" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74e40">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74e40_pos" unit="mm" x="-48" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74eb0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74eb0_pos" unit="mm" x="-46" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74f20">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74f20_pos" unit="mm" x="-44" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74f90">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74f90_pos" unit="mm" x="-42" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75000">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75000_pos" unit="mm" x="-40" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75070">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75070_pos" unit="mm" x="-38" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c750e0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c750e0_pos" unit="mm" x="-36" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75150">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75150_pos" unit="mm" x="-34" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c751c0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c751c0_pos" unit="mm" x="-32" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75230">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75230_pos" unit="mm" x="-30" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c752a0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c752a0_pos" unit="mm" x="-28" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75310">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75310_pos" unit="mm" x="-26" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75380">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75380_pos" unit="mm" x="-24" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c753f0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c753f0_pos" unit="mm" x="-22" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73590">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73590_pos" unit="mm" x="-20" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73600">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73600_pos" unit="mm" x="-18" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74190">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74190_pos" unit="mm" x="-16" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74200">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74200_pos" unit="mm" x="-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74270">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74270_pos" unit="mm" x="-12" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c742e0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c742e0_pos" unit="mm" x="-10" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74350">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74350_pos" unit="mm" x="-8" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c743c0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c743c0_pos" unit="mm" x="-6" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74430">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74430_pos" unit="mm" x="-4" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c744a0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c744a0_pos" unit="mm" x="-2" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74510">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74580">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74580_pos" unit="mm" x="2" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c745f0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c745f0_pos" unit="mm" x="4" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74660">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74660_pos" unit="mm" x="6" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c746d0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c746d0_pos" unit="mm" x="8" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74740">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74740_pos" unit="mm" x="10" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c747b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c747b0_pos" unit="mm" x="12" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74820">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74820_pos" unit="mm" x="14" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74890">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74890_pos" unit="mm" x="16" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74900">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74900_pos" unit="mm" x="18" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74970">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74970_pos" unit="mm" x="20" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c749e0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c749e0_pos" unit="mm" x="22" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74a50">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74a50_pos" unit="mm" x="24" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74ac0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74ac0_pos" unit="mm" x="26" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74b30">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74b30_pos" unit="mm" x="28" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76c50">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76c50_pos" unit="mm" x="30" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76cc0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76cc0_pos" unit="mm" x="32" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76d30">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76d30_pos" unit="mm" x="34" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76da0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76da0_pos" unit="mm" x="36" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76e10">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76e10_pos" unit="mm" x="38" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76e80">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76e80_pos" unit="mm" x="40" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76ef0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76ef0_pos" unit="mm" x="42" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76f60">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76f60_pos" unit="mm" x="44" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c76fd0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c76fd0_pos" unit="mm" x="46" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77040">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77040_pos" unit="mm" x="48" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c770b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c770b0_pos" unit="mm" x="50" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77120">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77120_pos" unit="mm" x="52" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77190">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77190_pos" unit="mm" x="54" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77200">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77200_pos" unit="mm" x="56" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77270">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77270_pos" unit="mm" x="58" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c772e0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c772e0_pos" unit="mm" x="60" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77350">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77350_pos" unit="mm" x="62" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c773c0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c773c0_pos" unit="mm" x="64" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77430">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77430_pos" unit="mm" x="66" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c774a0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c774a0_pos" unit="mm" x="68" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77510">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77510_pos" unit="mm" x="70" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77580">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77580_pos" unit="mm" x="72" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c775f0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c775f0_pos" unit="mm" x="74" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77660">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77660_pos" unit="mm" x="76" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c776d0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c776d0_pos" unit="mm" x="78" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77740">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77740_pos" unit="mm" x="80" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c777b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c777b0_pos" unit="mm" x="82" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77820">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77820_pos" unit="mm" x="84" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77890">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77890_pos" unit="mm" x="86" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77900">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77900_pos" unit="mm" x="88" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77970">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77970_pos" unit="mm" x="90" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c779e0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c779e0_pos" unit="mm" x="92" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77a50">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77a50_pos" unit="mm" x="94" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77ac0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77ac0_pos" unit="mm" x="96" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77b30">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77b30_pos" unit="mm" x="98" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77ba0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77ba0_pos" unit="mm" x="100" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77c10">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77c10_pos" unit="mm" x="102" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77c80">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77c80_pos" unit="mm" x="104" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c77cf0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c77cf0_pos" unit="mm" x="106" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c73fb0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c73fb0_pos" unit="mm" x="108" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74020">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74020_pos" unit="mm" x="110" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74090">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74090_pos" unit="mm" x="112" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c74100">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c74100_pos" unit="mm" x="114" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75840">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75840_pos" unit="mm" x="116" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c758b0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c758b0_pos" unit="mm" x="118" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75920">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75920_pos" unit="mm" x="120" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75990">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75990_pos" unit="mm" x="122" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75a00">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75a00_pos" unit="mm" x="124" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75a70">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75a70_pos" unit="mm" x="126" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75ae0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75ae0_pos" unit="mm" x="128" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75b50">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75b50_pos" unit="mm" x="130" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75bc0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75bc0_pos" unit="mm" x="132" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75c30">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75c30_pos" unit="mm" x="134" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75ca0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75ca0_pos" unit="mm" x="136" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75d10">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75d10_pos" unit="mm" x="138" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75d80">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75d80_pos" unit="mm" x="140" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75df0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75df0_pos" unit="mm" x="142" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75e60">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75e60_pos" unit="mm" x="144" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75ed0">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75ed0_pos" unit="mm" x="146" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x1c75f40">
+        <volumeref ref="FbrCoat0x1c6a750"/>
+        <position name="FbrCoat0x1c75f40_pos" unit="mm" x="148" y="0" z="0"/>
+      </physvol>
+    </volume>
+    <volume name="World0x1c5a0e0">
+      <materialref ref="Water0x1c54cf0"/>
+      <solidref ref="World0x1c5e440"/>
+      <physvol name="FiberLayerMother.00x1c6b430">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+      </physvol>
+      <physvol name="FiberLayerMother.10x1c6b4b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.10x1c6b4b0_pos" unit="mm" x="0" y="0" z="2"/>
+        <rotation name="FiberLayerMother.10x1c6b4b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.20x1c6b550">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.20x1c6b550_pos" unit="mm" x="0" y="0" z="4"/>
+      </physvol>
+      <physvol name="FiberLayerMother.30x1c6b600">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.30x1c6b600_pos" unit="mm" x="0" y="0" z="6"/>
+        <rotation name="FiberLayerMother.30x1c6b600_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.40x1c6b680">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.40x1c6b680_pos" unit="mm" x="0" y="0" z="8"/>
+      </physvol>
+      <physvol name="FiberLayerMother.50x1c6b750">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.50x1c6b750_pos" unit="mm" x="0" y="0" z="10"/>
+        <rotation name="FiberLayerMother.50x1c6b750_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.60x1c6b7d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.60x1c6b7d0_pos" unit="mm" x="0" y="0" z="12"/>
+      </physvol>
+      <physvol name="FiberLayerMother.70x1c6b850">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.70x1c6b850_pos" unit="mm" x="0" y="0" z="14"/>
+        <rotation name="FiberLayerMother.70x1c6b850_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.80x1c6b8d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.80x1c6b8d0_pos" unit="mm" x="0" y="0" z="16"/>
+      </physvol>
+      <physvol name="FiberLayerMother.90x1c6b9e0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.90x1c6b9e0_pos" unit="mm" x="0" y="0" z="18"/>
+        <rotation name="FiberLayerMother.90x1c6b9e0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.100x1c6ba60">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.100x1c6ba60_pos" unit="mm" x="0" y="0" z="20"/>
+      </physvol>
+      <physvol name="FiberLayerMother.110x1c6bae0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.110x1c6bae0_pos" unit="mm" x="0" y="0" z="22"/>
+        <rotation name="FiberLayerMother.110x1c6bae0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.120x1c6bb60">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.120x1c6bb60_pos" unit="mm" x="0" y="0" z="24"/>
+      </physvol>
+      <physvol name="FiberLayerMother.130x1c6bbe0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.130x1c6bbe0_pos" unit="mm" x="0" y="0" z="26"/>
+        <rotation name="FiberLayerMother.130x1c6bbe0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.140x1c6bc60">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.140x1c6bc60_pos" unit="mm" x="0" y="0" z="28"/>
+      </physvol>
+      <physvol name="FiberLayerMother.150x1c6bce0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.150x1c6bce0_pos" unit="mm" x="0" y="0" z="30"/>
+        <rotation name="FiberLayerMother.150x1c6bce0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.160x1c6bd60">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.160x1c6bd60_pos" unit="mm" x="0" y="0" z="32"/>
+      </physvol>
+      <physvol name="FiberLayerMother.170x1c6b950">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.170x1c6b950_pos" unit="mm" x="0" y="0" z="34"/>
+        <rotation name="FiberLayerMother.170x1c6b950_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.180x1c6bef0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.180x1c6bef0_pos" unit="mm" x="0" y="0" z="36"/>
+      </physvol>
+      <physvol name="FiberLayerMother.190x1c6bf70">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.190x1c6bf70_pos" unit="mm" x="0" y="0" z="38"/>
+        <rotation name="FiberLayerMother.190x1c6bf70_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.200x1c6bff0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.200x1c6bff0_pos" unit="mm" x="0" y="0" z="40"/>
+      </physvol>
+      <physvol name="FiberLayerMother.210x1c6c070">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.210x1c6c070_pos" unit="mm" x="0" y="0" z="42"/>
+        <rotation name="FiberLayerMother.210x1c6c070_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.220x1c6c0f0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.220x1c6c0f0_pos" unit="mm" x="0" y="0" z="44"/>
+      </physvol>
+      <physvol name="FiberLayerMother.230x1c6c170">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.230x1c6c170_pos" unit="mm" x="0" y="0" z="46"/>
+        <rotation name="FiberLayerMother.230x1c6c170_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.240x1c6c1f0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.240x1c6c1f0_pos" unit="mm" x="0" y="0" z="48"/>
+      </physvol>
+      <physvol name="FiberLayerMother.250x1c6c270">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.250x1c6c270_pos" unit="mm" x="0" y="0" z="50"/>
+        <rotation name="FiberLayerMother.250x1c6c270_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.260x1c6c2f0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.260x1c6c2f0_pos" unit="mm" x="0" y="0" z="52"/>
+      </physvol>
+      <physvol name="FiberLayerMother.270x1c6c370">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.270x1c6c370_pos" unit="mm" x="0" y="0" z="54"/>
+        <rotation name="FiberLayerMother.270x1c6c370_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.280x1c6c3f0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.280x1c6c3f0_pos" unit="mm" x="0" y="0" z="56"/>
+      </physvol>
+      <physvol name="FiberLayerMother.290x1c6c470">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.290x1c6c470_pos" unit="mm" x="0" y="0" z="58"/>
+        <rotation name="FiberLayerMother.290x1c6c470_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.300x1c6c4f0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.300x1c6c4f0_pos" unit="mm" x="0" y="0" z="60"/>
+      </physvol>
+      <physvol name="FiberLayerMother.310x1c6c570">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.310x1c6c570_pos" unit="mm" x="0" y="0" z="62"/>
+        <rotation name="FiberLayerMother.310x1c6c570_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.320x1c6c5f0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.320x1c6c5f0_pos" unit="mm" x="0" y="0" z="64"/>
+      </physvol>
+      <physvol name="FiberLayerMother.330x1c6bde0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.330x1c6bde0_pos" unit="mm" x="0" y="0" z="66"/>
+        <rotation name="FiberLayerMother.330x1c6bde0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.340x1c6be60">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.340x1c6be60_pos" unit="mm" x="0" y="0" z="68"/>
+      </physvol>
+      <physvol name="FiberLayerMother.350x1c6c880">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.350x1c6c880_pos" unit="mm" x="0" y="0" z="70"/>
+        <rotation name="FiberLayerMother.350x1c6c880_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.360x1c6c900">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.360x1c6c900_pos" unit="mm" x="0" y="0" z="72"/>
+      </physvol>
+      <physvol name="FiberLayerMother.370x1c6c980">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.370x1c6c980_pos" unit="mm" x="0" y="0" z="74"/>
+        <rotation name="FiberLayerMother.370x1c6c980_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.380x1c6ca00">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.380x1c6ca00_pos" unit="mm" x="0" y="0" z="76"/>
+      </physvol>
+      <physvol name="FiberLayerMother.390x1c6ca80">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.390x1c6ca80_pos" unit="mm" x="0" y="0" z="78"/>
+        <rotation name="FiberLayerMother.390x1c6ca80_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.400x1c6cb00">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.400x1c6cb00_pos" unit="mm" x="0" y="0" z="80"/>
+      </physvol>
+      <physvol name="FiberLayerMother.410x1c6cb80">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.410x1c6cb80_pos" unit="mm" x="0" y="0" z="82"/>
+        <rotation name="FiberLayerMother.410x1c6cb80_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.420x1c6cc00">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.420x1c6cc00_pos" unit="mm" x="0" y="0" z="84"/>
+      </physvol>
+      <physvol name="FiberLayerMother.430x1c6cc80">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.430x1c6cc80_pos" unit="mm" x="0" y="0" z="86"/>
+        <rotation name="FiberLayerMother.430x1c6cc80_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.440x1c6cd00">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.440x1c6cd00_pos" unit="mm" x="0" y="0" z="88"/>
+      </physvol>
+      <physvol name="FiberLayerMother.450x1c6cd80">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.450x1c6cd80_pos" unit="mm" x="0" y="0" z="90"/>
+        <rotation name="FiberLayerMother.450x1c6cd80_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.460x1c6ce00">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.460x1c6ce00_pos" unit="mm" x="0" y="0" z="92"/>
+      </physvol>
+      <physvol name="FiberLayerMother.470x1c6ce80">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.470x1c6ce80_pos" unit="mm" x="0" y="0" z="94"/>
+        <rotation name="FiberLayerMother.470x1c6ce80_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.480x1c6cf00">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.480x1c6cf00_pos" unit="mm" x="0" y="0" z="96"/>
+      </physvol>
+      <physvol name="FiberLayerMother.490x1c6cf80">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.490x1c6cf80_pos" unit="mm" x="0" y="0" z="98"/>
+        <rotation name="FiberLayerMother.490x1c6cf80_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.500x1c6d000">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.500x1c6d000_pos" unit="mm" x="0" y="0" z="100"/>
+      </physvol>
+      <physvol name="FiberLayerMother.510x1c6d080">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.510x1c6d080_pos" unit="mm" x="0" y="0" z="102"/>
+        <rotation name="FiberLayerMother.510x1c6d080_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.520x1c6d100">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.520x1c6d100_pos" unit="mm" x="0" y="0" z="104"/>
+      </physvol>
+      <physvol name="FiberLayerMother.530x1c6d180">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.530x1c6d180_pos" unit="mm" x="0" y="0" z="106"/>
+        <rotation name="FiberLayerMother.530x1c6d180_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.540x1c6d200">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.540x1c6d200_pos" unit="mm" x="0" y="0" z="108"/>
+      </physvol>
+      <physvol name="FiberLayerMother.550x1c6d280">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.550x1c6d280_pos" unit="mm" x="0" y="0" z="110"/>
+        <rotation name="FiberLayerMother.550x1c6d280_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.560x1c6d300">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.560x1c6d300_pos" unit="mm" x="0" y="0" z="112"/>
+      </physvol>
+      <physvol name="FiberLayerMother.570x1c6d380">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.570x1c6d380_pos" unit="mm" x="0" y="0" z="114"/>
+        <rotation name="FiberLayerMother.570x1c6d380_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.580x1c6d400">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.580x1c6d400_pos" unit="mm" x="0" y="0" z="116"/>
+      </physvol>
+      <physvol name="FiberLayerMother.590x1c6d480">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.590x1c6d480_pos" unit="mm" x="0" y="0" z="118"/>
+        <rotation name="FiberLayerMother.590x1c6d480_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.600x1c6d500">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.600x1c6d500_pos" unit="mm" x="0" y="0" z="120"/>
+      </physvol>
+      <physvol name="FiberLayerMother.610x1c6d580">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.610x1c6d580_pos" unit="mm" x="0" y="0" z="122"/>
+        <rotation name="FiberLayerMother.610x1c6d580_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.620x1c6d600">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.620x1c6d600_pos" unit="mm" x="0" y="0" z="124"/>
+      </physvol>
+      <physvol name="FiberLayerMother.630x1c6d680">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.630x1c6d680_pos" unit="mm" x="0" y="0" z="126"/>
+        <rotation name="FiberLayerMother.630x1c6d680_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.640x1c6d700">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.640x1c6d700_pos" unit="mm" x="0" y="0" z="128"/>
+      </physvol>
+      <physvol name="FiberLayerMother.650x1c6c630">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.650x1c6c630_pos" unit="mm" x="0" y="0" z="130"/>
+        <rotation name="FiberLayerMother.650x1c6c630_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.660x1c6c6b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.660x1c6c6b0_pos" unit="mm" x="0" y="0" z="132"/>
+      </physvol>
+      <physvol name="FiberLayerMother.670x1c6c730">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.670x1c6c730_pos" unit="mm" x="0" y="0" z="134"/>
+        <rotation name="FiberLayerMother.670x1c6c730_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.680x1c6c7b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.680x1c6c7b0_pos" unit="mm" x="0" y="0" z="136"/>
+      </physvol>
+      <physvol name="FiberLayerMother.690x1c6db50">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.690x1c6db50_pos" unit="mm" x="0" y="0" z="138"/>
+        <rotation name="FiberLayerMother.690x1c6db50_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.700x1c6dbd0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.700x1c6dbd0_pos" unit="mm" x="0" y="0" z="140"/>
+      </physvol>
+      <physvol name="FiberLayerMother.710x1c6dc50">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.710x1c6dc50_pos" unit="mm" x="0" y="0" z="142"/>
+        <rotation name="FiberLayerMother.710x1c6dc50_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.720x1c6dcd0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.720x1c6dcd0_pos" unit="mm" x="0" y="0" z="144"/>
+      </physvol>
+      <physvol name="FiberLayerMother.730x1c6dd50">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.730x1c6dd50_pos" unit="mm" x="0" y="0" z="146"/>
+        <rotation name="FiberLayerMother.730x1c6dd50_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.740x1c6ddd0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.740x1c6ddd0_pos" unit="mm" x="0" y="0" z="148"/>
+      </physvol>
+      <physvol name="FiberLayerMother.750x1c6de50">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.750x1c6de50_pos" unit="mm" x="0" y="0" z="150"/>
+        <rotation name="FiberLayerMother.750x1c6de50_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.760x1c6ded0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.760x1c6ded0_pos" unit="mm" x="0" y="0" z="152"/>
+      </physvol>
+      <physvol name="FiberLayerMother.770x1c6df50">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.770x1c6df50_pos" unit="mm" x="0" y="0" z="154"/>
+        <rotation name="FiberLayerMother.770x1c6df50_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.780x1c6dfd0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.780x1c6dfd0_pos" unit="mm" x="0" y="0" z="156"/>
+      </physvol>
+      <physvol name="FiberLayerMother.790x1c6e050">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.790x1c6e050_pos" unit="mm" x="0" y="0" z="158"/>
+        <rotation name="FiberLayerMother.790x1c6e050_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.800x1c6e0d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.800x1c6e0d0_pos" unit="mm" x="0" y="0" z="160"/>
+      </physvol>
+      <physvol name="FiberLayerMother.810x1c6e150">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.810x1c6e150_pos" unit="mm" x="0" y="0" z="162"/>
+        <rotation name="FiberLayerMother.810x1c6e150_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.820x1c6e1d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.820x1c6e1d0_pos" unit="mm" x="0" y="0" z="164"/>
+      </physvol>
+      <physvol name="FiberLayerMother.830x1c6e250">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.830x1c6e250_pos" unit="mm" x="0" y="0" z="166"/>
+        <rotation name="FiberLayerMother.830x1c6e250_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.840x1c6e2d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.840x1c6e2d0_pos" unit="mm" x="0" y="0" z="168"/>
+      </physvol>
+      <physvol name="FiberLayerMother.850x1c6e350">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.850x1c6e350_pos" unit="mm" x="0" y="0" z="170"/>
+        <rotation name="FiberLayerMother.850x1c6e350_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.860x1c6e3d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.860x1c6e3d0_pos" unit="mm" x="0" y="0" z="172"/>
+      </physvol>
+      <physvol name="FiberLayerMother.870x1c6e450">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.870x1c6e450_pos" unit="mm" x="0" y="0" z="174"/>
+        <rotation name="FiberLayerMother.870x1c6e450_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.880x1c6e4d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.880x1c6e4d0_pos" unit="mm" x="0" y="0" z="176"/>
+      </physvol>
+      <physvol name="FiberLayerMother.890x1c6e550">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.890x1c6e550_pos" unit="mm" x="0" y="0" z="178"/>
+        <rotation name="FiberLayerMother.890x1c6e550_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.900x1c6e5d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.900x1c6e5d0_pos" unit="mm" x="0" y="0" z="180"/>
+      </physvol>
+      <physvol name="FiberLayerMother.910x1c6e650">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.910x1c6e650_pos" unit="mm" x="0" y="0" z="182"/>
+        <rotation name="FiberLayerMother.910x1c6e650_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.920x1c6e6d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.920x1c6e6d0_pos" unit="mm" x="0" y="0" z="184"/>
+      </physvol>
+      <physvol name="FiberLayerMother.930x1c6e750">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.930x1c6e750_pos" unit="mm" x="0" y="0" z="186"/>
+        <rotation name="FiberLayerMother.930x1c6e750_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.940x1c6e7d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.940x1c6e7d0_pos" unit="mm" x="0" y="0" z="188"/>
+      </physvol>
+      <physvol name="FiberLayerMother.950x1c6e850">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.950x1c6e850_pos" unit="mm" x="0" y="0" z="190"/>
+        <rotation name="FiberLayerMother.950x1c6e850_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.960x1c6e8d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.960x1c6e8d0_pos" unit="mm" x="0" y="0" z="192"/>
+      </physvol>
+      <physvol name="FiberLayerMother.970x1c6e950">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.970x1c6e950_pos" unit="mm" x="0" y="0" z="194"/>
+        <rotation name="FiberLayerMother.970x1c6e950_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.980x1c6e9d0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.980x1c6e9d0_pos" unit="mm" x="0" y="0" z="196"/>
+      </physvol>
+      <physvol name="FiberLayerMother.990x1c6ea50">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.990x1c6ea50_pos" unit="mm" x="0" y="0" z="198"/>
+        <rotation name="FiberLayerMother.990x1c6ea50_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1000x1c6a570">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1000x1c6a570_pos" unit="mm" x="0" y="0" z="200"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1010x1c6a5f0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1010x1c6a5f0_pos" unit="mm" x="0" y="0" z="202"/>
+        <rotation name="FiberLayerMother.1010x1c6a5f0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1020x1c6b1c0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1020x1c6b1c0_pos" unit="mm" x="0" y="0" z="204"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1030x1c6b240">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1030x1c6b240_pos" unit="mm" x="0" y="0" z="206"/>
+        <rotation name="FiberLayerMother.1030x1c6b240_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1040x1c6b2c0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1040x1c6b2c0_pos" unit="mm" x="0" y="0" z="208"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1050x1c6b340">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1050x1c6b340_pos" unit="mm" x="0" y="0" z="210"/>
+        <rotation name="FiberLayerMother.1050x1c6b340_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1060x1c6f120">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1060x1c6f120_pos" unit="mm" x="0" y="0" z="212"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1070x1c6f1a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1070x1c6f1a0_pos" unit="mm" x="0" y="0" z="214"/>
+        <rotation name="FiberLayerMother.1070x1c6f1a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1080x1c6f220">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1080x1c6f220_pos" unit="mm" x="0" y="0" z="216"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1090x1c6f2a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1090x1c6f2a0_pos" unit="mm" x="0" y="0" z="218"/>
+        <rotation name="FiberLayerMother.1090x1c6f2a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1100x1c6f320">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1100x1c6f320_pos" unit="mm" x="0" y="0" z="220"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1110x1c6f3a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1110x1c6f3a0_pos" unit="mm" x="0" y="0" z="222"/>
+        <rotation name="FiberLayerMother.1110x1c6f3a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1120x1c6f420">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1120x1c6f420_pos" unit="mm" x="0" y="0" z="224"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1130x1c6f4a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1130x1c6f4a0_pos" unit="mm" x="0" y="0" z="226"/>
+        <rotation name="FiberLayerMother.1130x1c6f4a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1140x1c6f520">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1140x1c6f520_pos" unit="mm" x="0" y="0" z="228"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1150x1c6f5a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1150x1c6f5a0_pos" unit="mm" x="0" y="0" z="230"/>
+        <rotation name="FiberLayerMother.1150x1c6f5a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1160x1c6f620">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1160x1c6f620_pos" unit="mm" x="0" y="0" z="232"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1170x1c6f6a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1170x1c6f6a0_pos" unit="mm" x="0" y="0" z="234"/>
+        <rotation name="FiberLayerMother.1170x1c6f6a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1180x1c6f720">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1180x1c6f720_pos" unit="mm" x="0" y="0" z="236"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1190x1c6f7a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1190x1c6f7a0_pos" unit="mm" x="0" y="0" z="238"/>
+        <rotation name="FiberLayerMother.1190x1c6f7a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1200x1c6f820">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1200x1c6f820_pos" unit="mm" x="0" y="0" z="240"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1210x1c6f8a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1210x1c6f8a0_pos" unit="mm" x="0" y="0" z="242"/>
+        <rotation name="FiberLayerMother.1210x1c6f8a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1220x1c6f920">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1220x1c6f920_pos" unit="mm" x="0" y="0" z="244"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1230x1c6f9a0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1230x1c6f9a0_pos" unit="mm" x="0" y="0" z="246"/>
+        <rotation name="FiberLayerMother.1230x1c6f9a0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1240x1c6fa20">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1240x1c6fa20_pos" unit="mm" x="0" y="0" z="248"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1250x1c6faa0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1250x1c6faa0_pos" unit="mm" x="0" y="0" z="250"/>
+        <rotation name="FiberLayerMother.1250x1c6faa0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1260x1c6fb20">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1260x1c6fb20_pos" unit="mm" x="0" y="0" z="252"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1270x1c6fba0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1270x1c6fba0_pos" unit="mm" x="0" y="0" z="254"/>
+        <rotation name="FiberLayerMother.1270x1c6fba0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1280x1c6fc20">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1280x1c6fc20_pos" unit="mm" x="0" y="0" z="256"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1290x1c6d780">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1290x1c6d780_pos" unit="mm" x="0" y="0" z="258"/>
+        <rotation name="FiberLayerMother.1290x1c6d780_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1300x1c6d800">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1300x1c6d800_pos" unit="mm" x="0" y="0" z="260"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1310x1c6d880">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1310x1c6d880_pos" unit="mm" x="0" y="0" z="262"/>
+        <rotation name="FiberLayerMother.1310x1c6d880_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1320x1c6d900">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1320x1c6d900_pos" unit="mm" x="0" y="0" z="264"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1330x1c6d980">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1330x1c6d980_pos" unit="mm" x="0" y="0" z="266"/>
+        <rotation name="FiberLayerMother.1330x1c6d980_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1340x1c6da00">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1340x1c6da00_pos" unit="mm" x="0" y="0" z="268"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1350x1c6da80">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1350x1c6da80_pos" unit="mm" x="0" y="0" z="270"/>
+        <rotation name="FiberLayerMother.1350x1c6da80_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1360x1c6db00">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1360x1c6db00_pos" unit="mm" x="0" y="0" z="272"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1370x1c704b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1370x1c704b0_pos" unit="mm" x="0" y="0" z="274"/>
+        <rotation name="FiberLayerMother.1370x1c704b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1380x1c70530">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1380x1c70530_pos" unit="mm" x="0" y="0" z="276"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1390x1c705b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1390x1c705b0_pos" unit="mm" x="0" y="0" z="278"/>
+        <rotation name="FiberLayerMother.1390x1c705b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1400x1c70630">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1400x1c70630_pos" unit="mm" x="0" y="0" z="280"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1410x1c706b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1410x1c706b0_pos" unit="mm" x="0" y="0" z="282"/>
+        <rotation name="FiberLayerMother.1410x1c706b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1420x1c70730">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1420x1c70730_pos" unit="mm" x="0" y="0" z="284"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1430x1c707b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1430x1c707b0_pos" unit="mm" x="0" y="0" z="286"/>
+        <rotation name="FiberLayerMother.1430x1c707b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1440x1c70830">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1440x1c70830_pos" unit="mm" x="0" y="0" z="288"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1450x1c708b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1450x1c708b0_pos" unit="mm" x="0" y="0" z="290"/>
+        <rotation name="FiberLayerMother.1450x1c708b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1460x1c70930">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1460x1c70930_pos" unit="mm" x="0" y="0" z="292"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1470x1c709b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1470x1c709b0_pos" unit="mm" x="0" y="0" z="294"/>
+        <rotation name="FiberLayerMother.1470x1c709b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1480x1c70a30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1480x1c70a30_pos" unit="mm" x="0" y="0" z="296"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1490x1c70ab0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1490x1c70ab0_pos" unit="mm" x="0" y="0" z="298"/>
+        <rotation name="FiberLayerMother.1490x1c70ab0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1500x1c70b30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1500x1c70b30_pos" unit="mm" x="0" y="0" z="300"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1510x1c70bb0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1510x1c70bb0_pos" unit="mm" x="0" y="0" z="302"/>
+        <rotation name="FiberLayerMother.1510x1c70bb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1520x1c70c30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1520x1c70c30_pos" unit="mm" x="0" y="0" z="304"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1530x1c70cb0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1530x1c70cb0_pos" unit="mm" x="0" y="0" z="306"/>
+        <rotation name="FiberLayerMother.1530x1c70cb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1540x1c70d30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1540x1c70d30_pos" unit="mm" x="0" y="0" z="308"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1550x1c70db0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1550x1c70db0_pos" unit="mm" x="0" y="0" z="310"/>
+        <rotation name="FiberLayerMother.1550x1c70db0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1560x1c70e30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1560x1c70e30_pos" unit="mm" x="0" y="0" z="312"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1570x1c70eb0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1570x1c70eb0_pos" unit="mm" x="0" y="0" z="314"/>
+        <rotation name="FiberLayerMother.1570x1c70eb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1580x1c70f30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1580x1c70f30_pos" unit="mm" x="0" y="0" z="316"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1590x1c70fb0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1590x1c70fb0_pos" unit="mm" x="0" y="0" z="318"/>
+        <rotation name="FiberLayerMother.1590x1c70fb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1600x1c71030">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1600x1c71030_pos" unit="mm" x="0" y="0" z="320"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1610x1c710b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1610x1c710b0_pos" unit="mm" x="0" y="0" z="322"/>
+        <rotation name="FiberLayerMother.1610x1c710b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1620x1c71130">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1620x1c71130_pos" unit="mm" x="0" y="0" z="324"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1630x1c711b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1630x1c711b0_pos" unit="mm" x="0" y="0" z="326"/>
+        <rotation name="FiberLayerMother.1630x1c711b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1640x1c71230">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1640x1c71230_pos" unit="mm" x="0" y="0" z="328"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1650x1c712b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1650x1c712b0_pos" unit="mm" x="0" y="0" z="330"/>
+        <rotation name="FiberLayerMother.1650x1c712b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1660x1c71330">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1660x1c71330_pos" unit="mm" x="0" y="0" z="332"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1670x1c713b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1670x1c713b0_pos" unit="mm" x="0" y="0" z="334"/>
+        <rotation name="FiberLayerMother.1670x1c713b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1680x1c71430">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1680x1c71430_pos" unit="mm" x="0" y="0" z="336"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1690x1c714b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1690x1c714b0_pos" unit="mm" x="0" y="0" z="338"/>
+        <rotation name="FiberLayerMother.1690x1c714b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1700x1c71530">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1700x1c71530_pos" unit="mm" x="0" y="0" z="340"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1710x1c715b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1710x1c715b0_pos" unit="mm" x="0" y="0" z="342"/>
+        <rotation name="FiberLayerMother.1710x1c715b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1720x1c71630">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1720x1c71630_pos" unit="mm" x="0" y="0" z="344"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1730x1c716b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1730x1c716b0_pos" unit="mm" x="0" y="0" z="346"/>
+        <rotation name="FiberLayerMother.1730x1c716b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1740x1c71730">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1740x1c71730_pos" unit="mm" x="0" y="0" z="348"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1750x1c717b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1750x1c717b0_pos" unit="mm" x="0" y="0" z="350"/>
+        <rotation name="FiberLayerMother.1750x1c717b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1760x1c71830">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1760x1c71830_pos" unit="mm" x="0" y="0" z="352"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1770x1c718b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1770x1c718b0_pos" unit="mm" x="0" y="0" z="354"/>
+        <rotation name="FiberLayerMother.1770x1c718b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1780x1c71930">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1780x1c71930_pos" unit="mm" x="0" y="0" z="356"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1790x1c719b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1790x1c719b0_pos" unit="mm" x="0" y="0" z="358"/>
+        <rotation name="FiberLayerMother.1790x1c719b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1800x1c71a30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1800x1c71a30_pos" unit="mm" x="0" y="0" z="360"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1810x1c71ab0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1810x1c71ab0_pos" unit="mm" x="0" y="0" z="362"/>
+        <rotation name="FiberLayerMother.1810x1c71ab0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1820x1c71b30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1820x1c71b30_pos" unit="mm" x="0" y="0" z="364"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1830x1c71bb0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1830x1c71bb0_pos" unit="mm" x="0" y="0" z="366"/>
+        <rotation name="FiberLayerMother.1830x1c71bb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1840x1c71c30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1840x1c71c30_pos" unit="mm" x="0" y="0" z="368"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1850x1c71cb0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1850x1c71cb0_pos" unit="mm" x="0" y="0" z="370"/>
+        <rotation name="FiberLayerMother.1850x1c71cb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1860x1c71d30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1860x1c71d30_pos" unit="mm" x="0" y="0" z="372"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1870x1c71db0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1870x1c71db0_pos" unit="mm" x="0" y="0" z="374"/>
+        <rotation name="FiberLayerMother.1870x1c71db0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1880x1c71e30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1880x1c71e30_pos" unit="mm" x="0" y="0" z="376"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1890x1c71eb0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1890x1c71eb0_pos" unit="mm" x="0" y="0" z="378"/>
+        <rotation name="FiberLayerMother.1890x1c71eb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1900x1c71f30">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1900x1c71f30_pos" unit="mm" x="0" y="0" z="380"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1910x1c71fb0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1910x1c71fb0_pos" unit="mm" x="0" y="0" z="382"/>
+        <rotation name="FiberLayerMother.1910x1c71fb0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1920x1c72030">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1920x1c72030_pos" unit="mm" x="0" y="0" z="384"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1930x1c720b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1930x1c720b0_pos" unit="mm" x="0" y="0" z="386"/>
+        <rotation name="FiberLayerMother.1930x1c720b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1940x1c72130">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1940x1c72130_pos" unit="mm" x="0" y="0" z="388"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1950x1c721b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1950x1c721b0_pos" unit="mm" x="0" y="0" z="390"/>
+        <rotation name="FiberLayerMother.1950x1c721b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1960x1c72230">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1960x1c72230_pos" unit="mm" x="0" y="0" z="392"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1970x1c722b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1970x1c722b0_pos" unit="mm" x="0" y="0" z="394"/>
+        <rotation name="FiberLayerMother.1970x1c722b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1980x1c72330">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1980x1c72330_pos" unit="mm" x="0" y="0" z="396"/>
+      </physvol>
+      <physvol name="FiberLayerMother.1990x1c723b0">
+        <volumeref ref="FiberLayerMother0x1c6b100"/>
+        <position name="FiberLayerMother.1990x1c723b0_pos" unit="mm" x="0" y="0" z="398"/>
+        <rotation name="FiberLayerMother.1990x1c723b0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+    </volume>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="World0x1c5a0e0"/>
+  </setup>
+
+</gdml>

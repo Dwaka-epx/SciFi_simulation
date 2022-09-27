@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+    <matrix coldim="2" name="ABSLENGTH0x2af9c80" values="2e-06 20000 2.03e-06 20000 2.06e-06 20000 2.09e-06 20000 2.12e-06 20000 2.15e-06 20000 2.18e-06 200"/>
+    <matrix coldim="2" name="FASTCOMPONENT0x2afa350" values="2e-06 0 2.03e-06 0 2.06e-06 0 2.09e-06 0 2.12e-06 0 2.15e-06 0 2.18e-06 0 2.21e-06 0 2.24e-06 0 2.2"/>
+    <matrix coldim="2" name="RINDEX0x2af96c0" values="2e-06 1.5 2.03e-06 1.5 2.06e-06 1.5 2.09e-06 1.5 2.12e-06 1.5 2.15e-06 1.5 2.18e-06 1.5 2.21e-06 1."/>
+    <constant name="EFFICIENCY" value="1"/>
+    <constant name="FASTTIMECONSTANT" value="1"/>
+    <constant name="RESOLUTIONSCALE" value="1"/>
+    <constant name="SCINTILLATIONYIELD" value="0"/>
+  </define>
+
+  <materials>
+    <isotope N="12" Z="6" name="C120x2aecf60">
+      <atom unit="g/mole" value="12"/>
+    </isotope>
+    <isotope N="13" Z="6" name="C130x2aed260">
+      <atom unit="g/mole" value="13.0034"/>
+    </isotope>
+    <element name="C0x2aecfa0">
+      <fraction n="0.9893" ref="C120x2aecf60"/>
+      <fraction n="0.0107" ref="C130x2aed260"/>
+    </element>
+    <isotope N="1" Z="1" name="H10x2adf1d0">
+      <atom unit="g/mole" value="1.00782503081372"/>
+    </isotope>
+    <isotope N="2" Z="1" name="H20x2adf120">
+      <atom unit="g/mole" value="2.01410199966617"/>
+    </isotope>
+    <element name="H0x2adf470">
+      <fraction n="0.999885" ref="H10x2adf1d0"/>
+      <fraction n="0.000115" ref="H20x2adf120"/>
+    </element>
+    <material name="Polystyrene0x2af2380" state="solid">
+      <property name="ABSLENGTH" ref="ABSLENGTH0x2af9c80"/>
+      <property name="FASTCOMPONENT" ref="FASTCOMPONENT0x2afa350"/>
+      <property name="RINDEX" ref="RINDEX0x2af96c0"/>
+      <property name="EFFICIENCY" ref="EFFICIENCY"/>
+      <property name="FASTTIMECONSTANT" ref="FASTTIMECONSTANT"/>
+      <property name="RESOLUTIONSCALE" ref="RESOLUTIONSCALE"/>
+      <property name="SCINTILLATIONYIELD" ref="SCINTILLATIONYIELD"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="65.9436601819466"/>
+      <D unit="g/cm3" value="1.05"/>
+      <fraction n="0.922577329294378" ref="C0x2aecfa0"/>
+      <fraction n="0.0774226707056217" ref="H0x2adf470"/>
+    </material>
+    <isotope N="46" Z="22" name="Ti460x2af4a30">
+      <atom unit="g/mole" value="45.9526"/>
+    </isotope>
+    <isotope N="47" Z="22" name="Ti470x2af4950">
+      <atom unit="g/mole" value="46.9518"/>
+    </isotope>
+    <isotope N="48" Z="22" name="Ti480x2af4320">
+      <atom unit="g/mole" value="47.9479"/>
+    </isotope>
+    <isotope N="49" Z="22" name="Ti490x2af4dd0">
+      <atom unit="g/mole" value="48.9479"/>
+    </isotope>
+    <isotope N="50" Z="22" name="Ti500x2af4e40">
+      <atom unit="g/mole" value="49.9448"/>
+    </isotope>
+    <element name="Ti0x2af4ba0">
+      <fraction n="0.0825" ref="Ti460x2af4a30"/>
+      <fraction n="0.0744" ref="Ti470x2af4950"/>
+      <fraction n="0.7372" ref="Ti480x2af4320"/>
+      <fraction n="0.0541" ref="Ti490x2af4dd0"/>
+      <fraction n="0.0518" ref="Ti500x2af4e40"/>
+    </element>
+    <isotope N="16" Z="8" name="O160x2aed680">
+      <atom unit="g/mole" value="15.9949"/>
+    </isotope>
+    <isotope N="17" Z="8" name="O170x2aed6f0">
+      <atom unit="g/mole" value="16.9991"/>
+    </isotope>
+    <isotope N="18" Z="8" name="O180x2aed780">
+      <atom unit="g/mole" value="17.9992"/>
+    </isotope>
+    <element name="O0x2aed420">
+      <fraction n="0.99757" ref="O160x2aed680"/>
+      <fraction n="0.00038" ref="O170x2aed6f0"/>
+      <fraction n="0.00205" ref="O180x2aed780"/>
+    </element>
+    <material name="Coating0x2af56f0" state="solid">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="74.3114650262266"/>
+      <D unit="g/cm3" value="1.52"/>
+      <fraction n="0.0899012435361639" ref="Ti0x2af4ba0"/>
+      <fraction n="0.0600987564638361" ref="O0x2aed420"/>
+      <fraction n="0.784190729900222" ref="C0x2aecfa0"/>
+      <fraction n="0.0658092700997785" ref="H0x2adf470"/>
+    </material>
+    <isotope N="1" Z="1" name="H10x2aede00">
+      <atom unit="g/mole" value="1.00782503081372"/>
+    </isotope>
+    <isotope N="2" Z="1" name="H20x2aee0f0">
+      <atom unit="g/mole" value="2.01410199966617"/>
+    </isotope>
+    <element name="Hydrogen0x2aedd00">
+      <fraction n="0.999885" ref="H10x2aede00"/>
+      <fraction n="0.000115" ref="H20x2aee0f0"/>
+    </element>
+    <isotope N="16" Z="8" name="O160x2aeef10">
+      <atom unit="g/mole" value="15.9949"/>
+    </isotope>
+    <isotope N="17" Z="8" name="O170x2aed7f0">
+      <atom unit="g/mole" value="16.9991"/>
+    </isotope>
+    <isotope N="18" Z="8" name="O180x2aef090">
+      <atom unit="g/mole" value="17.9992"/>
+    </isotope>
+    <element name="Oxygen0x2aeea80">
+      <fraction n="0.99757" ref="O160x2aeef10"/>
+      <fraction n="0.00038" ref="O170x2aed7f0"/>
+      <fraction n="0.00205" ref="O180x2aef090"/>
+    </element>
+    <material name="Water0x2aefd00" state="solid">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="78"/>
+      <D unit="g/cm3" value="1"/>
+      <fraction n="0.112097669256382" ref="Hydrogen0x2aedd00"/>
+      <fraction n="0.887902330743618" ref="Oxygen0x2aeea80"/>
+    </material>
+  </materials>
+
+  <solids>
+    <box lunit="mm" name="FbrScin0x2b06220" x="1.94999999925494" y="300" z="1.94999999925494"/>
+    <box lunit="mm" name="FbrCoat0x2b06190" x="2" y="300" z="2"/>
+    <box lunit="mm" name="FiberLayerMother0x2b06070" x="2000" y="2000" z="2"/>
+    <box lunit="mm" name="World0x2af9450" x="6000" y="6000" z="6000"/>
+  </solids>
+
+  <structure>
+    <volume name="FbrScin0x2b06720">
+      <materialref ref="Polystyrene0x2af2380"/>
+      <solidref ref="FbrScin0x2b06220"/>
+    </volume>
+    <volume name="FbrCoat0x2b062e0">
+      <materialref ref="Coating0x2af56f0"/>
+      <solidref ref="FbrCoat0x2b06190"/>
+      <physvol name="FbrScin0x2b09cb0">
+        <volumeref ref="FbrScin0x2b06720"/>
+      </physvol>
+    </volume>
+    <volume name="FiberLayerMother0x2b06110">
+      <materialref ref="Water0x2aefd00"/>
+      <solidref ref="FiberLayerMother0x2b06070"/>
+      <physvol name="FbrCoat0x2b063c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b063c0_pos" unit="mm" x="-150" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b067d0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b067d0_pos" unit="mm" x="-148" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06890">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06890_pos" unit="mm" x="-146" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b069e0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b069e0_pos" unit="mm" x="-144" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06a50">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06a50_pos" unit="mm" x="-142" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06930">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06930_pos" unit="mm" x="-140" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06c30">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06c30_pos" unit="mm" x="-138" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06ca0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06ca0_pos" unit="mm" x="-136" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06d10">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06d10_pos" unit="mm" x="-134" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06ae0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06ae0_pos" unit="mm" x="-132" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06b50">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06b50_pos" unit="mm" x="-130" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06bc0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06bc0_pos" unit="mm" x="-128" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07070">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07070_pos" unit="mm" x="-126" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b070e0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b070e0_pos" unit="mm" x="-124" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07150">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07150_pos" unit="mm" x="-122" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b071c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b071c0_pos" unit="mm" x="-120" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07230">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07230_pos" unit="mm" x="-118" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06810">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06810_pos" unit="mm" x="-116" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06de0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06de0_pos" unit="mm" x="-114" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06e50">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06e50_pos" unit="mm" x="-112" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06ec0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06ec0_pos" unit="mm" x="-110" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06f30">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06f30_pos" unit="mm" x="-108" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06fa0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06fa0_pos" unit="mm" x="-106" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07010">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07010_pos" unit="mm" x="-104" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b078c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b078c0_pos" unit="mm" x="-102" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07930">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07930_pos" unit="mm" x="-100" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b079a0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b079a0_pos" unit="mm" x="-98" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07a10">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07a10_pos" unit="mm" x="-96" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07a80">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07a80_pos" unit="mm" x="-94" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07af0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07af0_pos" unit="mm" x="-92" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07b60">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07b60_pos" unit="mm" x="-90" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07bd0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07bd0_pos" unit="mm" x="-88" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07c40">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07c40_pos" unit="mm" x="-86" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b06d80">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b06d80_pos" unit="mm" x="-84" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b073b0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b073b0_pos" unit="mm" x="-82" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07420">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07420_pos" unit="mm" x="-80" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07490">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07490_pos" unit="mm" x="-78" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07500">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07500_pos" unit="mm" x="-76" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07570">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07570_pos" unit="mm" x="-74" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b075e0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b075e0_pos" unit="mm" x="-72" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07650">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07650_pos" unit="mm" x="-70" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b076c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b076c0_pos" unit="mm" x="-68" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07730">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07730_pos" unit="mm" x="-66" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b077a0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b077a0_pos" unit="mm" x="-64" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07810">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07810_pos" unit="mm" x="-62" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b088a0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b088a0_pos" unit="mm" x="-60" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08910">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08910_pos" unit="mm" x="-58" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08980">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08980_pos" unit="mm" x="-56" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b089f0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b089f0_pos" unit="mm" x="-54" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08a60">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08a60_pos" unit="mm" x="-52" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08ad0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08ad0_pos" unit="mm" x="-50" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08b40">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08b40_pos" unit="mm" x="-48" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08bb0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08bb0_pos" unit="mm" x="-46" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08c20">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08c20_pos" unit="mm" x="-44" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08c90">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08c90_pos" unit="mm" x="-42" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08d00">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08d00_pos" unit="mm" x="-40" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08d70">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08d70_pos" unit="mm" x="-38" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08de0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08de0_pos" unit="mm" x="-36" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08e50">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08e50_pos" unit="mm" x="-34" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08ec0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08ec0_pos" unit="mm" x="-32" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08f30">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08f30_pos" unit="mm" x="-30" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08fa0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08fa0_pos" unit="mm" x="-28" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09010">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09010_pos" unit="mm" x="-26" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09080">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09080_pos" unit="mm" x="-24" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b090f0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b090f0_pos" unit="mm" x="-22" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b072a0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b072a0_pos" unit="mm" x="-20" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07310">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07310_pos" unit="mm" x="-18" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07e90">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07e90_pos" unit="mm" x="-16" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07f00">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07f00_pos" unit="mm" x="-14" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07f70">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07f70_pos" unit="mm" x="-12" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07fe0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07fe0_pos" unit="mm" x="-10" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08050">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08050_pos" unit="mm" x="-8" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b080c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b080c0_pos" unit="mm" x="-6" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08130">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08130_pos" unit="mm" x="-4" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b081a0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b081a0_pos" unit="mm" x="-2" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08210">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08280">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08280_pos" unit="mm" x="2" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b082f0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b082f0_pos" unit="mm" x="4" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08360">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08360_pos" unit="mm" x="6" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b083d0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b083d0_pos" unit="mm" x="8" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08440">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08440_pos" unit="mm" x="10" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b084b0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b084b0_pos" unit="mm" x="12" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08520">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08520_pos" unit="mm" x="14" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08590">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08590_pos" unit="mm" x="16" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08600">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08600_pos" unit="mm" x="18" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08670">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08670_pos" unit="mm" x="20" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b086e0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b086e0_pos" unit="mm" x="22" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08750">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08750_pos" unit="mm" x="24" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b087c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b087c0_pos" unit="mm" x="26" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b08830">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b08830_pos" unit="mm" x="28" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0a950">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0a950_pos" unit="mm" x="30" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0a9c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0a9c0_pos" unit="mm" x="32" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0aa30">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0aa30_pos" unit="mm" x="34" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0aaa0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0aaa0_pos" unit="mm" x="36" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0ab10">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0ab10_pos" unit="mm" x="38" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b05570">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b05570_pos" unit="mm" x="40" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b055e0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b055e0_pos" unit="mm" x="42" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b05650">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b05650_pos" unit="mm" x="44" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b056c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b056c0_pos" unit="mm" x="46" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b05730">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b05730_pos" unit="mm" x="48" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b057a0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b057a0_pos" unit="mm" x="50" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b05810">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b05810_pos" unit="mm" x="52" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b1d0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b1d0_pos" unit="mm" x="54" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b240">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b240_pos" unit="mm" x="56" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b2b0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b2b0_pos" unit="mm" x="58" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b320">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b320_pos" unit="mm" x="60" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b390">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b390_pos" unit="mm" x="62" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b400">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b400_pos" unit="mm" x="64" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b470">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b470_pos" unit="mm" x="66" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b4e0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b4e0_pos" unit="mm" x="68" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b550">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b550_pos" unit="mm" x="70" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b5c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b5c0_pos" unit="mm" x="72" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b630">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b630_pos" unit="mm" x="74" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b6a0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b6a0_pos" unit="mm" x="76" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b710">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b710_pos" unit="mm" x="78" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b780">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b780_pos" unit="mm" x="80" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b7f0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b7f0_pos" unit="mm" x="82" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b860">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b860_pos" unit="mm" x="84" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b8d0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b8d0_pos" unit="mm" x="86" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b940">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b940_pos" unit="mm" x="88" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0b9b0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0b9b0_pos" unit="mm" x="90" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0ba20">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0ba20_pos" unit="mm" x="92" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0ba90">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0ba90_pos" unit="mm" x="94" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0bb00">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0bb00_pos" unit="mm" x="96" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0bb70">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0bb70_pos" unit="mm" x="98" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0bbe0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0bbe0_pos" unit="mm" x="100" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0bc50">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0bc50_pos" unit="mm" x="102" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0bcc0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0bcc0_pos" unit="mm" x="104" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b0bd30">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b0bd30_pos" unit="mm" x="106" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07cb0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07cb0_pos" unit="mm" x="108" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07d20">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07d20_pos" unit="mm" x="110" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07d90">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07d90_pos" unit="mm" x="112" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b07e00">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b07e00_pos" unit="mm" x="114" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09540">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09540_pos" unit="mm" x="116" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b095b0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b095b0_pos" unit="mm" x="118" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09620">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09620_pos" unit="mm" x="120" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09690">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09690_pos" unit="mm" x="122" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09700">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09700_pos" unit="mm" x="124" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09770">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09770_pos" unit="mm" x="126" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b097e0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b097e0_pos" unit="mm" x="128" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09850">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09850_pos" unit="mm" x="130" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b098c0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b098c0_pos" unit="mm" x="132" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09930">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09930_pos" unit="mm" x="134" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b099a0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b099a0_pos" unit="mm" x="136" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09a10">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09a10_pos" unit="mm" x="138" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09a80">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09a80_pos" unit="mm" x="140" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09af0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09af0_pos" unit="mm" x="142" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09b60">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09b60_pos" unit="mm" x="144" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09bd0">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09bd0_pos" unit="mm" x="146" y="0" z="0"/>
+      </physvol>
+      <physvol name="FbrCoat0x2b09c40">
+        <volumeref ref="FbrCoat0x2b062e0"/>
+        <position name="FbrCoat0x2b09c40_pos" unit="mm" x="148" y="0" z="0"/>
+      </physvol>
+    </volume>
+    <volume name="World0x2af50f0">
+      <materialref ref="Water0x2aefd00"/>
+      <solidref ref="World0x2af9450"/>
+      <physvol name="FiberLayerMother.00x2b06440">
+        <volumeref ref="FiberLayerMother0x2b06110"/>
+      </physvol>
+      <physvol name="FiberLayerMother.10x2b064c0">
+        <volumeref ref="FiberLayerMother0x2b06110"/>
+        <position name="FiberLayerMother.10x2b064c0_pos" unit="mm" x="0" y="0" z="2"/>
+        <rotation name="FiberLayerMother.10x2b064c0_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.20x2b06560">
+        <volumeref ref="FiberLayerMother0x2b06110"/>
+        <position name="FiberLayerMother.20x2b06560_pos" unit="mm" x="0" y="0" z="4"/>
+      </physvol>
+      <physvol name="FiberLayerMother.30x2b06610">
+        <volumeref ref="FiberLayerMother0x2b06110"/>
+        <position name="FiberLayerMother.30x2b06610_pos" unit="mm" x="0" y="0" z="6"/>
+        <rotation name="FiberLayerMother.30x2b06610_rot" unit="deg" x="0" y="0" z="90"/>
+      </physvol>
+      <physvol name="FiberLayerMother.40x2b06690">
+        <volumeref ref="FiberLayerMother0x2b06110"/>
+        <position name="FiberLayerMother.40x2b06690_pos" unit="mm" x="0" y="0" z="8"/>
+      </physvol>
+    </volume>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="World0x2af50f0"/>
+  </setup>
+
+</gdml>

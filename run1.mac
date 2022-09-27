@@ -1,0 +1,95 @@
+#
+/run/initialize
+
+/random/setSeeds 111
+#/random/setSeeds ###SEED###
+
+#/gps/ene/mono 500 MeV
+#/gps/ene/mono 1000 MeV
+#/gps/direction 0 0 1 #Set momentum direction
+#/gps/position ###XPOSI### ###YPOSI### -3 #Set starting position of the particle
+
+# @20/08/01
+#
+# mono momentum of 300 MeV
+# muon : M 105.67 MeV, E = 318.066 MeV
+# pion : M 139.57 MeV, E = 330.877 MeV
+# gamm : M   0.00 MeV, E = 300.000 MeV 
+# elec : M   0.511MeV, E = 300.000 MeV
+# prot : M 938.27 MeV, E = 985.064 MeV
+#
+# uniform momentum of 300 -- 700 MeV
+# muon : M 105.67 MeV, E = 318.066 -- 707.931 MeV
+# pion : M 139.57 MeV, E = 330.877 -- 713.779 MeV
+# gamm : M   0.00 MeV, E = 300.000 -- 700     MeV 
+# elec : M   0.511MeV, E = 300.000 -- 700     MeV
+# prot : M 938.27 MeV, E = 985.064 -- 1170.62 MeV
+
+
+# @21/01/21
+#
+# it seems "ene" here means kinetic energy 
+#   kineticE = sqrt(pp*pp + mass*mass) – mass; 
+#   gun->SetParticleEnergy(kineticE);
+# so, momentum is given as 
+#   p = sqrt( pow(pEner+pMass,2) - pow(pMass,2) ) 
+#
+# uniform momentum of 100 -- 300 -- 700 -- 1000 -- 2000 MeV
+#
+#  sqrt( pow(  10,2) + pow(105.67,2) ) - 105.67 =   0.472
+#  sqrt( pow( 100,2) + pow(105.67,2) ) - 105.67 =   39.82
+#  sqrt( pow( 300,2) + pow(105.67,2) ) - 105.67 =  212.40
+#  sqrt( pow( 700,2) + pow(105.67,2) ) - 105.67 =  602.26
+#  sqrt( pow(1000,2) + pow(105.67,2) ) - 105.67 =  899.90
+#  sqrt( pow(2000,2) + pow(105.67,2) ) - 105.67 = 1897.12 
+#
+# muon : M 105.67 MeV, E = 39.82 -- 212.34 -- 602.26 -- 899.90 -- 1897.12 MeV
+#
+#  sqrt( pow( 100,2) + pow(139.57,2) ) - 139.57 =   32.13
+#  sqrt( pow( 300,2) + pow(139.57,2) ) - 139.57 =  191.31
+#  sqrt( pow( 700,2) + pow(139.57,2) ) - 139.57 =  574.21 
+#  sqrt( pow(2000,2) + pow(139.57,2) ) - 139.57 = 1865.29
+#
+# pion : M 139.57 MeV, E = 32.13 -- 191.31 -- 574.21 -- 1865.29 MeV
+#
+#  sqrt( pow(300,2) + pow(0,2)      ) -      0 = 300.000
+#  sqrt( pow(700,2) + pow(0,2)      ) -      0 = 700.000 
+#
+# gamm : M   0.00 MeV, E = 300.00 -- 700     MeV 
+#
+#  sqrt( pow(  10,2) + pow(0.511,2)  ) -  0.511 =   9.502
+#  sqrt( pow( 100,2) + pow(0.511,2)  ) -  0.511 =   99.49
+#  sqrt( pow( 300,2) + pow(0.511,2)  ) -  0.511 =  299.49
+#  sqrt( pow( 700,2) + pow(0.511,2)  ) -  0.511 =  699.49 
+#  sqrt( pow(1000,2) + pow(0.511,2)  ) -  0.511 =  999.49 
+#  sqrt( pow(2000,2) + pow(0.511,2)  ) -  0.511 = 1999.49 
+#
+# elec : M   0.511MeV, E = 99.49 -- 299.49 -- 699.49 -- 999.49 -- 1999.49 MeV
+#
+#  sqrt( pow(  10,2) + pow(938.27,2) ) - 938.27 =    0.053
+#  sqrt( pow( 100,2) + pow(938.27,2) ) - 938.27 =    5.33
+#  sqrt( pow( 300,2) + pow(938.27,2) ) - 938.27 =   46.79
+#  sqrt( pow( 700,2) + pow(938.27,2) ) - 938.27 =  232.35
+#  sqrt( pow(1000,2) + pow(938.27,2) ) - 938.27 =  432.99
+#  sqrt( pow(2000,2) + pow(938.27,2) ) - 938.27 = 1270.88
+#
+# prot : M 938.27 MeV, E = 5.33 --  46.79 -- 232.35 -- 432.99 -- 1270.88 MeV
+
+#/run/setCut 3.3 m
+
+#/gps/particle proton
+#/gps/particle mu-
+/gps/particle e-
+
+#/gps/energy 0.1 MeV
+/gps/ene/type Lin
+/gps/ene/min 9.502 MeV
+/gps/ene/max 1999.49 MeV
+/gps/ene/gradient 0.
+/gps/ene/intercept 2.
+#/gps/ene/mono 300 MeV
+
+/gps/direction 0 0 1 #Set momentum direction
+/gps/position 0 0 -3 #Set starting position of the particle
+
+/run/beamOn 1000 

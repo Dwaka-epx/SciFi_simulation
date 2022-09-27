@@ -1,0 +1,8 @@
+2022/02/03
+
+cp 
+home/waka/Geant4/wavycross_211115_neut_d22.01.08.0_g4.10.5/src/WLSDetectorConstruction.cc 
+home/waka/Geant4/wavycross_211115_neut_d22.01.08.0_g4.10.5/src/WLSDetectorConstruction.cc 
+
+ichikawa editted event2.C (devided display, show display one by one,)
+event2.bak.C is backup of mine.
