@@ -34,7 +34,8 @@ find_package(ROOT REQUIRED)
 include_directories(${PROJECT_SOURCE_DIR}/include
                     ${PROJECT_SOURCE_DIR}/shared/include
                     ${Geant4_INCLUDE_DIR}
-                    /home/waka/software_cos7/NEUT/neut_5.4.0.1.zipByOgawa/neut_5.4.0.1/include  
+                    #/gpfs/home/t2k/ogawat/myt2kwork/neut_generator/neut_5.4.0.1/include  
+                    /opt/MyNEUT/neut_5.4.0.1/include  
                     ${ROOT_INCLUDE_DIRS})
 # >>> neut is added 22/01/07
 #file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
@@ -47,7 +48,11 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh
 
 # 1. set library path 
 # 2. set library name 
-link_directories(/home/waka/software_cos7/NEUT/neut_5.4.0.1.zipByOgawa/neut_5.4.0.1/lib)
+link_directories(
+                  #/gpfs/home/t2k/ogawat/myt2kwork/neut_generator/neut_5.4.0.1/lib
+                  /opt/MyNEUT/neut_5.4.0.1/lib/
+                  /home/fiberstudy/.neutlibs/ # add 23/10/19 
+                )
 
 #
 #----------------------------------------------------------------------------

@@ -43,13 +43,16 @@
 #include "WLSStackingAction.hh"
 #include "WLSRunAction.hh"
 
+//define nlayers_dummy, nfibers_dummy
+#include "sizeOfFiberArray.hh"
+
 class WLSRunAction;
 class WLSEventActionMessenger;
 class WLSPrimaryGeneratorAction;
 class WLSStackingAction;
 
-const int nlayers_dummy =1200;
-const int nfibers_dummy =1200;
+//const int nlayers_dummy =1200;
+//const int nfibers_dummy =1200;
 
 class WLSEventAction : public G4UserEventAction
 {

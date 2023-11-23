@@ -293,7 +293,7 @@ G4VPhysicalVolume* WLSDetectorConstruction::ConstructDetector()
    
    const int kinds_of_layers = 4;
    const int &unit = kinds_of_layers;
-   const int nLayersZ = 20*unit; //number of xyuv layers arranged along with Z direction.
+   const int nLayersZ = 50;//12*unit; //number of xyuv layers arranged along with Z direction.
 
    G4RotationMatrix* rotMY= new G4RotationMatrix;
    G4RotationMatrix* rotMU= new G4RotationMatrix;
