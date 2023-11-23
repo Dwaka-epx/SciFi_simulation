@@ -12,16 +12,18 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan);
 #define pickup 0
 #define yprojection 0
 
-void v3_mac(TString fname="mydata_e_test")
+void v3_mac(TString fname="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event")
 {
+  TString filepath = "./sim_output/";
   gStyle->SetPalette(kCool);
   gStyle->SetOptStat(1);
   gStyle->SetOptTitle(1);
   gStyle->SetLineScalePS(1); // to make narrow line for marker
   gStyle->SetTitleSize(0.05,"xyz");
+ 
   
-  TFile *tf = new TFile(fname+".root","update");
-  TString canName = "fig_"+fname+".pdf";
+  TFile *tf = new TFile(filepath+fname+".root","update");
+  TString canName = filepath+"fig_"+fname+".pdf";
   TTree *tree1 = static_cast<TTree *>(tf->Get("treeEvtAct2"));
   TTree *tree2 = (TTree*)tf->Get("treeStpAct");
   TTree *tree3 = (TTree*)tf->Get("tree_yread");
