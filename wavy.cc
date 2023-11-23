@@ -76,26 +76,28 @@ int main(int argc,char** argv)
    //G4String NeutName = "/home/t2k/ogawat/myt2kwork/neut_generator/neut_5.4.0.1_run_cos7/";
    //G4String NeutName = "/home/t2k/ogawat/myt2kwork/neut_generator/neut_5.4.0.1_run_cos7_210401/";
    //G4String NeutName = "/home/t2k/ogawat/myt2kwork/neut_generator/neut_5.4.0.1_run_cos7_200930/";
-   G4String NeutName = "/home/daiki/geant4_software/NEUT/neutroot/";
+   G4String NeutName = "/home/fiberstudy/SciFi_simulation/build/input_neut/";
 
-            //NeutName+= "run_neutrino_test/neut_5.4.0_600MeV_C.card.vect.root";
-            //NeutName+= "run_num_600MeV_CC1PI0_ID12/neut_5.4.0_600MeV_C.card.vect.root";
-            NeutName+= "neut_5.4.0_nue_600MeV_CC_Water.card.vect.root";
-   G4String OutName  = "mydata.root";
+   //NeutName+= "run_neutrino_test/neut_5.4.0_600MeV_C.card.vect.root";
+   //NeutName+= "run_num_600MeV_CC1PI0_ID12/neut_5.4.0_600MeV_C.card.vect.root";
+   G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_1e5event";
+   NeutName+= condition_Name+".card.vect.root";
+   G4String OutName  = "./sim_output/mydata_"+condition_Name+".root";
 
-	if (argc==3) {        // ./wavy run.mac *.root
+	if (argc==3) {        // ./wavy run.mac {OutName}.root
       OutName = argv[2];
 	} else if (argc==4) { // ./wavy run.mac *.root random_seed
 		OutName = argv[2];
 		seed    = atoi(argv[3]);
-   } else if (argc==7) { // ./wavy run.mac *.root random_seed NeutSttNum NeutGenNum SourceROOT
+   	}else if (argc==7) { // ./wavy run.mac *.root random_seed NeutSttNum NeutGenNum SourceROOT
       OutName = argv[2];
       seed    = atoi(argv[3]);
       NeutSttNum= atoi(argv[4]);
       NeutGenNum= atoi(argv[5]);
       NeutName  = argv[6];
 	} else {
-	   OutName = "mydata.root";
+	   //OutName = "mydata.root";
+	   //G4String OutName  = "mydata_"+condition_Name+".root";
 	}
 
 	if (argv[1]!=NULL) G4cout << "input macro  name is " << argv[1] << G4endl;
@@ -103,7 +105,7 @@ int main(int argc,char** argv)
 
    //std::system("ls -l "); // execute the UNIX command "ls -l >test.txt"
    std::system("rm g4_00.wrl"); // execute the UNIX command "ls -l >test.txt"
-   std::system("rm mydata.root"); // execute the UNIX command "ls -l >test.txt"
+//   std::system("rm mydata.root"); // execute the UNIX command "ls -l >test.txt"
    std::system("rm mydet.gdml"); // execute the UNIX command "ls -l >test.txt"
 
   // ----- Choose the Random engine and set the seed
@@ -147,7 +149,7 @@ int main(int argc,char** argv)
 
   	// User action initialization
   	//runManager->SetUserInitialization(new WLSActionInitialization(detector,OutName));
-   runManager->SetUserInitialization(new WLSActionInitialization(detector,OutName,NeutName,NeutSttNum,NeutGenNum));
+   	runManager->SetUserInitialization(new WLSActionInitialization(detector,OutName,NeutName,NeutSttNum,NeutGenNum));
 
 
 #ifdef G4VIS_USE
@@ -156,8 +158,8 @@ int main(int argc,char** argv)
   	// G4VisExecutive can take a verbosity argument - see /vis/verbose guidance.
   	// G4VisManager* visManager = new G4VisExecutive("Quiet");
 	G4cout << "\n\n\n\n#####";
-   G4cout << "If you get visualization, you have to turn on below";
-   G4cout << "#####\n\n\n\n" << G4endl;
+   	G4cout << "If you get visualization, you have to turn on below";
+   	G4cout << "#####\n\n\n\n" << G4endl;
   	visManager->Initialize();
 #endif
 
@@ -189,7 +191,7 @@ int main(int argc,char** argv)
 		#ifdef G4UI_USE
      	G4UIExecutive * ui = new G4UIExecutive(argc,argv);
 		#ifdef G4VIS_USE
-      std::cerr << "\n\n########## G4VIS_USE: /control/execute init.in ##########\n\n" << std::endl;
+   	   std::cerr << "\n\n########## G4VIS_USE: /control/execute init.in ##########\n\n" << std::endl;
      	UImanager->ApplyCommand("/control/execute init.in");
      	//UImanager->ApplyCommand("/control/execute vis.mac");
      	//UImanager->ApplyCommand("/control/execute init_vis.mac");

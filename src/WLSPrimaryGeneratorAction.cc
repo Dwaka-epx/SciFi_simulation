@@ -245,14 +245,14 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
          //G4cout << "set g4 particle: " << particleDefinition->GetParticleName() << G4endl;
          fParticleGun->SetParticleDefinition(particleDefinition);
          // incident/initial position
-	 double rndx = G4UniformRand();
-	 double rndy = G4UniformRand();
-	 double rndz = G4UniformRand();
-	 double vertex = 0.;//(rndx*60.-30.);
-	 double vertey = 0.; //(rndy*60.-30.);
-	 double vertez = 100.; //(rndz*60.+70.);
+	 	 double rndx = G4UniformRand();
+	 	 double rndy = G4UniformRand();
+	 	 double rndz = G4UniformRand();
+	 	 double vertex = (rndx*60.-30.); //0.;	
+	 	 double vertey = (rndy*60.-30.); //0.; 	
+	 	 double vertez = (rndz*60.+70.); //100.; 	
 
-	 fParticleGun->SetParticlePosition(G4ThreeVector(vertex*mm,vertey*mm,vertez*mm)); //G4UniformRand()
+	 	 fParticleGun->SetParticlePosition(G4ThreeVector(vertex*mm,vertey*mm,vertez*mm)); //G4UniformRand()
          // particle momentum
          fParticleGun->SetParticleMomentum(G4ThreeVector(fP.Px(),fP.Py(),fP.Pz()));
 

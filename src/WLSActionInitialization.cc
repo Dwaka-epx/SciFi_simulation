@@ -49,7 +49,7 @@ WLSActionInitialization::WLSActionInitialization(
    G4String NeutName, int NeutSttNum, int NeutGenNum)
  : G4VUserActionInitialization(), 
 	fDetector(det), 
-   fName(name),
+	fName(name),
    _NeutName(NeutName),
    _NeutSttNum(NeutSttNum),
    _NeutGenNum(NeutGenNum)

@@ -196,42 +196,42 @@ void event_stepcut(TString fname="mydata")
    //
    // event loop
    // 
-     int ndisplay =0;
-     for (int i=0; i<300; i++) {
+   int ndisplay =0;
+   for (int i=0; i<300; i++) {
+     
+     if(ndisplay>=50) break;
+     tree1 ->GetEntry(i);
+#if 0 
+     cerr << "nevt = " << nevt << endl;
+#endif
+     
+     //2022/02/07
+#if 0
+     int c;
+     cout << "Enter any character."<<endl;
+     c = getchar();
+#endif
 
-       if(ndisplay>=1) break;
-	tree1 ->GetEntry(i);
-	#if 0 
-	cerr << "nevt = " << nevt << endl;
-	#endif
-	
-	    //2022/02/07
-	    #if 0
-	    int c;
-	    cout << "Enter any character."<<endl;
-	    c = getchar();
-            #endif
-
-	double totedep=0;
-	int nhit=0;
-	for (int l = 0; l < actuallayers; l++){ 
-	  for (int ID= 0; ID< nfibers_dummy; ID++){ 
-	    totedep += chw[l][ID];
-	    if ( chw[l][ID]>1E-10 ) nhit++;
-	  }
-	}
+     double totedep=0;
+     int nhit=0;
+     for (int l = 0; l < actuallayers; l++){ 
+       for (int ID= 0; ID< nfibers_dummy; ID++){ 
+	 totedep += chw[l][ID];
+	 if ( chw[l][ID]>1E-10 ) nhit++;
+       }
+     }
 		
-		cout << "totedep " << totedep << " nhit= " << nhit << endl;
-		if(nhit < 10.) continue;
-		ndisplay++;
-		cout<<"ndisplay ="<< ndisplay<<endl;
+     cout << "totedep " << totedep << " nhit= " << nhit << endl;
+     if(nhit < 10.) continue;
+     ndisplay++;
+     cout<<"ndisplay ="<< ndisplay<<endl;
 
 
-   	c1->cd(1); grYZ->Draw("ap"); palette->Draw(); // ok @21/09/14
-   	c1->cd(3); grYZ->Draw("ap"); palette->Draw(); // ok @21/09/14
-   	c1->cd(2); grXZ->Draw("ap"); palette->Draw(); // ok @21/09/14
-   	c1->cd(4); grXZ->Draw("ap"); palette->Draw(); // ok @21/09/14 
-		//return;
+     c1->cd(1); grYZ->Draw("ap"); palette->Draw(); // ok @21/09/14
+     c1->cd(3); grYZ->Draw("ap"); palette->Draw(); // ok @21/09/14
+     c1->cd(2); grXZ->Draw("ap"); palette->Draw(); // ok @21/09/14
+     c1->cd(4); grXZ->Draw("ap"); palette->Draw(); // ok @21/09/14 
+     //return;
 
 	       
    	//for (int l = 0; l < 30; l++) {

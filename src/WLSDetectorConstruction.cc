@@ -280,7 +280,7 @@ G4VPhysicalVolume* WLSDetectorConstruction::ConstructDetector()
 	//
 	// from here, detector description @ 21/11/15 
 	//
-	const float fiber_length = 300 * mm; // mm : standard scinti layer
+	const float fiber_length = 200 * mm; // mm : standard scinti layer
 	//const float fiber_length = 500 * mm; // mm : standard scinti layer
 	//const float fiber_length = 1000 * mm; // mm : standard scinti layer
 	const float fiber_thickness = 1 * mm; // mm : standard scinti layer
