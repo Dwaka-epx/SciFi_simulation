@@ -21,9 +21,7 @@ void ml(TString filepath = "./sim_output/"
 	const int nphase = 4;
 	const int nlayers = 12*nphase ;
 	float chw[nlayers_dummy][nfibers_dummy];//energy deposit in each fibers.
-	float dedx[nlayers][nfibers][nphase];
 
-	
 	//read TTree
 	TTree *tree1 = static_cast<TTree *>(finput->Get("treeEvtAct2"));
   	TTree *tree2 = (TTree*)finput->Get("treeStpAct");
@@ -32,16 +30,6 @@ void ml(TString filepath = "./sim_output/"
 
 	TFile* foutput = new TFile(filepath+output+".root","recreate");
 	TTree* outtree = new TTree("ml_input","input data for ML");
-
-#if 0
-	int fevent=0, flayer=0,ffiber=0, fphase=0;
-	float de=0;
-	outtree->Branch("fevent",&fevent,"fevent/I");
-	outtree->Branch("flayer",&flayer,"flayer/I");
-	outtree->Branch("fphase",&fphase,"fphase/I");
-	outtree->Branch("ffiber",&ffiber,"ffiber/I");
-	outtree->Branch("dedx",&de,"dedx/F");
-#endif
 
 	//TH2D definition: just for viewing event
 	TCanvas* c1 = new TCanvas("c1","c1",1000,600);
@@ -56,32 +44,40 @@ void ml(TString filepath = "./sim_output/"
 								);
 	
 
+// save dedx,Poisson,Poisson&Gauss as x[#of arrayed fiber][# of fiber sheets/phase][# of phase]
 
-//make x[nlayers/phase=20][nfibers=200][#phase=4]
-
+	float dedx[nlayers][nfibers][nphase];
+	float photon[nlayers][nfibers][nphase];//Poisson
+	float electric[nlayers][nfibers][nphase];//Poisson&Gauss
+	outtree->Branch("dedx",dedx,Form("dedx[%d][%d][%d]/F",nlayers,nfibers,nphase));
+	outtree->Branch("photon",photon,Form("dedx[%d][%d][%d]/F",nlayers,nfibers,nphase));
+	outtree->Branch("electric",electric,Form("dedx[%d][%d][%d]/F",nlayers,nfibers,nphase));
 	
+	float MeV=1,g=1,cm=1,mm=0.1;
+	float dedxOfPositron= 2.53*MeV*g/pow(cm,2); //dE/dx of e+/e- in 675MeV/c
+	float rhoPolystylene = 1.05*g/pow(cm,3);
+	float fiberThickness= 0.96*mm;
+	float deTypical= dedxOfPositron*rhoPolystylene*fiberThickness;
+	float photonTypical = 29.4;//p.e/mm of 675MeV/c e+/e-
+	float energyToPhotonConversionFactor = photonTypical/deTypical;
+	float pePoisson=0;
+
 	for(int ievent=0; ievent < nevent; ++ievent){
 		tree1->GetEntry(ievent);
 		cout <<"****************************"<<endl;
 		cout <<"ievent="<< ievent <<endl;
 		cout <<"****************************"<<endl;
-		//fevent=ievent;
 
 		for(int ilayer=0; ilayer < nlayers; ++ilayer){
 			int iphase = ilayer%nphase; //0:x, 1:u, 2:y, 3:v, maybe...
 			int	iphaselayer=ilayer/nphase;
-			//fphase = iphase;
-			//flayer = iphaselayer;
 
 			for(int ifiber=0; ifiber < nfibers; ++ifiber){
 				float edep;
 				edep = chw[ilayer][ifiber];
 				dedx[iphaselayer][ifiber][iphase]=edep;
-				cout << ievent 
-				<< "," << ilayer 
-				<< "," <<ifiber << endl;
-				//ffiber=ifiber;
-				//outtree->Fill();
+				pePoisson = photon[iphaselayer][ifiber][iphase]=gRandom->Poisson(edep*energyToPhotonConversionFactor);
+				electric[iphaselayer][ifiber][iphase]=gRandom->Gaus(pePoisson);
 				if(iphase==0){
 					view2d->Fill(ilayer,ifiber,edep);
 				}
@@ -89,47 +85,26 @@ void ml(TString filepath = "./sim_output/"
 			}
 
 		}
-		view2d->SetTitle(Form("ievent=%d;nlayer; nfiber",ievent));
-		view2d->Draw("colz");
-		c1->Update();
-		c1->Print(pdfName,"pdf");
-		view2d->Reset();
+		outtree->Fill();
+		//view2d->SetTitle(Form("ievent=%d;nlayer; nfiber",ievent));
+		//view2d->Draw("colz");
+		//c1->Update();
+		//c1->Print(pdfName,"pdf");
+		//view2d->Reset();
 	}
-	c1->Print(pdfName+""]","pdf");
+	c1->Print(pdfName+"]","pdf");
 
-//	
-//	// 10th event
-	//for(int iphase=0; iphase<nphase; ++iphase){
-	//	cout <<"****************************"<<endl;
-	//	cout <<"iphase="<< iphase <<endl;
-	//	cout <<"****************************"<<endl;		
-	//	for(int ifiber=0; ifiber < nfibers; ++ifiber){
-	//		std::cout << "ifiber =" << ifiber;
-	//		for(int ilayer=0; ilayer < nlayers; ++ilayer){
-	//			//std::cout << chw[ilayer][ifiber]<<",";
-	//			cout << dedx[ilayer][ifiber][iphase] << ",";
-	//		}
-	//		std::cout << std::endl;
-	//	}
-	//
-	//
-	//}
-//
-//// save dedx as x[#of arrayed fiber][# of fiber sheets/phase][# of phase]
-//
-//// save poisson as x[#of arrayed fiber][# of fiber sheets/phase][# of phase]
-//
-//// save poisson+gauss as x[#of arrayed fiber][# of fiber sheets/phase][# of phase]
-//
-//
-////save initial particles ID track number? 
-//
-////save initial particles momentum
-//
-////save initial particles angle 
-//
-////save as diffrent root file
+
+
+//save initial particles ID track number? 
+
+//save initial particles momentum
+
+//save initial particles angle 
+
+//save as diffrent root file
 	//view2d->Write();
+	outtree->Write();
 	foutput->Write();
 	foutput->Close();
 	
