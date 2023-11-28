@@ -114,6 +114,13 @@ class WLSRunAction : public G4UserRunAction
 	inline void   DefineTreeStpAct() { fTreeStpAct = new TTree("treeStpAct", "tree stepping action"); }
 	TTree        *GetTreeStpAct()    { return fTreeStpAct; }
 
+ 	// initial info
+	inline void   DefineTreeInitialParticles() { fTreeInitialParticles = new TTree("treeInitialParticles", "tree initial position,momentum,PID"); }
+	TTree        *GetTreeInitialParticles()    { return fTreeInitialParticles; }
+
+	TFile        *GetTFile()    { return fFile; }
+
+
 	private:
  
    WLSRunActionMessenger* fRunMessenger;
@@ -136,6 +143,7 @@ class WLSRunAction : public G4UserRunAction
    TTree *fTreeEvtAct2;
    TTree *fTreeStkAct;
    TTree *fTreeStpAct;
+   TTree *fTreeInitialParticles;
 };
 
 #endif

@@ -33,6 +33,8 @@
 
 #include "G4String.hh"
 #include "G4VUserActionInitialization.hh"
+#include "WLSRunAction.hh"
+
 
 class WLSDetectorConstruction;
 
@@ -48,6 +50,7 @@ class WLSActionInitialization : public G4VUserActionInitialization
     public:
     //WLSActionInitialization(WLSDetectorConstruction*);
     //WLSActionInitialization(WLSDetectorConstruction*,G4String);
+    //WLSActionInitialization(WLSDetectorConstruction*, G4String, G4String, int, int);
     WLSActionInitialization(WLSDetectorConstruction*, G4String, G4String, int, int);
     virtual ~WLSActionInitialization();
 

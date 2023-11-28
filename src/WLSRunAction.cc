@@ -39,6 +39,7 @@
 
 #include "WLSDetectorConstruction.hh"
 #include "WLSSteppingAction.hh"
+//#include "WLSPrimaryGeneratorAction.hh"
 
 #include <ctime>
 #include <sstream>
@@ -49,14 +50,15 @@
 //WLSRunAction::WLSRunAction(G4String name)
 WLSRunAction::WLSRunAction(WLSDetectorConstruction* det,G4String name)
   : fSaveRndm(0), 
-	 fAutoSeed(false), 
+	fAutoSeed(false), 
     fDetConstruction(det),
-	 fName(name),
-	 fFile(0),// initialize
-	 fTreeEvtAct1(0), // initialize
-	 fTreeEvtAct2(0), // initialize
-	 fTreeStkAct(0), // initialize
-	 fTreeStpAct(0) // initialize
+	fName(name),
+	fFile(0),// initialize
+	fTreeEvtAct1(0), // initialize
+	fTreeEvtAct2(0), // initialize
+	fTreeInitialParticles(0), // initialize
+	fTreeStkAct(0), // initialize
+	fTreeStpAct(0) // initialize
 {
   fRunMessenger = new WLSRunActionMessenger(this);
 }
@@ -73,7 +75,6 @@ WLSRunAction::~WLSRunAction()
 void WLSRunAction::BeginOfRunAction(const G4Run* aRun)
 {
   	G4cout << "mytest: Run " << aRun->GetRunID() << " start." << G4endl;
-
   	G4RunManager::GetRunManager()->SetRandomNumberStore(true);
   	G4RunManager::GetRunManager()->SetRandomNumberStoreDir("random/");
 
@@ -94,7 +95,9 @@ void WLSRunAction::BeginOfRunAction(const G4Run* aRun)
 	#endif
 
 	std::string str = fName;//+".root";
-	fFile = new TFile(str.c_str(),"RECREATE");
+	std::cout << "fFile =" << fName << std::endl;
+		fFile = new TFile(str.c_str(),"RECREATE"); std::cerr << "fFile = new TFile(str.c_str(),RECREATE);" << std::endl;
+		//TTree* fTreeInitialParticles = new TTree("dummy_treeInitialParticle", "");
 	#if 0
    tree = new TTree("tree", "");
    int evt; // #of event
@@ -110,6 +113,7 @@ void WLSRunAction::BeginOfRunAction(const G4Run* aRun)
    tree->Branch("yChPE",  yChPE,  "yChPE[allCh]/D");
    tree->Branch("zChPE",  zChPE,  "zChPE[allCh]/D");
 	#endif
+	
 	
 #if 0 // 
 	for (int i=0; i<NTHLAYER; i++) {
@@ -163,6 +167,9 @@ void WLSRunAction::BeginOfRunAction(const G4Run* aRun)
 void WLSRunAction::EndOfRunAction(const G4Run* )
 {
 	G4cerr << "\n>>>>> CALLED: WLSRunAction::EndOfRunAction" << G4endl;
+	
+	//fTreeInitialParticles->Print();
+
    //int nbEvents = aRun->GetNumberOfEvent();
    //double DepositedBySecondaries = fEnergyCharged/nbEvents + fEnergyNeutral/nbEvents;
    //double TotalDepositByPrimary  = analysisManager->GetH1(1)->mean() + DepositedBySecondaries;
@@ -217,12 +224,16 @@ void WLSRunAction::EndOfRunAction(const G4Run* )
 	ana->CloseFile();
 	#endif
    std::cerr << "write tree in file" << std::endl;
-	fTreeEvtAct1->Write();
-	fTreeEvtAct2->Write();
+		fTreeEvtAct1->Write();std::cerr << "fTreeEvtAct1->Write();" << std::endl;
+		fTreeEvtAct2->Write();std::cerr << "fTreeEvtAct2->Write();" << std::endl;
+	//if(fTreeMLInfo)fTreeMLInfo->Write();
 	//fTreeStkAct->Write();
-	fTreeStpAct->Write();
-	tree2->Write();
-	tree3->Write();
-   std::cerr << "close file" << std::endl;
+		fTreeStpAct->Write();			std::cerr << "fTreeStpAct->Write();" << std::endl;
+		tree2->Write();			std::cerr << "tree2->Write();" << std::endl;
+		tree3->Write();			std::cerr << "tree3->Write();" << std::endl;
+		if(fTreeInitialParticles){fTreeInitialParticles->Write();}
+		std::cerr << "fTreeInitialParticles->Write();" << std::endl; 
+		std::cerr << this << std::endl;
+	std::cerr << "close file" << std::endl;
 	fFile->Close();
 }

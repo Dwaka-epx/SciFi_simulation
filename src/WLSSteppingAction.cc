@@ -69,7 +69,10 @@ G4int WLSSteppingAction::fMaxRndmSave = 10000;
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 //WLSSteppingAction::WLSSteppingAction(WLSDetectorConstruction* detector)
-WLSSteppingAction::WLSSteppingAction(WLSDetectorConstruction* detector, WLSRunAction* RA, WLSEventAction* eventAction) // add
+WLSSteppingAction::WLSSteppingAction(
+   WLSDetectorConstruction* detector
+   , WLSRunAction* RA
+   , WLSEventAction* eventAction) // add
   : fDetector(detector), 
     fRunaction(RA), 
     fEventAction(eventAction) // add
@@ -182,7 +185,7 @@ void WLSSteppingAction::UserSteppingAction(const G4Step* theStep)
              << G4endl;
 #endif
 
-#if 1
+#if 0 //23/11/27
 	if ( vname=="FbrScin")
       G4cerr << "this is FiberScin. the placement tree: upper one = "
              << aTouch->GetVolume(1)->GetName() << " copyNo = "

@@ -44,6 +44,21 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 //WLSActionInitialization::WLSActionInitialization(WLSDetectorConstruction* det, G4String name)
+//WLSActionInitialization::WLSActionInitialization(
+//   WLSDetectorConstruction* det, G4String name, 
+//   G4String NeutName, int NeutSttNum, int NeutGenNum)
+// : G4VUserActionInitialization(), 
+//	fDetector(det), 
+//	fName(name),
+//   _NeutName(NeutName),
+//   _NeutSttNum(NeutSttNum),
+//   _NeutGenNum(NeutGenNum)
+//
+//{
+//}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
 WLSActionInitialization::WLSActionInitialization(
    WLSDetectorConstruction* det, G4String name, 
    G4String NeutName, int NeutSttNum, int NeutGenNum)
@@ -53,7 +68,6 @@ WLSActionInitialization::WLSActionInitialization(
    _NeutName(NeutName),
    _NeutSttNum(NeutSttNum),
    _NeutGenNum(NeutGenNum)
-
 {
 }
 
@@ -78,12 +92,15 @@ void WLSActionInitialization::Build() const
    // Rgister "PrimaryGenerator" as one of the user action
   	//SetUserAction(new WLSPrimaryGeneratorAction(fDetector)); // original
 	//WLSPrimaryGeneratorAction *primaryGenarator = new WLSPrimaryGeneratorAction(fDetector);
+
+   WLSRunAction* runAction = new WLSRunAction(fDetector, fName);
    WLSPrimaryGeneratorAction *primaryGenarator
-      = new WLSPrimaryGeneratorAction(fDetector, _NeutName, _NeutSttNum, _NeutGenNum);
-  	SetUserAction(primaryGenarator);
+      = new WLSPrimaryGeneratorAction(fDetector, _NeutName,
+       _NeutSttNum, _NeutGenNum,runAction);
 	
   	//WLSRunAction* runAction = new WLSRunAction(fName);
-   WLSRunAction* runAction = new WLSRunAction(fDetector, fName);
+  	SetUserAction(primaryGenarator);
+
    SetUserAction(runAction);
 
   	//WLSEventAction* eventAction = new WLSEventAction(runAction); // original

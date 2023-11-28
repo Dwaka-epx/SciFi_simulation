@@ -41,7 +41,7 @@
 
 #include "WLSPrimaryGeneratorAction.hh"
 #include "WLSStackingAction.hh"
-#include "WLSRunAction.hh"
+//#include "WLSRunAction.hh"
 
 //define nlayers_dummy, nfibers_dummy
 #include "sizeOfFiberArray.hh"

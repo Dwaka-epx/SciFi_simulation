@@ -149,6 +149,7 @@ int main(int argc,char** argv)
 
   	// User action initialization
   	//runManager->SetUserInitialization(new WLSActionInitialization(detector,OutName));
+	//WLSRunAction* runaction = new WLSRunAction(detector,OutName);
    	runManager->SetUserInitialization(new WLSActionInitialization(detector,OutName,NeutName,NeutSttNum,NeutGenNum));
 
 
