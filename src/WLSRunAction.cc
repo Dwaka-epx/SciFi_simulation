@@ -231,9 +231,11 @@ void WLSRunAction::EndOfRunAction(const G4Run* )
 		fTreeStpAct->Write();			std::cerr << "fTreeStpAct->Write();" << std::endl;
 		tree2->Write();			std::cerr << "tree2->Write();" << std::endl;
 		tree3->Write();			std::cerr << "tree3->Write();" << std::endl;
-		if(fTreeInitialParticles){fTreeInitialParticles->Write();}
-		std::cerr << "fTreeInitialParticles->Write();" << std::endl; 
-		std::cerr << this << std::endl;
+		if(fTreeInitialParticles){
+			fTreeInitialParticles->Write();
+			std::cerr << "fTreeInitialParticles->Write();" << std::endl; 
+			std::cerr << this << std::endl;
+		}
 	std::cerr << "close file" << std::endl;
 	fFile->Close();
 }

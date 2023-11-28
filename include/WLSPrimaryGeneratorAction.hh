@@ -52,8 +52,6 @@ class G4PhysicsTable;
 
 class WLSDetectorConstruction;
 class WLSPrimaryGeneratorMessenger;
-//class WLSRunAction;
-
 
 // ROOT
 #include "TFile.h"
@@ -84,36 +82,26 @@ class WLSPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 	public:
 
 		virtual void GeneratePrimaries(G4Event*);
-
 		void BuildEmissionSpectrum();
-
 		void SetOptPhotonPolar(G4double);
-
 		void SetDecayTimeConstant(G4double);
 
-	 //const G4GeneralParticleSource* GetSouce();
-	 //const G4ParticleGun* GetSouce();
-	 G4ParticleGun* GetSouce();
-	 int GetNeutrinoMode()         { return _neutMode;    }
-	 int GetNeutrinoNSeed()        { return _neutNSeeds;  }
-	 float GetNeutrinoEnergy()     { return _neutEnergy;  }
-	 float GetNeutrinoMomentum()   { return _neutMomentum;}
-	 int GetNParticles()            { return _nParticles; } //add 23/11/27
-	 int GetNNeutrons()            { return _nNeutrons; }
-	 int GetNMuons()            { return _nMuons; }
-	 int GetNProtons()             { return _nProtons;  }
-	 int GetNPions()               { return _nPions;    }
-	 void SetNeutrinoMode(int a)   { _neutMode   = a; }
-	 void SetNeutrinoNSeed(int a)  { _neutNSeeds = a; }
-
-		int fevtID;
+		//const G4GeneralParticleSource* GetSouce();
+		//const G4ParticleGun* GetSouce();
+		G4ParticleGun* GetSouce();
+		int GetNeutrinoMode()         { return _neutMode;    }
+		int GetNeutrinoNSeed()        { return _neutNSeeds;  }
+		float GetNeutrinoEnergy()     { return _neutEnergy;  }
+		float GetNeutrinoMomentum()   { return _neutMomentum;}
+		
+		int GetNParticles()            { return _nParticles; } //add 23/11/27 note:_nGenerate < _nParticles
+		int GetNNeutrons()            { return _nNeutrons; }
+		int GetNMuons()            { return _nMuons; }
+		int GetNProtons()             { return _nProtons;  }
+		int GetNPions()               { return _nPions;    }
+		void SetNeutrinoMode(int a)   { _neutMode   = a; }
+		void SetNeutrinoNSeed(int a)  { _neutNSeeds = a; }
 		int fPID[nmaxParticles];
-		double frndx[nmaxParticles][ndim];
-		double fvertex[nmaxParticles][ndim];
-		double fInitialMomentum[nmaxParticles][ndim];
-		int fnumOutParticle[Ncharged]; // [Nmuon,Nproton]
-		double fEnergy[nmaxParticles];
-
 
 
 	protected:

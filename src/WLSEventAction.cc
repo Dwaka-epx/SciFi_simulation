@@ -137,7 +137,6 @@ void WLSEventAction::GiveParticleInitialPosi(G4ThreeVector a)
 void WLSEventAction::EndOfEventAction(const G4Event* evt)
 {
    int ievt  = evt->GetEventID(); // #of event
-   const int ndim=3;
   	G4VVisManager* pVVisManager = G4VVisManager::GetConcreteInstance();
    
   	//Visualization of Trajectory
@@ -283,7 +282,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
    int layer = NTHLAYER;
    int allCh = NTHLAYER * NTHLAYER;
    int PID[nmaxParticles]={0};
-	int numOutParticle[2]={0};
+	int numOutParticle[NoutCCQE]={0};
    // this is because variable length array can not be initilized by xChPE[allCh]={};
    const int cAllCh = NTHLAYER * NTHLAYER;
    int xChPE[cAllCh]={};
@@ -297,11 +296,11 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
       std::cerr << ">>>>> treeEvtAct1 is defined in evt = " << ievt << std::endl;
       fRunAction->DefineTreeEvtAct1();
       fRunAction->GetTreeEvtAct1()->Branch("ievt",  &ievt,  "ievt/I");
-      fRunAction->GetTreeEvtAct1()->Branch("PID",  PID,  "PID[50]/I");
+      fRunAction->GetTreeEvtAct1()->Branch("PID",  PID,  Form("PID[%d]/I",nmaxParticles));
       fRunAction->GetTreeEvtAct1()->Branch("mass",  &mass,  "mass/D");
       fRunAction->GetTreeEvtAct1()->Branch("energy",&energy,"energy/D");
-      fRunAction->GetTreeEvtAct1()->Branch("Pinitial",Pinitial,"Pinitial[3]/D");
-      fRunAction->GetTreeEvtAct1()->Branch("numOutParticle",numOutParticle,"numOutParticle[2]/I");      
+      fRunAction->GetTreeEvtAct1()->Branch("Pinitial",Pinitial,Form("Pinitial[%d]/D",ndim));
+      fRunAction->GetTreeEvtAct1()->Branch("numOutParticle",numOutParticle,Form("numOutParticle[%d]/I",NoutCCQE));      
       fRunAction->GetTreeEvtAct1()->Branch("p_abs", &p_abs, "p_abs/D");
       fRunAction->GetTreeEvtAct1()->Branch("pt",    &pt,    "pt/D");
       fRunAction->GetTreeEvtAct1()->Branch("edep",  &edep,  "edep/D");
@@ -338,12 +337,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
 	
 	G4ParticleGun* fParticleGun = fPrimarysource->GetSouce();
 	//TTree* treeInitialParticles = fPrimarysource->ftreeInitialParticles;
-   G4ParticleDefinition* defPrim = fParticleGun->GetParticleDefinition();
-   for (int iparticle = 0; iparticle < nmaxParticles; iparticle++)
-   {
-      PID[iparticle] = (fPrimarysource->fPID)[iparticle];
-   }
-   
+   G4ParticleDefinition* defPrim = fParticleGun->GetParticleDefinition();   
 	
    int Nmuons = fPrimarysource->GetNMuons();numOutParticle[0]=Nmuons;
 	int Nproton = fPrimarysource->GetNProtons();numOutParticle[1]=Nproton;
@@ -351,13 +345,12 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
 	G4cerr << "Nproton=" << Nproton << G4endl;
 	//G4cerr << "Npion=" << Npion << G4endl;
 
-	//int Nparticle = fPrimarysource->GetNParticles();
-	//	G4cout << "Nparticle = " << Nparticle << G4endl;
-	//for (int ipart = 0; ipart < Nparticle; ++ipart)
-	//{
-	//   PID = defPrim->GetPDGEncoding();
-	//	G4cout << "PID = " << PID << G4endl;
-	//}
+	int Nparticle = fPrimarysource->GetNParticles();
+   std::cout << "Nparticle = " << Nparticle << std::endl;
+   for (int iparticle = 0; iparticle < Nparticle; ++iparticle){
+      PID[iparticle] = (fPrimarysource->fPID)[iparticle];
+   }
+
 
    double pMass = defPrim->GetPDGMass();
    double pEner = fParticleGun->GetParticleEnergy();
@@ -453,7 +446,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
       //fRunAction->GetTreeEvtAct2()->Branch("chx",  chx,  "chx[chall1]/F");
       //fRunAction->GetTreeEvtAct2()->Branch("chy",  chy,  "chy[chall1]/F");
       //fRunAction->GetTreeEvtAct2()->Branch("chw",  chw,  "chw[nlayers_dummy][nfibers_dummy]/F");
-      fRunAction->GetTreeEvtAct2()->Branch("chw",  chw,  "chw[1200][1200]/F"); // this works
+      fRunAction->GetTreeEvtAct2()->Branch("chw",  chw,  Form("chw[%d][%d]/F",nlayers_dummy,nfibers_dummy)); // this works
 	}
 
 	polar = polarAngle;
