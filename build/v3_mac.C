@@ -2,18 +2,20 @@
 	Date : 22-08-31
 	Comment
  */
-#include "../include/sizeOfFiberArray.hh"
+#include "../include/MyConst.hh"
 
 void SetTLegend(TLegend *leg, TGraph* gra);
 void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan);
 
 
-#define draw_true 0
+#define draw_true 1
 #define pickup 1
 #define yprojection 0
+#define DRAW_NEUTRAL_PARTICLE 0
+#define DRAW_STEPS_WITH_HIT 1
 
-void v3_mac(TString fname="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
-			,int number_of_event_display =3
+void v3_mac(TString fname= "mydata_protonStudy"//"mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
+			,int number_of_event_display = 5
 						)
 {
 	TString filepath = "./sim_output/";
@@ -31,17 +33,19 @@ void v3_mac(TString fname="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
 	TTree *tree3 = (TTree*)tf->Get("tree_yread");
 
 	int id;
-	int nevt=0;
+	int ievt=0;
 	const float fiber_thickness = 1;
 	const int unit = 4; // x.y.sx30 = 32
 	const double layer_gap =10;
-	const int  number_of_actuallayers = unit* 20;// 80 layers in total along Z axis.
+	const int  number_of_actuallayers = nActualLayers;// 50 layers in total along Z axis.
 	const double length_along_Z = number_of_actuallayers*layer_gap;//[mm]
 	float chw[nlayers_dummy][nfibers_dummy];//energy deposit in each fibers.
 	TVector3 *v3=NULL;
-	tree1->SetBranchAddress("nevt", &nevt);
+	tree1->SetBranchAddress("ievt", &ievt);
 	tree1->SetBranchAddress("chw", chw);
+	std::cout << "before v3" << std::endl;
 	tree3->SetBranchAddress("v3",&v3);
+	std::cout << "before id" << std::endl;
 	tree3->SetBranchAddress("id",&id);
 		 
 	int nReadOut = tree3->GetEntries();
@@ -110,7 +114,7 @@ void v3_mac(TString fname="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
 	
 	grYZ->SetMarkerSize(8);// 21/12/20 
 	
-	TCanvas *c1 = new TCanvas("c1","c1",1000,600);
+	TCanvas *c1 = new TCanvas("c1","c1",1200,600);
 	c1->Divide(2,2);
 	c1->cd(1); grXZ->SetTitle(";z axis [mm]; x axis [mm]");
 	//  grXZ->SetTitleOffset(0.5);//0.55
@@ -134,7 +138,7 @@ void v3_mac(TString fname="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
 	TLegend *leg = new TLegend(0.50,0.50,0.70,0.70);
 	SetTLegend(leg, grXZ);
 	 
-	 cout << arrXZv3.size() << endl;
+	 cout << "arrXZv3.size()="<< arrXZv3.size() << endl;
 
 
 	// draw lines of fibers
@@ -189,7 +193,11 @@ void v3_mac(TString fname="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
 	// event loop
 	//
 
-	for (int i=0; i<10000; i++) {
+	for (int i=0; i<100000; i++) {
+
+		cout << "i= " << i << endl; 
+		cout << "ndisplay= " << ndisplay << endl; 
+
 		
 		if(ndisplay>=number_of_event_display){
 			break;
@@ -201,17 +209,16 @@ void v3_mac(TString fname="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
 		//    TCanvas *c_fitting_x = new TCanvas("c_fitting_x","c_fitting_x",1000,600);
 		
 		tree1 ->GetEntry(i);// chw get entry here!
-		cout<<"i ="<< i <<endl;
 		
 		double totedep=0;
 		int nhit=0;    
 		
 		for (int l = 0; l <  number_of_actuallayers; l++){ 
 			for (int ID= 0;ID < nfibers_dummy; ID++){ 
-	totedep += chw[l][ID];
-	if ( chw[l][ID]>1E-10 ){
-		nhit++;//regard dedx >1E-10 [MeV] as 1 hit.
-	}
+				totedep += chw[l][ID];
+				if ( chw[l][ID]>1E-10 ){
+					nhit++;//regard dedx >1E-10 [MeV] as 1 hit.
+				}
 			}
 		}
 		
@@ -360,12 +367,16 @@ void v3_mac(TString fname="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
 		delete dEdz_photon;
 #endif
 		
+#if 0
+		//draw 2d histgram
 		c0->cd();
 		h_2D_dEdz_photon->SetTitle(Form("ievent=%d",i));
 		h_2D_dEdz_photon->Draw("COLZ");
 		c0->Update();
 		c0->Print(canName, "pdf");
+#endif
 	 
+	 cout << "i=" << i << endl;
 	} //end of event
 	
 # if yprojection
@@ -420,7 +431,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
 			stringstream termN;
 			stringstream termPIPLUS, termPIMINUS, termPI0;
 
-#if 0 //draw all step 
+#if (DRAW_STEPS_WITH_HIT != 1) //draw all step 
 			term0 << " detid!=0 && evt==" << i << ends;
 			termMU << "code=="<< MU << "&&evt==" << i << "&&edep>="<< 2./henkan << ends;
 			termELEC << "code=="<< ELEC <<"&&evt==" << i << "&&edep>=" << 2./henkan << ends;
@@ -436,7 +447,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
 #endif
 		 
 			
-#if 1 //draw steps with hit
+#if DRAW_STEPS_WITH_HIT //draw steps with hit
 
 			term0 << " detid!=0 && evt==" << i << ends;
 			termMU << " detid!=0 && code==+"<< MU << "&&evt==" << i << "&&edep>="<< 2./henkan << ends;
@@ -466,7 +477,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
 
 			c1->cd(1);//X-Z eventdisplay
 
-#if 0 // choose drawing neutral particle or not. 
+#if DRAW_NEUTRAL_PARTICLE // choose drawing neutral particle or not. 
 			tree2->SetMarkerColor(1);           tree2->Draw(termA.str().data(),term0.str().data(),"same");
 			tree2->SetMarkerColor(GAMMACOL);    tree2->Draw(termA.str().data(), termGAMMA.str().data(),"same"); //gamma
 			tree2->SetMarkerColor(NEUTRONCOL);     tree2->Draw(termA.str().data(), termN.str().data(),"same");//neutron
@@ -483,7 +494,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
 			tree2->SetMarkerColor(PIMINUSCOL);     tree2->Draw(termA.str().data(), termPIMINUS.str().data(),"same");
 
 			c1->cd(3);//Y-Z eventdisplay
-#if 0
+#if DRAW_NEUTRAL_PARTICLE
 			tree2->SetMarkerColor(1); tree2->Draw(termB.str().data(),term0.str().data(),"same");
 			tree2->SetMarkerColor(GAMMACOL);    tree2->Draw(termB.str().data(), termGAMMA.str().data(),"same"); //gamma
 			tree2->SetMarkerColor(NEUTRONCOL);     tree2->Draw(termB.str().data(), termN.str().data(),"same");//neutron
@@ -497,7 +508,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
 			tree2->SetMarkerColor(PIMINUSCOL);     tree2->Draw(termB.str().data(), termPIMINUS.str().data(),"same");//pi-
 
 			c1->cd(2);//U-Z eventdisplay
-#if 0  // choose drawing neutral particle or not. 
+#if DRAW_NEUTRAL_PARTICLE  // choose drawing neutral particle or not. 
 			tree2->SetMarkerColor(1); tree2->Draw(termC.str().data(),term0.str().data(),"same");
 			tree2->SetMarkerColor(GAMMACOL);    tree2->Draw(termC.str().data(), termGAMMA.str().data(),"same"); //gamma
 			tree2->SetMarkerColor(NEUTRONCOL);     tree2->Draw(termC.str().data(), termN.str().data(),"same");//neutron
@@ -511,7 +522,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
 			tree2->SetMarkerColor(PIMINUSCOL);     tree2->Draw(termC.str().data(), termPIMINUS.str().data(),"same");//pi-
 
 			c1->cd(4);//V-Z eventdisplay
-#if 0  // choose drawing neutral particle or not. 
+#if DRAW_NEUTRAL_PARTICLE  // choose drawing neutral particle or not. 
 			tree2->SetMarkerColor(1); tree2->Draw(termD.str().data(),term0.str().data(),"same");
 			tree2->SetMarkerColor(GAMMACOL);    tree2->Draw(termD.str().data(), termGAMMA.str().data(),"same"); //gamma
 			tree2->SetMarkerColor(NEUTRONCOL);     tree2->Draw(termD.str().data(), termN.str().data(),"same");//neutron

@@ -40,6 +40,9 @@
 
 #include "G4RotationMatrix.hh"
 
+// my header
+#include "MyConst.hh"
+
 class G4Box;
 class G4Tubs;
 class G4EllipticalTube;

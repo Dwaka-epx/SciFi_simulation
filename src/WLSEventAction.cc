@@ -277,8 +277,9 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
 	#endif
 
 
-   double Pinitial[ndim]={0};
-	double mass, energy, p_abs, pt, edep, stepl, dedx, polar;
+   //std::vector <double> Pinitial(ndim,0);
+   TVector3 Pinitial;
+	 double mass, kineEnergy, p_abs, pt, edep, stepl, dedx, polar;
    int layer = NTHLAYER;
    int allCh = NTHLAYER * NTHLAYER;
    int PID[nmaxParticles]={0};
@@ -298,8 +299,8 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
       fRunAction->GetTreeEvtAct1()->Branch("ievt",  &ievt,  "ievt/I");
       fRunAction->GetTreeEvtAct1()->Branch("PID",  PID,  Form("PID[%d]/I",nmaxParticles));
       fRunAction->GetTreeEvtAct1()->Branch("mass",  &mass,  "mass/D");
-      fRunAction->GetTreeEvtAct1()->Branch("energy",&energy,"energy/D");
-      fRunAction->GetTreeEvtAct1()->Branch("Pinitial",Pinitial,Form("Pinitial[%d]/D",ndim));
+      fRunAction->GetTreeEvtAct1()->Branch("kineticEenergy",&kineEnergy,"kineticEnergy/D");
+      fRunAction->GetTreeEvtAct1()->Branch("Pinitial",&Pinitial);
       fRunAction->GetTreeEvtAct1()->Branch("numOutParticle",numOutParticle,Form("numOutParticle[%d]/I",NoutCCQE));      
       fRunAction->GetTreeEvtAct1()->Branch("p_abs", &p_abs, "p_abs/D");
       fRunAction->GetTreeEvtAct1()->Branch("pt",    &pt,    "pt/D");
@@ -353,29 +354,37 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
 
 
    double pMass = defPrim->GetPDGMass();
-   double pEner = fParticleGun->GetParticleEnergy();
+   double particleKineticEnergy = fParticleGun->GetParticleEnergy();
    //double pMomn = fParticleGun->GetParticleMomentum();
-   G4ThreeVector pMome = fParticleGun->GetParticleMomentumDirection ();
+   G4ThreeVector particleMomentumDirection = fParticleGun->GetParticleMomentumDirection ();
    G4ThreeVector pPosi = fParticleGun->GetParticlePosition();
-	double polarAngle = pMome.theta();     // get polar angle
-	double azimuAngle = pMome.phi();       // get azimuth angle
-	double cosTheta   = pMome.cosTheta();  // get cos theta 
+	double polarAngle = particleMomentumDirection.theta();     // get polar angle
+	double azimuAngle = particleMomentumDirection.phi();       // get azimuth angle
+	double cosTheta   = particleMomentumDirection.cosTheta();  // get cos theta 
 
    //fStacking->NewStage();
 
    G4cout << "<<< Event  " << evt->GetEventID() << " ended." << G4endl;
    G4cout << "<<< fPrimary mass             = " << pMass << G4endl; // add
-   G4cout << "<<< fPrimary kinetic energy           = " << pEner << G4endl; // add
-   G4cout << "<<< fPrimary momentum dir X (unit vector) = " << pMome.getX() << G4endl; // add
-   G4cout << "<<< fPrimary momentum dir Y (unit vector) = " << pMome.getY() << G4endl; // add
-   G4cout << "<<< fPrimary momentum dir Z (unit vector) = " << pMome.getZ() << G4endl; // add
+   G4cout << "<<< fPrimary kinetic energy           = " << particleKineticEnergy << G4endl; // add
+   G4cout << "<<< fPrimary momentum dir X (unit vector) = " << particleMomentumDirection.getX() << G4endl; // add
+   G4cout << "<<< fPrimary momentum dir Y (unit vector) = " << particleMomentumDirection.getY() << G4endl; // add
+   G4cout << "<<< fPrimary momentum dir Z (unit vector) = " << particleMomentumDirection.getZ() << G4endl; // add
    G4cout << "<<< fPrimary momentum polar angle   = " << polarAngle << "[rad] " << polarAngle/3.141592*180 << "[deg]" <<G4endl; // add
    G4cout << "<<< fPrimary momentum azimuth angle = " << azimuAngle << "[rad] " << azimuAngle/3.141592*180 << "[deg]" <<G4endl; // add
    G4cout << "<<< fPrimary momentum cos theta     = " << cosTheta   << "[rad] " <<G4endl; // add
 
-   // m2 = e2 - |p|2
-   double absMom2 = sqrt( pow(pEner+pMass,2) - pow(pMass,2) ); 
-         Pinitial[0] = absMom2 * pMome.getX(),Pinitial[1] = absMom2 * pMome.getY(),Pinitial[2] = absMom2 * pMome.getX();  
+   
+   double absMom2 = sqrt( pow(particleKineticEnergy+pMass,2) - pow(pMass,2) ); // |p|2 = E2 - m2
+  	//Pinitial[0] = absMom2 * particleMomentumDirection.getX(),
+		//Pinitial[1] = absMom2 * particleMomentumDirection.getY(),
+		//Pinitial[2] = absMom2 * particleMomentumDirection.getZ(); 
+		for (int idim = 0; idim < ndim; idim++)
+		{
+			Pinitial[idim] = absMom2 * particleMomentumDirection(idim);
+		}
+		
+
    //G4cout << "<<< momentum GetParticleMomentum() = " << pMomn << G4endl;
    G4cout << "<<< fPrimary momentum p   = sqrt( (KinEne + Mass)^2 - Mass^2 ) = " << absMom2 << G4endl;
    G4cout << "<<< fPrimary momentum X   = "<< Pinitial[0] << G4endl;
@@ -383,8 +392,8 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
    G4cout << "<<< fPrimary momentum Z   = "<< Pinitial[2] << G4endl;
 
    // transverse P: Pt = P * sin(azimuth)
-   //double tanphi  = TMath:: Tan(pMome.getY()/pMome.getX());
-   double phi_azim= TMath::ATan(pMome.getY()/pMome.getX());
+   //double tanphi  = TMath:: Tan(particleMomentumDirection.getY()/particleMomentumDirection.getX());
+   double phi_azim= TMath::ATan(particleMomentumDirection.getY()/particleMomentumDirection.getX());
    //add 23/11/24
    G4cout << "<<< fPrimary Pt      = " << absMom2 * TMath::Sin(phi_azim) << G4endl; //Really...?
    G4cout << "<<< fPrimary posi X  = " << pPosi.getX() << G4endl; // add
@@ -404,7 +413,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
    #endif
 
 	mass   = pMass;
-	energy = pEner;
+	kineEnergy = particleKineticEnergy;
 	p_abs      = absMom2;
 	pt     = absMom2 * TMath::Sin(phi_azim);
    edep   = fEdep;

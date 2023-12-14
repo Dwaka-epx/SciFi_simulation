@@ -35,7 +35,7 @@
 #ifndef WLSPrimaryGeneratorAction_h
 #define WLSPrimaryGeneratorAction_h 1
 
-#include "sizeOfFiberArray.hh"
+#include "MyConst.hh"
 #include "globals.hh"
 //#include "WLSEventAction.hh"
 #include "WLSRunAction.hh"

@@ -47,6 +47,9 @@
 #include "WLSDetectorConstruction.hh"
 #include "WLSActionInitialization.hh"
 
+//
+#include "MyConst.hh"
+
 #ifdef G4VIS_USE
 #include "G4VisExecutive.hh"
 #endif
@@ -68,7 +71,7 @@ int main(int argc,char** argv)
   	G4MTRunManager * runManager = new G4MTRunManager;
 
 #else
-  	int seed = 123;
+	int seed = 123;
   	//if (argc >2) seed = atoi(argv[argc-1]);
 
    int NeutSttNum = 0; // Neut starting event number
@@ -80,11 +83,22 @@ int main(int argc,char** argv)
 
    //NeutName+= "run_neutrino_test/neut_5.4.0_600MeV_C.card.vect.root";
    //NeutName+= "run_num_600MeV_CC1PI0_ID12/neut_5.4.0_600MeV_C.card.vect.root";
-   G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_1e5event";
+   //G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_1e5event";
+   G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_CCQE_1e7event";
    NeutName+= condition_Name+".card.vect.root";
-   G4String OutName  = "./sim_output/mydata_"+condition_Name+".root";
 
-	if (argc==3) {        // ./wavy run.mac {OutName}.root
+	#if USE_NEUT	
+
+	if(flagProtonRejection){
+		condition_Name += "_woProton";
+  }else if (flagOnlyProton)
+	{
+   	condition_Name += "_myParticleGun_proton";
+	}
+  G4String OutName  = "./sim_output/mydata_"+condition_Name+".root";
+	
+	if (argc==2) {        // ./wavy run.mac 
+	}else if (argc==3) {        // ./wavy run.mac {OutName}.root
       OutName = argv[2];
 	} else if (argc==4) { // ./wavy run.mac *.root random_seed
 		OutName = argv[2];
@@ -99,6 +113,11 @@ int main(int argc,char** argv)
 	   //OutName = "mydata.root";
 	   //G4String OutName  = "mydata_"+condition_Name+".root";
 	}
+	#endif
+	#if (USE_NEUT == 0)
+		G4String OutName  = "./sim_output/mydata_protonStudy.root";
+	#endif
+
 
 	if (argv[1]!=NULL) G4cout << "input macro  name is " << argv[1] << G4endl;
 	G4cout << "input rootfile name is " << OutName << G4endl;

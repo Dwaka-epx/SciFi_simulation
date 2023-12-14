@@ -268,7 +268,7 @@ void WLSSteppingAction::UserSteppingAction(const G4Step* theStep)
 #endif
 
 	//
-   // take energy deposit and step length
+  // take energy deposit and step length
 	//
    float edep  = theStep->GetTotalEnergyDeposit();
    float stepl = theStep->GetStepLength();

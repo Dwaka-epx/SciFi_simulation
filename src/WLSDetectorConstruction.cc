@@ -280,7 +280,7 @@ G4VPhysicalVolume* WLSDetectorConstruction::ConstructDetector()
 	//
 	// from here, detector description @ 21/11/15 
 	//
-	const float fiber_length = 200 * mm; // mm : standard scinti layer
+	const float &fiber_length = fiberSheetSize * mm; // mm : standard scinti layer
 	//const float fiber_length = 500 * mm; // mm : standard scinti layer
 	//const float fiber_length = 1000 * mm; // mm : standard scinti layer
 	const float fiber_thickness = 1 * mm; // mm : standard scinti layer
@@ -291,9 +291,8 @@ G4VPhysicalVolume* WLSDetectorConstruction::ConstructDetector()
 
    const int ite_inside_unit= 1;
    
-   const int kinds_of_layers = 4;
-   const int &unit = kinds_of_layers;
-   const int nLayersZ = 50;//12*unit; //number of xyuv layers arranged along with Z direction.
+   const int &unit = kindsOfLayers; // 4 : defined at MyConst.hh
+   const int &nLayersZ = nActualLayers;//12*unit; //number of xyuv layers arranged along with Z direction.
 
    G4RotationMatrix* rotMY= new G4RotationMatrix;
    G4RotationMatrix* rotMU= new G4RotationMatrix;
@@ -338,10 +337,10 @@ G4VPhysicalVolume* WLSDetectorConstruction::ConstructDetector()
 
 		#if 1 // if nLayersZ%4=0,then X layer. if nLayersZ%4=1,then U layer. if nLayersZ%4=2,then Y layer. if nLayersZ%4=3,then V layer.
       if ( i!=0 ) preZ = preZ + distance_between_layers;
-      if      ( i%kinds_of_layers==0 ) new G4PVPlacement(0,     G4ThreeVector(     0,    0, preZ), logFiberLayerMother,       name1.str().data(), fLogiWorld, false, 0); // x layer
-      else if ( i%kinds_of_layers==1 ) new G4PVPlacement(rotMU, G4ThreeVector(     0,    0, preZ), logFiberLayerMother,       name1.str().data(), fLogiWorld, false, 0);
-      else if ( i%kinds_of_layers==2 ) new G4PVPlacement(rotMY, G4ThreeVector(     0,    0, preZ), logFiberLayerMother,       name1.str().data(), fLogiWorld, false, 0);
-      else if ( i%kinds_of_layers==3 ) new G4PVPlacement(rotMV, G4ThreeVector(     0,    0, preZ), logFiberLayerMother,       name1.str().data(), fLogiWorld, false, 0);
+      if      ( i%unit==0 ) new G4PVPlacement(0,     G4ThreeVector(     0,    0, preZ), logFiberLayerMother,       name1.str().data(), fLogiWorld, false, 0); // x layer
+      else if ( i%unit==1 ) new G4PVPlacement(rotMU, G4ThreeVector(     0,    0, preZ), logFiberLayerMother,       name1.str().data(), fLogiWorld, false, 0);
+      else if ( i%unit==2 ) new G4PVPlacement(rotMY, G4ThreeVector(     0,    0, preZ), logFiberLayerMother,       name1.str().data(), fLogiWorld, false, 0);
+      else if ( i%unit==3 ) new G4PVPlacement(rotMV, G4ThreeVector(     0,    0, preZ), logFiberLayerMother,       name1.str().data(), fLogiWorld, false, 0);
       //      else                             new G4PVPlacement(rotMZ, G4ThreeVector(     0,    0, preZ), logFiberLayerSparceMother, name2.str().data(), fLogiWorld, false, 0);
 		#endif
    }
@@ -396,7 +395,7 @@ void WLSDetectorConstruction::DefineLayerStraightFiber(G4LogicalVolume* logFiber
    G4LogicalVolume   *LogiFbrScin = new G4LogicalVolume(SoliFbrScin, FindMaterial("Polystyrene"), "FbrScin");
    //new G4LogicalSkinSurface("TiO2Surface_LogiFbrCoat", LogiFbrCoat, TiO2Surface);
 
-   int nfibers = fiber_length / fiber_thickness; 
+   int nfibers = fiber_length / fiber_thickness;  // sheet should be square.
 
    for (int x=0; x<nfibers; x++) {  // x direction
       const int id = x;

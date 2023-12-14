@@ -43,6 +43,7 @@
 #include "G4PhysicsTable.hh"
 
 #include "Randomize.hh"
+ #include "G4RandomDirection.hh"
 
 #include "WLSPrimaryGeneratorAction.hh"
 #include "WLSDetectorConstruction.hh"
@@ -52,10 +53,10 @@
 
 #include "G4AutoLock.hh"
 
-
+#include "MyConst.hh"
 #include <iostream>
 #include <fstream>
-#include <cassert>
+#include <assert.h>
 
 namespace {
 	G4Mutex gen_mutex = G4MUTEX_INITIALIZER;
@@ -96,25 +97,10 @@ WLSPrimaryGeneratorAction::WLSPrimaryGeneratorAction(WLSDetectorConstruction* dc
 
 	fTimeConstant = 0.;
 
-	//evtID=0;
-	//PID[nmaxParticles]={0};
-	//fvertex[nmaxParticles][ndim]={0};
-	//fPinitial[nmaxParticles][ndim]={0};
-	//fnumOutParticle[NoutCCQE]={0};
-	//Energy[nmaxParticles]={0};
-	//alive[nmaxParticles]={0};
-	//nGenerate=0;
-	//_nParticles=0;
-	//_nNeutrons=0; // neutron
-	//_nProtons=0; // proton
-	//_nPions=0; // pion
-	//_nMuons=0; // muon
-
-
 //  fParticleGun->SetParticleDefinition(particleTable->
 //                               FindParticle(particleName="opticalphoton"));
 
-#if 1 
+#if USE_NEUT
 	//
 	// preparation NEUT info.
 	//
@@ -223,13 +209,13 @@ void WLSPrimaryGeneratorAction::BuildEmissionSpectrum()
 void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
 
-
+#if USE_NEUT
 
 		int	evtID=0;
 		int	PID[nmaxParticles]={0};
 		double	fvertex[nmaxParticles][ndim]={0};
 		double fPinitial[nmaxParticles][ndim]={0};
-		int	fnumOutParticle[NoutCCQE]={0};
+		int	NumOutParticle[NoutCCQE]={0};
 		double particleEnergy[nmaxParticles]={0};
 		bool alive[nmaxParticles]={false};
 
@@ -245,7 +231,7 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 		fRunAction->DefineTreeInitialParticles();
 		//std::cerr << fRunAction << std::endl; //just for debug
 		 	fRunAction->GetTreeInitialParticles()->Branch("evtID", &evtID, "evtID/I");
-		 	fRunAction->GetTreeInitialParticles()->Branch("numOutParticle",  fnumOutParticle,  Form("numOutParticle[%d]/I",NoutCCQE));
+		 	fRunAction->GetTreeInitialParticles()->Branch("NumOutParticle",  NumOutParticle,  Form("NumOutParticle[%d]/I",NoutCCQE));
 		 	fRunAction->GetTreeInitialParticles()->Branch("PID",  PID,  Form("PID[%d]/I",nmaxParticles));
 		 	fRunAction->GetTreeInitialParticles()->Branch("Alive",  alive,  Form("Alive[%d]/O",nmaxParticles));
 		 	fRunAction->GetTreeInitialParticles()->Branch("particleEnergy",  particleEnergy,  Form("particleEnergy[%d]/D",nmaxParticles));
@@ -279,7 +265,7 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 		//frndx[nmaxParticles][ndim]={0};
 		//fvertex[nmaxParticles][ndim]={0};
 		//fPinitial[nmaxParticles][ndim]={0};
-		//fnumOutParticle[NoutCCQE]={0}; // [Nmuon,Nproton]
+		//numOutParticle[NoutCCQE]={0}; // [Nmuon,Nproton]
 		//particleEnergy[nmaxParticles]={0};
 		alive[nmaxParticles]={0};
 
@@ -291,14 +277,15 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 		for (int pit = 0; pit < npart; ++pit) { // n particles loop
 			_nParticles++;
 			NeutPart const & part = *_NeutVec->PartInfo(pit);
+			if(flagProtonRejection ==true && part.fPID==2212){
+				break;
+			}
 			if ( part.fIsAlive==1 ) {
 				alive[pit] = true;	
 				TLorentzVector fP     = part.fP;      // 4 momentum of the particle (MeV/c, MeV)
 				TLorentzVector fPosIni= part.fPosIni; // Initilal position in the nucleus
 				TLorentzVector fPosFin= part.fPosFin; // Final(current) position in the nucleus
 				particleEnergy[pit] = fP.E();
-				G4cout << "fP.E()=" << fP.E() << G4endl;
-				G4cout << Form("############## particleEnergy[%d]=",pit) << particleEnergy[pit] << "##############"<< G4endl;
 				double Pabs = fP.Vect().Mag();
 				double Mass = sqrt(particleEnergy[pit]*particleEnergy[pit]-Pabs*Pabs); // E^2 = M^2+P^2
 				if ( part.fPID==12 || part.fPID==14 ) _neutEnergy  = particleEnergy[pit]; // take neutrino initial energy
@@ -306,7 +293,7 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 				if ( part.fPID==2112 ) _nNeutrons++ ; // neutron
 				if ( part.fPID==2212 ) _nProtons++ ; // proton
 				if ( part.fPID==211  ) _nPions++ ; // pion
-				if ( part.fPID==13  ) _nMuons++ ; // pion
+				if ( part.fPID==13  ) _nMuons++ ; // muon
 				fPID[pit] = part.fPID;
 				PID[pit] = part.fPID;
 				G4ParticleDefinition* particleDefinition
@@ -362,9 +349,9 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 						<< "  M "  << std::right << std::setw(6) << Mass
 						<< "  P "  << std::right << std::setw(6) << Pabs
 						<< "  Energy "  << std::right << std::setw(6) << fP.E()
-						<< "  Pex direction"  << std::right << std::setw(6) << fP.Px()/Pabs
-						<< "  Pey direction"  << std::right << std::setw(6) << fP.Py()/Pabs
-						<< "  Pez direction"  << std::right << std::setw(6) << fP.Pz()/Pabs
+						<< "  Pex direction"  << std::right << std::setw(6) << fParticleMomDirection.x()
+						<< "  Pey direction"  << std::right << std::setw(6) << fParticleMomDirection.y()
+						<< "  Pez direction"  << std::right << std::setw(6) << fParticleMomDirection.z()
 						//<< "  Xfx " << right << setw(9) << fPosFin.Px() 
 						//<< "  Xfy " << right << setw(9) << fPosFin.Py() 
 						//<< "  Xfz " << right << setw(9) << fPosFin.Pz()
@@ -377,9 +364,9 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 						<< "  E(sqrt(M^2+p^2)): "   << std::right << std::setw(5) << sqrt(G4Mass*G4Mass+G4MomAbs*G4MomAbs)
 						<< "  Ekin(GetPartEne()): " << std::right << std::setw(5) << fParticleGun->GetParticleEnergy()
 						<< std::setprecision(4)
-						<< "  Pex: " << std::right << std::setw(3) << fParticleMomDirection.x()
-						<< "  Pey: " << std::right << std::setw(3) << fParticleMomDirection.y()
-						<< "  Pez: " << std::right << std::setw(3) << fParticleMomDirection.z()
+						<< "  Pex: " << std::right << std::setw(3) << fP.Px()
+						<< "  Pey: " << std::right << std::setw(3) << fP.Py()
+						<< "  Pez: " << std::right << std::setw(3) << fP.Pz()
 						<< std::setprecision(4)
 						<< " 	Vertex x: " << std::right << std::setw(3) << vertex
 						<< " 	Vertex y: " << std::right << std::setw(3) << vertey
@@ -393,23 +380,49 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 				std::cerr << std::endl;
 			}		
 		}
-		fnumOutParticle[0] = _nMuons;
-		fnumOutParticle[1] = _nProtons;
+		NumOutParticle[0] = _nMuons;
+		NumOutParticle[1] = _nProtons;
+		if(NoutCCQE>2){
+			NumOutParticle[2] = _nPions;
+		}
+		
 		assert(fRunAction->GetTreeInitialParticles());
 		assert(particleEnergy);
 		fRunAction->GetTreeInitialParticles()->Fill();
-		for (int ipart = 0; ipart < npart; ++ipart)
-		{
-		std::cerr << Form("############## particleEnergy[%d]=",ipart) << particleEnergy[ipart] << "##############"<< std::endl;
-		}
 		
 		std::cerr << "fRunAction->GetTreeInitialParticles()->Fill();" << std::endl;
 
 	SetNeutrinoMode(mode);
-	SetNeutrinoNSeed(nGenerate); //???
+	SetNeutrinoNSeed(nGenerate); 
 	_NeutSttNum++;
 	return;
 
+#endif
+
+#if (USE_NEUT == 0)
+
+	int protonID =2212;
+
+	// generate proton 
+		G4ParticleDefinition* particleDefinition = G4ParticleTable::GetParticleTable()->FindParticle(protonID);
+		fParticleGun->SetParticleDefinition(particleDefinition);
+
+	// set position and momentum
+	G4ThreeVector fverteces (0.,0.,0.);
+	G4ThreeVector vertexRange (300.*cm,300.*cm,50.*cm);
+	G4double fenergy = myEnergyRange*G4UniformRand();
+	for (int idim = 0; idim < ndim; idim++)
+	{
+			fverteces[idim] +=  vertexRange[idim]*G4UniformRand();		
+	}
+	fParticleGun->SetParticlePosition(fverteces);
+	fParticleGun->SetParticleEnergy(fenergy);
+	fParticleGun->SetParticleMomentumDirection(G4RandomDirection());
+		
+	fParticleGun->GeneratePrimaryVertex(anEvent);
+
+
+#endif
 
 	G4cout << " GeneratePrimaries is called at the begining of event" << G4endl;
 	if (fFirst) {

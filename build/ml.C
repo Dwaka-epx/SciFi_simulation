@@ -5,7 +5,7 @@
 */
 #include<iostream>
 #include<stdio.h>
-#include "../include/sizeOfFiberArray.hh"
+#include "../include/MyConst.hh"
 
 void ml(TString filepath = "./sim_output/"
 		,TString input="mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
@@ -86,11 +86,11 @@ void ml(TString filepath = "./sim_output/"
 
 		}
 		outtree->Fill();
-		//view2d->SetTitle(Form("ievent=%d;nlayer; nfiber",ievent));
-		//view2d->Draw("colz");
-		//c1->Update();
-		//c1->Print(pdfName,"pdf");
-		//view2d->Reset();
+		view2d->SetTitle(Form("ievent=%d;nlayer; nfiber",ievent));
+		view2d->Draw("colz");
+		c1->Update();
+		c1->Print(pdfName,"pdf");
+		view2d->Reset();
 	}
 	c1->Print(pdfName+"]","pdf");
 

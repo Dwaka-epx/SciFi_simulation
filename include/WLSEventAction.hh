@@ -44,7 +44,7 @@
 //#include "WLSRunAction.hh"
 
 //define nlayers_dummy, nfibers_dummy
-#include "sizeOfFiberArray.hh"
+#include "MyConst.hh"
 
 class WLSRunAction;
 class WLSEventActionMessenger;
