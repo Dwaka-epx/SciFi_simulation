@@ -195,13 +195,15 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
          std::cerr << ">>>>> TreeMLInfo is defined in evt = " << ievt << std::endl;
          fRunAction->DefineTreeMLInfo();
          fRunAction->GetTreeMLInfo()->Branch("pid", &particleInfo.pid, "pid/I");
-         fRunAction->GetTreeMLInfo()->Branch("initialMomentumX", &particleInfo.initialMomentumX, "initialMomentumX/D");
+         /*should do refunction with TVector3
+				 fRunAction->GetTreeMLInfo()->Branch("initialMomentumX", &particleInfo.initialMomentumX, "initialMomentumX/D");
          fRunAction->GetTreeMLInfo()->Branch("initialMomentumY", &particleInfo.initialMomentumY, "initialMomentumY/D");
          fRunAction->GetTreeMLInfo()->Branch("initialMomentumZ", &particleInfo.initialMomentumZ, "initialMomentumZ/D");
          fRunAction->GetTreeMLInfo()->Branch("initialPositionX", &particleInfo.initialPositionX, "initialPositionX/D");
          fRunAction->GetTreeMLInfo()->Branch("initialPositionY", &particleInfo.initialPositionY, "initialPositionY/D");
          fRunAction->GetTreeMLInfo()->Branch("initialPositionZ", &particleInfo.initialPositionZ, "initialPositionZ/D");
-      }else{
+					*/
+			}else{
          std::cerr << ">>>>> TreeMLInfo was already defined <<<<<\n\n" << std::endl;
       }
 
@@ -218,10 +220,10 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
              particleInfo.initialMomentumY = initialMomentum.y();
              particleInfo.initialMomentumZ = initialMomentum.z();
              // 初期位置の取得
-             G4ThreeVector initialPosition = initialPoint->GetPosition();
-             particleInfo.initialPositionX = initialPosition.x();
-             particleInfo.initialPositionY = initialPosition.y();
-             particleInfo.initialPositionZ = initialPosition.z();
+             G4ThreeVector g4initialPosition = initialPoint->GetPosition();
+             particleInfo.initialPositionX = g4initialPosition.x();
+             particleInfo.initialPositionY = g4initialPosition.y();
+             particleInfo.initialPositionZ = g4initialPosition.z();
              // TTreeにデータを詰める
             G4cout << ">>>>> Fill to TreeMLInfo  <<<<<\n\n" << G4endl; 
             fRunAction->GetTreeMLInfo()->Fill();
@@ -279,6 +281,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
 
    //std::vector <double> Pinitial(ndim,0);
    TVector3 Pinitial;
+   TVector3 initialPosition;
 	 double mass, kineEnergy, p_abs, pt, edep, stepl, dedx, polar;
    int layer = NTHLAYER;
    int allCh = NTHLAYER * NTHLAYER;
@@ -292,6 +295,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
    double xChTM[cAllCh]={};
    double yChTM[cAllCh]={};
    double zChTM[cAllCh]={};
+	 double fmyEnergyRange = myEnergyRange;
 
    if ( !fRunAction->GetTreeEvtAct1() ){
       std::cerr << ">>>>> treeEvtAct1 is defined in evt = " << ievt << std::endl;
@@ -301,10 +305,12 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
       fRunAction->GetTreeEvtAct1()->Branch("mass",  &mass,  "mass/D");
       fRunAction->GetTreeEvtAct1()->Branch("kineticEenergy",&kineEnergy,"kineticEnergy/D");
       fRunAction->GetTreeEvtAct1()->Branch("Pinitial",&Pinitial);
+      fRunAction->GetTreeEvtAct1()->Branch("initialPosition",&initialPosition);
       fRunAction->GetTreeEvtAct1()->Branch("numOutParticle",numOutParticle,Form("numOutParticle[%d]/I",NoutCCQE));      
-      fRunAction->GetTreeEvtAct1()->Branch("p_abs", &p_abs, "p_abs/D");
-      fRunAction->GetTreeEvtAct1()->Branch("pt",    &pt,    "pt/D");
+      fRunAction->GetTreeEvtAct1()->Branch("myEnergyRange",  &fmyEnergyRange,  "myEnergyRange/D");
       fRunAction->GetTreeEvtAct1()->Branch("edep",  &edep,  "edep/D");
+      //fRunAction->GetTreeEvtAct1()->Branch("p_abs", &p_abs, "p_abs/D");
+      //fRunAction->GetTreeEvtAct1()->Branch("pt",    &pt,    "pt/D");
       //fRunAction->GetTreeEvtAct1()->Branch("stepl", &stepl, "stepl/D");
       //fRunAction->GetTreeEvtAct1()->Branch("dedx",  &dedx,  "dedx/D");
       //fRunAction->GetTreeEvtAct1()->Branch("layer", &layer, "layer/I");
@@ -357,7 +363,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
    double particleKineticEnergy = fParticleGun->GetParticleEnergy();
    //double pMomn = fParticleGun->GetParticleMomentum();
    G4ThreeVector particleMomentumDirection = fParticleGun->GetParticleMomentumDirection ();
-   G4ThreeVector pPosi = fParticleGun->GetParticlePosition();
+   G4ThreeVector g4initialPosition = fParticleGun->GetParticlePosition();
 	double polarAngle = particleMomentumDirection.theta();     // get polar angle
 	double azimuAngle = particleMomentumDirection.phi();       // get azimuth angle
 	double cosTheta   = particleMomentumDirection.cosTheta();  // get cos theta 
@@ -382,6 +388,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
 		for (int idim = 0; idim < ndim; idim++)
 		{
 			Pinitial[idim] = absMom2 * particleMomentumDirection(idim);
+			initialPosition[idim] = g4initialPosition(idim);
 		}
 		
 
@@ -396,9 +403,9 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
    double phi_azim= TMath::ATan(particleMomentumDirection.getY()/particleMomentumDirection.getX());
    //add 23/11/24
    G4cout << "<<< fPrimary Pt      = " << absMom2 * TMath::Sin(phi_azim) << G4endl; //Really...?
-   G4cout << "<<< fPrimary posi X  = " << pPosi.getX() << G4endl; // add
-   G4cout << "<<< fPrimary posi Y  = " << pPosi.getY() << G4endl; // add
-   G4cout << "<<< fPrimary posi Z  = " << pPosi.getZ() << G4endl; // add
+   G4cout << "<<< fPrimary posi X  = " << g4initialPosition.getX() << G4endl; // add
+   G4cout << "<<< fPrimary posi Y  = " << g4initialPosition.getY() << G4endl; // add
+   G4cout << "<<< fPrimary posi Z  = " << g4initialPosition.getZ() << G4endl; // add
    //G4cout << "<<< Ngenerated photon= " << fStacking->GetOpticalNPhotons() << G4endl; // add
    #if 0
    G4cout<< "PhotCountX ";

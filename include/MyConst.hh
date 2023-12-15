@@ -6,7 +6,7 @@
   const int ndim =3;
 	//****************** NEUT ********************
 	#define USE_NEUT 0 // flag for NEUT STUDY or PROTON STUDY
-	const	int nmaxParticles = 20;
+	const	int nmaxParticles = 20;// Buffer number of out particle in neutrino interaction: should be larger enough than # of out particle(typically qround 10)
   const bool flagProtonRejection = false; // flag for ML; erase proton.
   const bool flagOnlyProton = false; // flag for ML; erse other than proton
   const int NoutCCQE =3;//[Nmu,Nproton,(Npion)]
@@ -17,6 +17,6 @@
 	const float fiberSheetSize = 300; // square sheet
 	const int nActualLayers = 50;
 	//****************** Particle Gun Params. ********************
-	const double myEnergyRange = 100.;
+	const double myEnergyRange = 1000.;//
 
 #endif
