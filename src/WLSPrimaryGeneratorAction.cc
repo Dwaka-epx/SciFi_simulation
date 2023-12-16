@@ -407,10 +407,13 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 		G4ParticleDefinition* particleDefinition = G4ParticleTable::GetParticleTable()->FindParticle(protonID);
 		fParticleGun->SetParticleDefinition(particleDefinition);
 
-	// set position and momentum
-	G4ThreeVector fverteces (50.,50.,50.);
-	G4ThreeVector vertexRange (100.,100.,300.);
+	//set position and momentum
+	//
 	//det size (300mm, 300mm, 500mm)
+	//generate particle in (-100<x<100, -100<y<100, 0<z<500)
+	//
+	G4ThreeVector fverteces (-100.,-100.,0.);
+	G4ThreeVector vertexRange (200.,200.,500.);
 	G4double fenergy = myEnergyRange*G4UniformRand();
 	for (int idim = 0; idim < ndim; idim++)
 	{

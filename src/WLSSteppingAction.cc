@@ -364,13 +364,14 @@ void WLSSteppingAction::UserSteppingAction(const G4Step* theStep)
 	#define __ROOTRUNACTION__
 
    #ifdef __ROOTRUNACTION__
-	int evt, detid(0), pcode, trackid;
+	int evt, detid(0), pcode, trackid,nhit;
 	float x,y,z;
    if ( !fRunaction->GetTreeStpAct() ) {
 		G4cerr << "##### DefineTreeStpAct #####" << G4endl;
       fRunaction->DefineTreeStpAct();// = new TTree("tree", "");
       fRunaction->GetTreeStpAct()->Branch("evt",  &evt,  "evt/I");
       fRunaction->GetTreeStpAct()->Branch("detid",&detid,"detid/I");
+      fRunaction->GetTreeStpAct()->Branch("nhit",&nhit,"nhit/I");
       fRunaction->GetTreeStpAct()->Branch("trackid",&trackid,"trackid/I");
       fRunaction->GetTreeStpAct()->Branch("code",&pcode,"code/I");
       fRunaction->GetTreeStpAct()->Branch("x",   &x,    "x/F");
