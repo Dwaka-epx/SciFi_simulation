@@ -293,6 +293,7 @@ G4VPhysicalVolume* WLSDetectorConstruction::ConstructDetector()
    
    const int &unit = kindsOfLayers; // 4 : defined at MyConst.hh
    const int &nLayersZ = nActualLayers;//12*unit; //number of xyuv layers arranged along with Z direction.
+   const float &distance_between_layers = layersPitch;//10;
 
    G4RotationMatrix* rotMY= new G4RotationMatrix;
    G4RotationMatrix* rotMU= new G4RotationMatrix;
@@ -319,7 +320,6 @@ G4VPhysicalVolume* WLSDetectorConstruction::ConstructDetector()
    G4VSolid        *solFiberLayerSparceMother = new G4Box("FiberLayerSparceMother", xy/2, xy/2, fiber_thickness / 2.); 
    G4LogicalVolume* logFiberLayerSparceMother = new G4LogicalVolume(solFiberLayerSparceMother, FindMaterial(nameWorld), "FiberLayerSparceMother");
 
-   float distance_between_layers = 10;
    float preZ = 0; // offset ; position where xuyv layers are set.
 
    for (int i = 0; i < nLayersZ; ++i) { // + 2 is x/y in the end //fiber unit loop for xuyv

@@ -115,7 +115,7 @@ int main(int argc,char** argv)
 	}
 	#endif
 	#if (USE_NEUT == 0)
-		G4String OutName  = "./sim_output/mydata_protonStudy.root";
+		G4String OutName  = Form("./sim_output/mydata_protonStudy_pitch%.0fmm.root",layersPitch);
 	#endif
 
 

@@ -295,7 +295,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
    double xChTM[cAllCh]={};
    double yChTM[cAllCh]={};
    double zChTM[cAllCh]={};
-	 double fmyEnergyRange = myEnergyRange;
+	 double fmyMomentumRange = myMomentumRange;
 
    if ( !fRunAction->GetTreeEvtAct1() ){
       std::cerr << ">>>>> treeEvtAct1 is defined in evt = " << ievt << std::endl;
@@ -307,7 +307,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
       fRunAction->GetTreeEvtAct1()->Branch("Pinitial",&Pinitial);
       fRunAction->GetTreeEvtAct1()->Branch("initialPosition",&initialPosition);
       fRunAction->GetTreeEvtAct1()->Branch("numOutParticle",numOutParticle,Form("numOutParticle[%d]/I",NoutCCQE));      
-      fRunAction->GetTreeEvtAct1()->Branch("myEnergyRange",  &fmyEnergyRange,  "myEnergyRange/D");
+      fRunAction->GetTreeEvtAct1()->Branch("myMomentumRange",  &fmyMomentumRange,  "myMomentumRange/D");
       fRunAction->GetTreeEvtAct1()->Branch("edep",  &edep,  "edep/D");
       //fRunAction->GetTreeEvtAct1()->Branch("p_abs", &p_abs, "p_abs/D");
       //fRunAction->GetTreeEvtAct1()->Branch("pt",    &pt,    "pt/D");

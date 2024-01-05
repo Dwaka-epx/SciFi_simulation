@@ -1,32 +1,34 @@
 /* Date: 23/11/18
  * pick up info which is necessary for machine learning.
- *
+ * Draw 2D histgram of (Momentum,#hit) and (cos(theta),#hit) 
  *
 */
 #include<iostream>
 #include<stdio.h>
+#include<algorithm>
 #include <assert.h>
 #include "../include/MyConst.hh"
 
 void protonHist(TString filepath = "./sim_output/"
-		,TString input="mydata_protonStudy"
-		,TString output = "outputProtonHist")
+		,TString input	=	Form("mydata_protonStudy_pitch%.0fmm",layersPitch)
+		,TString output = Form("outputProtonHist_pitch%.0fmm",layersPitch))
 {
+	
 
 	const int nevent = 100000;// should be same or smaller than treeEvtAct entries
 //Open {wavy}output file
  	TFile *finput = new TFile(filepath+input+".root","READ");	
 	
-	//read TTree
+	//Read TTree
 	//********* treeEvtAct *********
 	TTree *treeEvtAct = static_cast<TTree *>(finput->Get("treeEvtAct1"));
 	TVector3 *pointer_Pinitial =0;
 	TVector3 *pointer_initialPosition=0;
 	int ievt=0;
-	double fmyEnergyRange=0;
+	double fmyMomentumRange=0;
 	treeEvtAct->SetBranchAddress("ievt", &ievt);
 	treeEvtAct->SetBranchAddress("Pinitial", &pointer_Pinitial);
-	treeEvtAct->SetBranchAddress("myEnergyRange", &fmyEnergyRange);
+	treeEvtAct->SetBranchAddress("myMomentumRange", &fmyMomentumRange);
 	treeEvtAct->SetBranchAddress("initialPosition", &pointer_initialPosition);
 	assert(treeEvtAct->GetEntries()>=nevent);
 	//********* treeStpAct *********
@@ -36,7 +38,7 @@ void protonHist(TString filepath = "./sim_output/"
 	treeStpAct->SetBranchAddress("detid", &detid);
 	treeStpAct->SetBranchAddress("trackid", &trackid);
 	
-	//********* protonTree *********
+	//********* Output File *********
 	TFile* foutput = new TFile(filepath+output+".root","recreate");
 	TTree* outtree = new TTree("protonTree","momentum, cos(theta), # fiber hits");
 	int nhit =0;
@@ -44,11 +46,17 @@ void protonHist(TString filepath = "./sim_output/"
 	outtree->Branch("initialPosition", &pointer_initialPosition);
 	outtree->Branch("nhit", &nhit);
 
-	//TCanvas* c1 = new TCanvas("c1","c1",1000,600);
-	//c1->Divide(2,2);
+	//************ Draw Histgram ************
+	double myMargin = 0.12;
+	gStyle->SetPadTopMargin(myMargin);
+	gStyle->SetPadBottomMargin(myMargin);
+	gStyle->SetPadLeftMargin(myMargin);
+	gStyle->SetPadRightMargin(myMargin);
+	TCanvas* c1 = new TCanvas("c1","c1",1000,600);
+	c1->Divide(2,1);
 	int Pbins =100;
 	int nbins_cos = 100;
-	double Pmax = 1800, cosmax=1., cosmin=-1.;
+	double Pmax = myMomentumRange, cosmax=1., cosmin=-1.;
 	double dnActualLayers = static_cast<double>(nActualLayers);
 
 	TH2D* hHitMomentum = new TH2D("hHitMomentum","2D Hist: Momentum vs # of hit fibers"
@@ -60,10 +68,11 @@ void protonHist(TString filepath = "./sim_output/"
 				,dnActualLayers,-0.5,dnActualLayers
 				);
 	cout << "make 2Dhsitgram" <<endl;
-	// Get nhit by event
+	
+	//********* Get nhit event by event *********
 	int nhitArray[nevent]={};
-	size_t size_nhitArray= sizeof(nhitArray)/sizeof(nhitArray[0]);//"sizeof" method returns 
-	for (int ientry = 0; ientry < (treeStpAct->GetEntries()); ++ientry)
+	size_t size_nhitArray= sizeof(nhitArray)/sizeof(nhitArray[0]);//"sizeof" method returns size in unit of "byte".
+	for (int ientry = 0; ientry < (treeStpAct->GetEntries()); ++ientry) //ientry corresponds istep.
 	{
 		treeStpAct->GetEntry(ientry);
 		cout << "ientry = " << ientry <<endl;
@@ -74,6 +83,7 @@ void protonHist(TString filepath = "./sim_output/"
 		}
 	}
 	cout << "Fill nhitArray" <<endl;
+
 
 	for(int ievent=0; ievent < nevent; ++ievent){
 		//treeStpAct->GetEntry(ievent);
@@ -99,21 +109,22 @@ void protonHist(TString filepath = "./sim_output/"
 		cout << Form("nhitArray[%d] = ",i) << nhitArray[i] <<endl;
 	}
 	
-	//c1->cd(1);
-	hHitMomentum->SetTitle(Form("EnergyRange[0,%1f] event;Momentum [MeV]; # of hits",fmyEnergyRange));
-	//hHitMomentum->Draw("colz");
-	//c1->cd(2);
-	hHitCos->SetTitle(Form("EnergyRange[0,%1f]; cos(theta); # of hits",fmyEnergyRange));
-	//hHitCos->Draw("colz");
+	c1->cd(1);
+	hHitMomentum->SetTitle(Form("Momentum Range[0,%.1f];Momentum [MeV]; # of hits",fmyMomentumRange));
+	hHitMomentum->Draw("colz");
+	c1->cd(2);
+	hHitCos->SetTitle(Form("Momentum Range[0,%.1f]; cos(theta); # of hits",fmyMomentumRange));
+	hHitCos->Draw("colz");
 
 //save initial momentum
 
 //save initial angle 
 
+
 //save as diffrent root file
 	//c1->Print(pdfName+"]", "pdf");
 	//hHitMomentum->Write();
-	//c1->Write();
+	c1->Write();
 	//outtree->Write();
 	foutput->Write();
 	foutput->Close();

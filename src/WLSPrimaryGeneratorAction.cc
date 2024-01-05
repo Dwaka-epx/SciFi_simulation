@@ -414,13 +414,14 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 	//
 	G4ThreeVector fverteces (-100.,-100.,0.);
 	G4ThreeVector vertexRange (200.,200.,500.);
-	G4double fenergy = myEnergyRange*G4UniformRand();
+	G4double fmomentum = myMomentumRange*G4UniformRand();
+	G4double fenergy = std::sqrt(std::pow(fmomentum,2)+std::pow(myProtonMass,2))-myProtonMass;
 	for (int idim = 0; idim < ndim; idim++)
 	{
 			fverteces[idim] +=  vertexRange[idim]*G4UniformRand();		
 	}
 	fParticleGun->SetParticlePosition(fverteces);
-	fParticleGun->SetParticleEnergy(fenergy);
+	fParticleGun->SetParticleEnergy(fenergy);//kinetic energy
 	fParticleGun->SetParticleMomentumDirection(G4RandomDirection());
 		
 	fParticleGun->GeneratePrimaryVertex(anEvent);
