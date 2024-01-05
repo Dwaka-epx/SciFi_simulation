@@ -2,7 +2,7 @@
 #include <assert.h>
 #include "../include/MyConst.hh"
 
-void BayseAnalysis(TString filepath = "./sim_output/",float fpitch=10.){
+void BayseAnalysis(TString filepath = "./sim_output/",float fpitch=20.){
 
 	TString input=Form("outputProtonHist_pitch%.0fmm",fpitch);
 	TString output = Form("myBays_pitch%.0fmm",fpitch);
@@ -21,14 +21,14 @@ void BayseAnalysis(TString filepath = "./sim_output/",float fpitch=10.){
 	TH2D* P_nhit_given_Ptrue = new TH2D("P_nhit_given_Ptrue"
 		,"Probability of getting nhit given true momentum"
 		,nbinsMomentum,0.,Pmax
-		,nbinsHit,-0.5,static_cast<double>(nbinsHit));// You only need normalization.
+		,nbinsHit,0,static_cast<double>(nbinsHit));// You only need normalization.
 	TH2D* P_Preco_given_nhit = new TH2D("P_Preco_given_nhit"
 		,"Probability of getting reco momentum given nhit"
-		,nbinsHit,-0.5,static_cast<double>(nbinsHit)
+		,nbinsHit,0,static_cast<double>(nbinsHit)
 		,nbinsMomentum,0.,Pmax);// You have to transpose and normalize.
 
 	//****************** P(nhit|P_true) ******************
-	for (int ibinMomentum = 0; ibinMomentum < nbinsMomentum; ++ibinMomentum){
+	for (int ibinMomentum = 0; ibinMomentum < nbinsMomentum; ++ibinMomentum){//bin# starts from 1 to nbins
 		cout << "ibinMomentum = " << ibinMomentum << endl;
 		int nEntriesInBinx = 0;
 		double nEntriesGivenPtrue = hHitMomentum->ProjectionY("histNhitGivenPtrue",ibinMomentum,ibinMomentum)->Integral();
@@ -37,7 +37,7 @@ void BayseAnalysis(TString filepath = "./sim_output/",float fpitch=10.){
 		{
 			for (int jbinHit= 0; jbinHit < nbinsHit; ++jbinHit)
 			{
-				double entriesAtij=0;
+				double entriesAtij=0;				
 				entriesAtij = hHitMomentum->GetBinContent(ibinMomentum,jbinHit);
 				P_nhit_given_Ptrue->SetBinContent(ibinMomentum,jbinHit,entriesAtij/nEntriesGivenPtrue);
 			}
@@ -49,16 +49,24 @@ void BayseAnalysis(TString filepath = "./sim_output/",float fpitch=10.){
 	
 	//****************** P(P_reco|nhit) ******************
 
-	for (int ibinHit = 0; ibinHit < nbinsHit; ++ibinHit){
+	for (int ibinHit = 0; ibinHit < nbinsHit; ++ibinHit){//bin# starts from 1 to nbins
 		cout << "ibinHit = " << ibinHit <<endl;
 		double nEntriesGivenNhit = hHitMomentum->ProjectionX("histPrecoGivenNhit",ibinHit,ibinHit)->Integral();
-		assert(nEntriesGivenNhit>0);
+		// assert(nEntriesGivenNhit>0);
 		cout <<"nEntriesGivenNhit = "<<nEntriesGivenNhit<<endl;
-		for (int jbinMomentum = 0; jbinMomentum < nbinsMomentum; ++jbinMomentum){
-			double entriesAtij=0;
-			entriesAtij = hHitMomentum->GetBinContent(jbinMomentum,ibinHit);
-			P_Preco_given_nhit->SetBinContent(ibinHit,jbinMomentum,entriesAtij/nEntriesGivenNhit);
+		if (nEntriesGivenNhit >0)
+		{
+			for (int jbinMomentum = 0; jbinMomentum < nbinsMomentum; ++jbinMomentum){
+				double entriesAtij=0;
+				entriesAtij = hHitMomentum->GetBinContent(jbinMomentum,ibinHit);
+				P_Preco_given_nhit->SetBinContent(ibinHit,jbinMomentum,entriesAtij/nEntriesGivenNhit);
+			}
 		}
+		else
+		{
+			continue;
+		}
+				
 	}
 	//************ Draw Probs ************
 	double myMargin = 0.12;
@@ -101,12 +109,11 @@ void BayseAnalysis(TString filepath = "./sim_output/",float fpitch=10.){
 	c2->cd(2);
 	float lowerMomentum =250.;
 	float profileRange = 40.;// [lowerMomentum, lowerMomentum + profileRange]
-	assert(profileRange >=0);
 	int lowerBin = P_Preco_given_Ptrue->GetXaxis()->FindBin(lowerMomentum);
 	cout << "lowerMomentum=" << P_Preco_given_Ptrue->GetXaxis()->GetBinLowEdge(lowerBin) <<endl;
 	int upperBin = P_Preco_given_Ptrue->GetXaxis()->FindBin(lowerMomentum+profileRange);
 	cout << lowerBin <<" =< Bin =<" << upperBin << endl;
-	float upperMomentum  = P_Preco_given_Ptrue->GetXaxis()->GetBinLowEdge(upperBin+1);
+	float upperMomentum  = P_Preco_given_Ptrue->GetXaxis()->GetBinUpEdge(upperBin);
 	cout << lowerMomentum<< "=< True Momentum <" << upperMomentum <<endl;
 	TH1* p_Preco1d = P_Preco_given_Ptrue->ProjectionY("p_Preco1d",lowerBin,upperBin);
 	p_Preco1d->SetTitle(Form(" (%.0f=<Pture<%.0f) pitch=%.0fmm;Preco [MeV];p(Preco|Ptrue)",lowerMomentum,upperMomentum,fpitch));

@@ -16,7 +16,7 @@
   const int nfibers_dummy = 1200;
 	const float fiberSheetSize = 300; // square sheet
 	const float layersPitch = 10.; //pitch*nActualLayers=500
-	const float detectorSizeZ = 500.;//mm
+	const double detectorSizeZ = 500.;//mm
 	const int nActualLayers = static_cast<int>(detectorSizeZ/layersPitch);
 	//****************** Particle Gun Params. ********************
 	const double myMomentumRange = 1000.;//
