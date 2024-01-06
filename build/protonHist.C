@@ -9,11 +9,20 @@
 #include <assert.h>
 #include "../include/MyConst.hh"
 
-void protonHist(TString filepath = "./sim_output/"
-		,TString input	=	Form("mydata_protonStudy_pitch%.0fmm",layersPitch)
-		,TString output = Form("outputProtonHist_pitch%.0fmm",layersPitch))
-{
-	
+
+#define USE_SECONDARY_HITS 1
+
+void makeoutputProtonHist(float);
+void protonHist(){
+	makeoutputProtonHist(5.);
+	// makeoutputProtonHist(10.);
+	// makeoutputProtonHist(20.);
+}
+
+void makeoutputProtonHist(float fpitch){
+	TString filepath = "./sim_output/";
+	TString input	=	Form("mydata_protonStudy_pitch%.0fmm",fpitch);
+	TString output = Form("outputProtonHist_pitch%.0fmm_SecondaryHits",fpitch);
 
 	const int nevent = 100000;// should be same or smaller than treeEvtAct entries
 //Open {wavy}output file
@@ -34,9 +43,11 @@ void protonHist(TString filepath = "./sim_output/"
 	//********* treeStpAct *********
   TTree *treeStpAct = (TTree*)finput->Get("treeStpAct");
 	int evtFromStp=0,detid=0,trackid=0;
+	float edep=0,edepCutoff=1e-3;
 	treeStpAct->SetBranchAddress("evt", &evtFromStp);
 	treeStpAct->SetBranchAddress("detid", &detid);
 	treeStpAct->SetBranchAddress("trackid", &trackid);
+	treeStpAct->SetBranchAddress("edep", &edep);
 	
 	//********* Output File *********
 	TFile* foutput = new TFile(filepath+output+".root","recreate");
@@ -57,15 +68,15 @@ void protonHist(TString filepath = "./sim_output/"
 	int Pbins =100;
 	int nbins_cos = 100;
 	double Pmax = myMomentumRange, cosmax=1., cosmin=-1.;
-	double dnActualLayers = static_cast<double>(nActualLayers);
+	double dnActualLayers = static_cast<double>(detectorSizeZ/fpitch);
 
 	TH2D* hHitMomentum = new TH2D("hHitMomentum","2D Hist: Momentum vs # of hit fibers"
 				,Pbins,0.,Pmax
-				,dnActualLayers,-0.5,dnActualLayers
+				,dnActualLayers,0,dnActualLayers
 				);
 	TH2D* hHitCos = new TH2D("hHitCos","2D Hist: Cos vs # of hit fibers"
 				,nbins_cos,cosmin,cosmax
-				,dnActualLayers,-0.5,dnActualLayers
+				,dnActualLayers,0,dnActualLayers
 				);
 	cout << "make 2Dhsitgram" <<endl;
 	
@@ -78,9 +89,15 @@ void protonHist(TString filepath = "./sim_output/"
 		cout << "ientry = " << ientry <<endl;
 		assert(size_nhitArray);
 		if(evtFromStp >= nevent)break;//nhitArray[0],...,nhitArray[99]
+#if (USE_SECONDARY_HITS ==0)
 		if (detid!=0 && trackid==1){
 			nhitArray[evtFromStp] +=1;
 		}
+#elif(USE_SECONDARY_HITS==1)
+		if(detid!=0 && edep>edepCutoff){
+			nhitArray[evtFromStp] +=1;
+		}
+#endif
 	}
 	cout << "Fill nhitArray" <<endl;
 
@@ -128,5 +145,6 @@ void protonHist(TString filepath = "./sim_output/"
 	//outtree->Write();
 	foutput->Write();
 	foutput->Close();
+	cout << "\n ============ "<<output << " was made."<<" ============ \n"<<endl;
 	
 }
