@@ -8,25 +8,31 @@ void SetTLegend(TLegend *leg, TGraph* gra);
 void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan);
 
 
-#define draw_true 1
+#define DRAW_TRUE 1
 #define pickup 1
 #define yprojection 0
-#define DRAW_NEUTRAL_PARTICLE 0
-#define DRAW_STEPS_WITH_HIT 1
+#define DRAW_TRUE_NEUTRAL_PARTICLE 0
+#define DRAW_ALL_TRAJECTORY 1
 
-void v3_mac(TString fname= Form("evntdisplay_pcode%dexample_pitch10mm",myparticleID)//"mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
-			,int number_of_event_display = 5
-						)
-{
+void v3_mac(TString fname= "mydata_neut_5.4.0_675MeV_H2O_numu_1e6event"//Form("evntdisplay_pcode%dexample_pitch10mm",myparticleID)//"mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
+			,int number_of_event_display = 10
+						){
+	//******** Set Draw Style ********
 	TString filepath = "./sim_output/";
 	gStyle->SetPalette(kCool);
 	gStyle->SetOptStat(1);
 	gStyle->SetOptTitle(1);
 	gStyle->SetLineScalePS(1); // to make narrow line for marker
 	gStyle->SetTitleSize(0.05,"xyz");
- 
+ 	double myMargin = 0.12;
+	gStyle->SetPadTopMargin(myMargin);
+	gStyle->SetPadBottomMargin(myMargin);
+	gStyle->SetPadLeftMargin(myMargin);
+	gStyle->SetPadRightMargin(myMargin);
+	//*********************************
+
 	
-	TFile *tf = new TFile(filepath+fname+".root","update");
+	TFile *tf = new TFile(filepath+fname+".root","READ");
 	TString canName = filepath+"fig_"+fname+".pdf";
 	TTree *tree1 = static_cast<TTree *>(tf->Get("treeEvtAct2"));
 	TTree *tree2 = (TTree*)tf->Get("treeStpAct");
@@ -116,17 +122,17 @@ void v3_mac(TString fname= Form("evntdisplay_pcode%dexample_pitch10mm",myparticl
 	
 	TCanvas *c1 = new TCanvas("c1","c1",1200,600);
 	c1->Divide(2,2);
-	c1->cd(1); grXZ->SetTitle(";z axis [mm]; x axis [mm]");
+	c1->cd(1); grXZ->SetTitle("Z vs X;z axis [mm]; x axis [mm]");
 	//  grXZ->SetTitleOffset(0.5);//0.55
 	grXZ->GetXaxis()->SetLabelSize(label_size);
 	grXZ->GetYaxis()->SetLabelSize(label_size);
-	c1->cd(2); grUZ->SetTitle(";z axis [mm]; u axis [mm]");
+	c1->cd(2); grUZ->SetTitle("Z vs U;z axis [mm]; u axis [mm]");
 	grUZ->GetXaxis()->SetLabelSize(label_size);
 	grUZ->GetYaxis()->SetLabelSize(label_size);
-	c1->cd(3); grYZ->SetTitle(";z axis [mm]; y axis [mm]");
+	c1->cd(3); grYZ->SetTitle("Z vs Y;z axis [mm]; y axis [mm]");
 	grYZ->GetXaxis()->SetLabelSize(label_size);
 	grYZ->GetYaxis()->SetLabelSize(label_size);
-	c1->cd(4); grVZ->SetTitle(";z axis [mm]; v axis [mm]");
+	c1->cd(4); grVZ->SetTitle("Z vs V;z axis [mm]; v axis [mm]");
 	grVZ->GetXaxis()->SetLabelSize(label_size);
 	grVZ->GetYaxis()->SetLabelSize(label_size);
 	c1->Print(canName+"[", "pdf");
@@ -344,7 +350,7 @@ void v3_mac(TString fname= Form("evntdisplay_pcode%dexample_pitch10mm",myparticl
 		}// end of loop for layers
 		 
 		
-#if draw_true
+#if DRAW_TRUE
 		DrawTrueStepping(c1, tree2, i, henkan);
 #endif
 
@@ -431,7 +437,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
 			stringstream termN;
 			stringstream termPIPLUS, termPIMINUS, termPI0;
 
-#if (DRAW_STEPS_WITH_HIT != 1) //draw all step 
+#if (DRAW_ALL_TRAJECTORY != 1) //draw all step 
 			term0 << " detid!=0 && evt==" << i << ends;
 			termMU << "code=="<< MU << "&&evt==" << i << "&&edep>="<< 2./henkan << ends;
 			termELEC << "code=="<< ELEC <<"&&evt==" << i << "&&edep>=" << 2./henkan << ends;
@@ -447,7 +453,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan)
 #endif
 		 
 			
-#if DRAW_STEPS_WITH_HIT //draw steps with hit
+#if DRAW_ALL_TRAJECTORY //draw steps with hit
 
 			term0 << " detid!=0 && evt==" << i << ends;
 			termMU << " detid!=0 && code==+"<< MU << "&&evt==" << i << "&&edep>="<< 2./henkan << ends;

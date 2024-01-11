@@ -83,18 +83,15 @@ int main(int argc,char** argv)
 
    //NeutName+= "run_neutrino_test/neut_5.4.0_600MeV_C.card.vect.root";
    //NeutName+= "run_num_600MeV_CC1PI0_ID12/neut_5.4.0_600MeV_C.card.vect.root";
-   //G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_1e5event";
-   G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_CCQE_1e7event";
+   G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_1e6event";
+  //  G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_CCQE_1e7event";
    NeutName+= condition_Name+".card.vect.root";
 
 	#if USE_NEUT	
 
 	if(flagProtonRejection){
 		condition_Name += "_woProton";
-  }else if (flagOnlyProton)
-	{
-   	condition_Name += "_myParticleGun_proton";
-	}
+  }
   G4String OutName  = "./sim_output/mydata_"+condition_Name+".root";
 	
 	if (argc==2) {        // ./wavy run.mac 
@@ -115,8 +112,7 @@ int main(int argc,char** argv)
 	}
 	#endif
 	#if (USE_NEUT == 0)
-		// G4String OutName  = Form("./sim_output/mydata_protonStudy_pitch%.0fmm.root",layersPitch);
-		G4String OutName  = Form("./sim_output/evntdisplay_pcode%dexample_pitch%.0fmm.root",myparticleID,layersPitch);
+		G4String OutName  = Form("./sim_output/mydata_protonStudy_pitch%.0fmm.root",layersPitch);
 	#endif
 
 

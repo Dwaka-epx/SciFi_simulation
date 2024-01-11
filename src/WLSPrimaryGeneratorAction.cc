@@ -273,13 +273,19 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 		//if ( evt%1==0 ) 
 		std::cout<< "\033[31m>>>>> [NEUT] generate Ev: " << _NeutSttNum
 					<< ", Neut mode " << mode << " saved N particles " << npart << " <<<<<\n \033[m" << std::endl;
+				
+				double rangeXY = 300.;
+				double rangeZ= 300.;
+	 			double rndx = G4UniformRand();
+	 			double rndy = G4UniformRand();
+	 			double rndz = G4UniformRand();
+	 			double vertex = (rndx*rangeXY-30.); //0.;	
+	 			double vertey = (rndy*range1XY-30.); //0.; 	
+	 			double vertez = (rndz*rangeZ+70.); //100.;
 
 		for (int pit = 0; pit < npart; ++pit) { // n particles loop
 			_nParticles++;
 			NeutPart const & part = *_NeutVec->PartInfo(pit);
-			if(flagProtonRejection ==true && part.fPID==2212){
-				break;
-			}
 			if ( part.fIsAlive==1 ) {
 				alive[pit] = true;	
 				TLorentzVector fP     = part.fP;      // 4 momentum of the particle (MeV/c, MeV)
@@ -305,22 +311,14 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 				//const int ndim=3;
 				//double rndx[ndim];
 				//double vertex[ndim]={-30.,-30.,60.};
-				double width = 60.;
-
 				
 				//fvertex[pit][0] = frndx[pit][0] - 30.;
 				//fvertex[pit][1] = frndx[pit][1] - 30.;
 				//fvertex[pit][2] = frndx[pit][2] + 70.;
-				
-	 			double rndx = G4UniformRand();
-	 			double rndy = G4UniformRand();
-	 			double rndz = G4UniformRand();
-	 			double vertex = (rndx*width-30.); //0.;	
-	 			double vertey = (rndy*width-30.); //0.; 	
-	 			double vertez = (rndz*width+70.); //100.;
+
 				fvertex[pit][0]=vertex;fvertex[pit][1]=vertey;fvertex[pit][2]=vertez;
 				for (int idim = 0; idim < ndim; ++idim){
-				//	frndx[pit][idim] = G4UniformRand()*width;
+				//	frndx[pit][idim] = G4UniformRand()*range;
 					fPinitial[pit][idim] = fP[idim];
 				}
 
@@ -416,8 +414,7 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 	G4ThreeVector fverteces (-100.,-100.,0.);
 	G4ThreeVector vertexRange (200.,200.,500.);
 	G4double fmomentum = myMomentumRange*G4UniformRand();
-	// G4double fenergy = std::sqrt(std::pow(fmomentum,2)+std::pow(myProtonMass,2))-myProtonMass;
-	G4double fenergy = 500.;
+	G4double fenergy = std::sqrt(std::pow(fmomentum,2)+std::pow(myProtonMass,2))-myProtonMass;
 	for (int idim = 0; idim < ndim; idim++)
 	{
 			fverteces[idim] +=  vertexRange[idim]*G4UniformRand();		
