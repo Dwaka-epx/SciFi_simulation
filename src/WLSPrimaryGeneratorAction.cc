@@ -403,8 +403,9 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
 	int protonID =2212;
 
+
 	// generate proton 
-		G4ParticleDefinition* particleDefinition = G4ParticleTable::GetParticleTable()->FindParticle(protonID);
+		G4ParticleDefinition* particleDefinition = G4ParticleTable::GetParticleTable()->FindParticle(myparticleID);
 		fParticleGun->SetParticleDefinition(particleDefinition);
 
 	//set position and momentum
@@ -415,7 +416,8 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 	G4ThreeVector fverteces (-100.,-100.,0.);
 	G4ThreeVector vertexRange (200.,200.,500.);
 	G4double fmomentum = myMomentumRange*G4UniformRand();
-	G4double fenergy = std::sqrt(std::pow(fmomentum,2)+std::pow(myProtonMass,2))-myProtonMass;
+	// G4double fenergy = std::sqrt(std::pow(fmomentum,2)+std::pow(myProtonMass,2))-myProtonMass;
+	G4double fenergy = 500.;
 	for (int idim = 0; idim < ndim; idim++)
 	{
 			fverteces[idim] +=  vertexRange[idim]*G4UniformRand();		
