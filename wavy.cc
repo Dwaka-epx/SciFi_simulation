@@ -87,11 +87,11 @@ int main(int argc,char** argv)
   //  G4String condition_Name = "neut_5.4.0_675MeV_H2O_numu_CCQE_1e7event";
    NeutName+= condition_Name+".card.vect.root";
 
-	#if USE_NEUT	
+#if USE_NEUT	
 
-	if(flagProtonRejection){
-		condition_Name += "_woProton";
-  }
+#if ERASE_PROTON
+		condition_Name += "_erase1Proton";
+#endif
   G4String OutName  = "./sim_output/mydata_"+condition_Name+".root";
 	
 	if (argc==2) {        // ./wavy run.mac 

@@ -286,7 +286,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
    int layer = NTHLAYER;
    int allCh = NTHLAYER * NTHLAYER;
    int PID[nmaxParticles]={0};
-	int numOutParticle[NoutCCQE]={0};
+	int numOutParticle[NchargedGenerated]={0};
    // this is because variable length array can not be initilized by xChPE[allCh]={};
    const int cAllCh = NTHLAYER * NTHLAYER;
    int xChPE[cAllCh]={};
@@ -306,7 +306,7 @@ void WLSEventAction::EndOfEventAction(const G4Event* evt)
       fRunAction->GetTreeEvtAct1()->Branch("kineticEenergy",&kineEnergy,"kineticEnergy/D");
       fRunAction->GetTreeEvtAct1()->Branch("Pinitial",&Pinitial);
       fRunAction->GetTreeEvtAct1()->Branch("initialPosition",&initialPosition);
-      fRunAction->GetTreeEvtAct1()->Branch("numOutParticle",numOutParticle,Form("numOutParticle[%d]/I",NoutCCQE));      
+      fRunAction->GetTreeEvtAct1()->Branch("numOutParticle",numOutParticle,Form("numOutParticle[%d]/I",NchargedGenerated));      
       fRunAction->GetTreeEvtAct1()->Branch("myMomentumRange",  &fmyMomentumRange,  "myMomentumRange/D");
       fRunAction->GetTreeEvtAct1()->Branch("edep",  &edep,  "edep/D");
       //fRunAction->GetTreeEvtAct1()->Branch("p_abs", &p_abs, "p_abs/D");

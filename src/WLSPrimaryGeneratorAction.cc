@@ -212,13 +212,15 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 #if USE_NEUT
 
 		int	evtID=0;
-		int	PID[nmaxParticles]={0};
+		int	PIDgenerated[nmaxParticles]={0};
 		double	fvertex[nmaxParticles][ndim]={0};
 		double fPinitial[nmaxParticles][ndim]={0};
-		int	NumOutParticle[NoutCCQE]={0};
+		int	NumOutParticle[NchargedGenerated]={0};
 		double particleEnergy[nmaxParticles]={0};
 		bool alive[nmaxParticles]={false};
-
+		bool flagProtonErased[nmaxParticles]={false};
+		int NProtonAfterErased=0;
+		int PID[nmaxParticles]={0};
 		int nGenerate=0;
 		//std::cerr << "initialization has been done!" << std::endl;
 			
@@ -231,9 +233,11 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 		fRunAction->DefineTreeInitialParticles();
 		//std::cerr << fRunAction << std::endl; //just for debug
 		 	fRunAction->GetTreeInitialParticles()->Branch("evtID", &evtID, "evtID/I");
-		 	fRunAction->GetTreeInitialParticles()->Branch("NumOutParticle",  NumOutParticle,  Form("NumOutParticle[%d]/I",NoutCCQE));
-		 	fRunAction->GetTreeInitialParticles()->Branch("PID",  PID,  Form("PID[%d]/I",nmaxParticles));
+		 	fRunAction->GetTreeInitialParticles()->Branch("NumOutParticle",  NumOutParticle,  Form("NumOutParticle[%d]/I",NchargedGenerated));
+		 	fRunAction->GetTreeInitialParticles()->Branch("PIDgenerated", PIDgenerated,  Form("PIDgenerated[%d]/I",nmaxParticles));
+		 	// fRunAction->GetTreeInitialParticles()->Branch("PID", PID,  Form("PID[%d]/I",nmaxParticles));
 		 	fRunAction->GetTreeInitialParticles()->Branch("Alive",  alive,  Form("Alive[%d]/O",nmaxParticles));
+		 	fRunAction->GetTreeInitialParticles()->Branch("flagProtonErased", flagProtonErased,  Form("flagProtonErased[%d]/O",nmaxParticles));
 		 	fRunAction->GetTreeInitialParticles()->Branch("particleEnergy",  particleEnergy,  Form("particleEnergy[%d]/D",nmaxParticles));
 		 	fRunAction->GetTreeInitialParticles()->Branch("vertex", fvertex, Form("vertex[%d][%d]/D",nmaxParticles,ndim));
 		 	fRunAction->GetTreeInitialParticles()->Branch("Pinitial", fPinitial, Form("Pinitial[%d][%d]/D",nmaxParticles,ndim));
@@ -261,11 +265,10 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 		_nPions=0; // pion
 		_nMuons=0; // muon
 
-		//PID[nmaxParticles]={0};
 		//frndx[nmaxParticles][ndim]={0};
 		//fvertex[nmaxParticles][ndim]={0};
 		//fPinitial[nmaxParticles][ndim]={0};
-		//numOutParticle[NoutCCQE]={0}; // [Nmuon,Nproton]
+		//numOutParticle[NchargedGenerated]={0}; // [Nmuon,Nproton]
 		//particleEnergy[nmaxParticles]={0};
 		alive[nmaxParticles]={0};
 
@@ -280,11 +283,29 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 	 			double rndy = G4UniformRand();
 	 			double rndz = G4UniformRand();
 	 			double vertex = (rndx*rangeXY-30.); //0.;	
-	 			double vertey = (rndy*range1XY-30.); //0.; 	
+	 			double vertey = (rndy*rangeXY-30.); //0.; 	
 	 			double vertez = (rndz*rangeZ+70.); //100.;
+
+#if ERASE_PROTON
+		int NaliveProtonCounter =0;// same as 
+		for (int iparticle = 0; iparticle < npart; iparticle++){
+			NeutPart const & part = *_NeutVec->PartInfo(iparticle);
+			if ( part.fIsAlive==1 && part.fPID==2212 ){
+				NaliveProtonCounter++ ;
+			} 
+		}
+		double uniformRandom = G4UniformRand();
+		int whichProtonToErase = std::floor(NaliveProtonCounter*uniformRandom)+1;
+		if(NaliveProtonCounter==0){
+			assert(whichProtonToErase==1);
+		}else{
+			assert(1=<whichProtonToErase=<NaliveProtonCounter);
+		}
+#endif
 
 		for (int pit = 0; pit < npart; ++pit) { // n particles loop
 			_nParticles++;
+			flagProtonErased[pit] = false;
 			NeutPart const & part = *_NeutVec->PartInfo(pit);
 			if ( part.fIsAlive==1 ) {
 				alive[pit] = true;	
@@ -297,11 +318,22 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 				if ( part.fPID==12 || part.fPID==14 ) _neutEnergy  = particleEnergy[pit]; // take neutrino initial energy
 				if ( part.fPID==12 || part.fPID==14 ) _neutMomentum= Pabs; // take neutrino initial momentum
 				if ( part.fPID==2112 ) _nNeutrons++ ; // neutron
-				if ( part.fPID==2212 ) _nProtons++ ; // proton
+				if ( part.fPID==2212 ) _nProtons++; // proton
 				if ( part.fPID==211  ) _nPions++ ; // pion
 				if ( part.fPID==13  ) _nMuons++ ; // muon
-				fPID[pit] = part.fPID;
-				PID[pit] = part.fPID;
+
+#if ERASE_PROTON
+				if(part.fPID==2212 && _nProtons == whichProtonToErase){
+					flagProtonErased[pit] = true;
+				}else if (part.fPID==2212 && _nProtons != whichProtonToErase){
+					NProtonAfterErased++;
+				}
+							
+#endif
+
+				// if there is/are protons, erase 1 proton, randomly if Nprotons >0
+
+				PIDgenerated[pit] = part.fPID;
 				G4ParticleDefinition* particleDefinition
 					= G4ParticleTable::GetParticleTable()->FindParticle(part.fPID);
 				double G4Mass = particleDefinition->GetPDGMass();
@@ -379,8 +411,8 @@ void WLSPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 			}		
 		}
 		NumOutParticle[0] = _nMuons;
-		NumOutParticle[1] = _nProtons;
-		if(NoutCCQE>2){
+		NumOutParticle[1] = NProtonAfterErased;// _nProtons;
+		if(NchargedGenerated>2){
 			NumOutParticle[2] = _nPions;
 		}
 		

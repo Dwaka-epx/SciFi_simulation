@@ -103,7 +103,6 @@ class WLSPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 		void SetNeutrinoNSeed(int a)  { _neutNSeeds = a; }
 		int fPID[nmaxParticles];
 
-
 	protected:
 
 		G4PhysicsTable* fIntegralTable;

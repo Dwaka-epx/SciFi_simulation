@@ -14,7 +14,7 @@ void DrawTrueStepping(TCanvas *c1, TTree *tree2, int i, double henkan);
 #define DRAW_TRUE_NEUTRAL_PARTICLE 0
 #define DRAW_ALL_TRAJECTORY 1
 
-void v3_mac(TString fname= "mydata_neut_5.4.0_675MeV_H2O_numu_1e6event"//Form("evntdisplay_pcode%dexample_pitch10mm",myparticleID)//"mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
+void v3_mac(TString fname= "mydata_neut_5.4.0_675MeV_H2O_numu_CCQE_1e7event"//Form("evntdisplay_pcode%dexample_pitch10mm",myparticleID)//"mydata_neut_5.4.0_675MeV_H2O_numu_1e5event"
 			,int number_of_event_display = 10
 						){
 	//******** Set Draw Style ********
