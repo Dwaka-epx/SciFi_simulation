@@ -29,17 +29,19 @@ for (int iEvent = 0; iEvent < NtotalEvents; iEvent++){
 	}
 	const int nphase = 4;
 	const int nlayers = 50;
-	float chw[nlayers_dummy][nfibers_dummy];//energy deposit in each fibers.
+	float inchw[nlayers_dummy][nfibers_dummy];//energy deposit in each fibers.
 	int NumOutParticle[NchargedGenerated];
-	int eventFromEvtAct=0;
+	int PID[nmaxParticles];
+	double Pinitial[nmaxParticles][ndim]={0};
 
 	//read TTree
 	TTree *treeEvt = static_cast<TTree *>(finput->Get("treeEvtAct2"));
   TTree *treeMLInfo = (TTree*)finput->Get("treeInitialParticles");
   TTree *tree_yread = (TTree*)finput->Get("tree_yread");
-	treeEvt->SetBranchAddress("chw", chw);
-
+	treeEvt->SetBranchAddress("chw", inchw);
 	treeMLInfo->SetBranchAddress("NumOutParticle", NumOutParticle);
+	treeMLInfo->SetBranchAddress("PID",PID);
+	treeMLInfo->SetBranchAddress("Pinitial",Pinitial);
 
 	const int nfibers = tree_yread->GetEntries();
 
@@ -75,10 +77,12 @@ for (int iEvent = 0; iEvent < NtotalEvents; iEvent++){
 
 	int jEventGlobal = 0;
 	outtree->Branch("event",&jEventGlobal,"event/I");
-
 	float dedx[nlayers][nfibers][nphase];
 	float photon[nlayers][nfibers][nphase];//Poisson
 	float electric[nlayers][nfibers][nphase];//Poisson&Gauss
+	outtree->Branch("NumOutParticle",&NumOutParticle,Form("NumOutParticle[%d]/I",NchargedGenerated));
+	outtree->Branch("PID",&PID,Form("PID[%d]/I",nmaxParticles));
+	outtree->Branch("Pinitial",&Pinitial,Form("Pinitial[%d][%d]/D",nmaxParticles,ndim));
 	outtree->Branch("dedx",dedx,Form("dedx[%d][%d][%d]/F",nlayers,nfibers,nphase));
 	outtree->Branch("photon",photon,Form("photon[%d][%d][%d]/F",nlayers,nfibers,nphase));
 	outtree->Branch("electric",electric,Form("electric[%d][%d][%d]/F",nlayers,nfibers,nphase));
@@ -86,6 +90,7 @@ for (int iEvent = 0; iEvent < NtotalEvents; iEvent++){
 	for(int jEventLocal=0; jEventLocal < neventsPerFile; ++jEventLocal){
 		jEventGlobal = jEventLocal + iEvent;
 		treeEvt->GetEntry(jEventGlobal);
+		treeMLInfo->GetEntry(jEventGlobal);
 		cout <<"****************************"<<endl;
 		cout <<"file No. ="<< iEvent/neventsPerFile <<endl;
 		cout <<"jEventGlobal="<< jEventGlobal <<endl;
@@ -97,7 +102,7 @@ for (int iEvent = 0; iEvent < NtotalEvents; iEvent++){
 			int	iphaselayer=ilayer/nphase;
 
 			for(int ifiber=0; ifiber < nfibers; ++ifiber){
-				const float edep = chw[ilayer][ifiber];
+				const float edep = inchw[ilayer][ifiber];
 				dedx[iphaselayer][ifiber][iphase]=edep;
 				const float pePoisson = gRandom->Poisson(edep*energyToPhotonConversionFactor);
 				photon[iphaselayer][ifiber][iphase] = pePoisson;
